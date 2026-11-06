@@ -1,0 +1,214 @@
+<title>Tueste Regalá un café</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: un teléfono al centro (el recorrido) y, en pantallas anchas, una columna con el guion de la demo. Paleta de tostado: grano oscuro, verde de cereza de café y cobre. */
+:root{--bg:#eef0ea;--sup:#ffffff;--sup2:#f5f6f1;--fg:#1d1a17;--suave:#5d5a52;--linea:#dcdcd2;--sombra:rgba(40,30,20,.45);
+--acento:#2f5a47;--acento-tx:#ffffff;--acento-fuerte:#2a5241;--acento2:#b9c7b3;--foco:#b4632a;--cobre:#b4632a;
+--ok:#2c7a4b;--ok-bg:#dff0e5;--alerta:#b3402e;--alerta-bg:#f8e1dc;--sim-bg:#f3e3cf;--sim-tx:#7a4515;
+--notif-bg:rgba(255,255,255,.92);--notif-tx:#1d1a17;--bloqueo:#3a2a1f;--bloqueo-tx:#f6efe7;--chat-bg:#e9e2d6;--chat-yo:#d9fdd3;--wa:#1f8a4c;
+--f-titulo:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;--f-texto:'Source Sans 3','Segoe UI',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141512;--sup:#1d1e1a;--sup2:#24261f;--fg:#efece4;--suave:#a9a597;--linea:#36382f;--sombra:rgba(0,0,0,.7);
+--acento:#7fb59a;--acento-tx:#10201a;--acento-fuerte:#9cc9b1;--acento2:#3e5a4b;--foco:#e09a5e;--cobre:#e09a5e;--ok:#6cc690;--ok-bg:#1c3326;--alerta:#ef8a76;--alerta-bg:#3d211c;--sim-bg:#3d2c1b;--sim-tx:#f0c08d;
+--notif-bg:rgba(40,38,34,.95);--notif-tx:#efece4;--bloqueo:#24170f;--bloqueo-tx:#f6efe7;--chat-bg:#2a2620;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141512;--sup:#1d1e1a;--sup2:#24261f;--fg:#efece4;--suave:#a9a597;--linea:#36382f;--sombra:rgba(0,0,0,.7);
+--acento:#7fb59a;--acento-tx:#10201a;--acento-fuerte:#9cc9b1;--acento2:#3e5a4b;--foco:#e09a5e;--cobre:#e09a5e;--ok:#6cc690;--ok-bg:#1c3326;--alerta:#ef8a76;--alerta-bg:#3d211c;--sim-bg:#3d2c1b;--sim-tx:#f0c08d;
+--notif-bg:rgba(40,38,34,.95);--notif-tx:#efece4;--bloqueo:#24170f;--bloqueo-tx:#f6efe7;--chat-bg:#2a2620;color-scheme:dark}
+/*BASE*/
+.marca{font-family:var(--f-titulo);font-weight:700;letter-spacing:-.01em}
+.regalo{border:2px dashed var(--cobre);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.regalo .grande{color:var(--cobre)}
+.prod{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;text-align:left;border:1px solid var(--linea);border-radius:16px;padding:12px;background:var(--sup);cursor:pointer;width:100%}
+.prod[aria-pressed="true"]{border-color:var(--acento);box-shadow:inset 0 0 0 2px var(--acento)}
+.bolsa{width:54px;height:66px;border-radius:8px 8px 12px 12px;background:linear-gradient(180deg,var(--cobre) 0 22%,#3a2a1f 22% 100%);position:relative}
+.bolsa::after{content:"T";position:absolute;inset:30% 0 0;display:grid;place-items:center;color:#f6efe7;font:700 20px var(--f-titulo)}
+.precio s{color:var(--suave);font-size:14px;margin-right:6px}
+.niveles{display:flex;flex-direction:column;gap:8px}
+.nivel{display:grid;grid-template-columns:28px 1fr auto;gap:10px;align-items:center;font-size:14.5px}
+.nivel b.c{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--linea);font-size:13px}
+.nivel.hecho b.c{background:var(--acento);border-color:var(--acento);color:var(--acento-tx)}
+.link{display:flex;gap:8px}
+.link input{flex:1;min-width:0;border:1px solid var(--linea);border-radius:12px;padding:10px;background:var(--sup2);font-size:15px}
+.link button{border:1px solid var(--linea);border-radius:12px;background:var(--sup);padding:0 14px;cursor:pointer;font-weight:600}
+</style>
+
+<div class="escenario">
+<div class="telefono">
+  <div class="barra-demo"><span id="paso-actual"></span><button type="button" id="abrir-mapa" aria-controls="mapa">Mapa de la demo</button></div>
+  <nav class="mapa" id="mapa" aria-label="Pantallas del prototipo"></nav>
+
+  <section class="pantalla" id="llega" data-nombre="Llegó el café (el momento)">
+    <p class="eyebrow">Quien invita · el paquete acaba de llegar</p>
+    <div class="bloqueo">
+      <div class="hora">7:05</div><div class="fecha">sábado <span class="sim">simulado</span></div>
+      <button class="notif" type="button" data-ir="invitar">
+        <span class="ico">T</span>
+        <span><b>Tueste</b> <small>· ahora</small><br>Camila, su café ya está en la puerta. Cuando prepare la primera taza, regálele $8 de café a un amigo.</span>
+      </button>
+    </div>
+    <p class="sub">Hoy el correo «Regale $8» sale al día siguiente de pagar, cuando el café todavía no llegó: solo 120 de cada 1.000 clientes ven el programa. Este aviso sale cuando el repartidor marca el paquete como entregado.</p>
+    <button class="btn" type="button" data-ir="invitar">Tocar el aviso</button>
+  </section>
+
+  <section class="pantalla" id="invitar" data-nombre="Invitar en un toque">
+    <p class="eyebrow">Regalá un café</p>
+    <h1 class="titulo">Regálele $8 de café a un amigo</h1>
+    <p class="sub">Su amigo recibe $8 en su primera bolsa. Usted gana $5 de crédito por cada amigo que compre.</p>
+    <button class="btn wa" type="button" data-ir="whatsapp">Invitar por WhatsApp</button>
+    <div class="campo"><label for="mi-link">O copie su link personal <span class="sim">simulado</span></label>
+      <div class="link"><input id="mi-link" readonly value="tueste.cr/r/camila"><button type="button" onclick="copiar('https://tueste.cr/r/camila', document.getElementById('mi-link'))">Copiar</button></div></div>
+    <div class="card">
+      <div class="fila"><b>Su avance</b><span class="num" id="avance-txt">0 de 3 amigos</span></div>
+      <div class="barra" aria-hidden="true"><i id="avance-barra" style="width:0%"></i></div>
+      <div class="niveles" id="niveles">
+        <div class="nivel" data-n="1"><b class="c">1</b><span>Cada amigo que compra: $5 de crédito para usted</span><span class="num">$5</span></div>
+        <div class="nivel" data-n="3"><b class="c">3</b><span>Al tercer amigo: una bolsa de 340 g de regalo</span><span class="num">bolsa</span></div>
+        <div class="nivel" data-n="s"><b class="c">2</b><span>Dos amigos que se suscriben: un mes de suscripción gratis</span><span class="num">mes</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pantalla" id="whatsapp" data-nombre="El mensaje listo">
+    <p class="eyebrow">WhatsApp · chat con Andrea <span class="sim">simulado</span></p>
+    <div class="chat" id="chat">
+      <div class="globo otro">¿Qué tal el café nuevo? <small>7:20</small></div>
+    </div>
+    <div class="card marcada">
+      <p class="nota">Mensaje listo para mandar (se puede editar):</p>
+      <p id="mensaje">Andrea, estoy tomando un café de Tueste que me encantó. Te regalo $8 para tu primera bolsa: tueste.cr/r/camila</p>
+    </div>
+    <button class="btn wa" type="button" id="enviar">Enviar</button>
+    <button class="btn2" type="button" id="como-andrea" hidden data-ir="amigo">Abrir el link como Andrea</button>
+    <a class="enlace" id="wa-real" href="https://wa.me/?text=Andrea%2C%20estoy%20tomando%20un%20caf%C3%A9%20de%20Tueste%20que%20me%20encant%C3%B3.%20Te%20regalo%20%248%20para%20tu%20primera%20bolsa%3A%20tueste.cr%2Fr%2Fcamila" target="_blank" rel="noopener">Probar con WhatsApp de verdad (abre en otra pestaña)</a>
+  </section>
+
+  <section class="pantalla" id="amigo" data-nombre="La página del amigo">
+    <p class="eyebrow">Andrea abre el link · tueste.cr/r/camila</p>
+    <div class="regalo">
+      <span class="sub">Camila le regaló</span>
+      <span class="grande">$8</span>
+      <span>en su primer café de Tueste. <b>Ya está aplicado.</b></span>
+    </div>
+    <p class="sub">Café de especialidad de seis fincas, tostado esta semana y enviado a su casa en 3 días.</p>
+    <div style="display:grid;gap:10px" role="group" aria-label="Elegir café">
+      <button class="prod" type="button" aria-pressed="true" data-prod="suelto" data-precio="34">
+        <span class="bolsa" aria-hidden="true"></span>
+        <span><b>2 bolsas de 340 g</b><br><span class="sub">Alcanza para unas 44 tazas</span><br><span class="precio"><s>$34</s><b>$26</b></span></span>
+      </button>
+      <button class="prod" type="button" aria-pressed="false" data-prod="sub" data-precio="30.6">
+        <span class="bolsa" aria-hidden="true"></span>
+        <span><b>Suscripción: 2 bolsas cada mes</b><br><span class="sub">10 % menos · se pausa cuando quiera</span><br><span class="precio"><s>$30,60</s><b>$22,60</b> el primer mes</span></span>
+      </button>
+    </div>
+    <button class="btn" type="button" data-ir="pago">Seguir con mi regalo</button>
+  </section>
+
+  <section class="pantalla" id="pago" data-nombre="Pagar en un paso">
+    <div class="pasos"><span class="hecho"></span><span class="hecho"></span><em style="font-style:normal">2 de 2</em></div>
+    <h1 class="titulo">¿Dónde le dejamos el café?</h1>
+    <div class="campo"><label for="dir">Dirección de entrega</label><input id="dir" autocomplete="street-address" value="San Pedro, 200 m norte del parque"></div>
+    <div class="campo"><label for="tel">WhatsApp para avisarle cuando llegue</label><input id="tel" inputmode="tel" value="8888-0000"></div>
+    <div class="lista">
+      <div><span id="res-prod">2 bolsas de 340 g</span><span class="num" id="res-precio">$34,00</span></div>
+      <div><span>Regalo de Camila</span><span class="num ok">−$8,00</span></div>
+      <div><span>Envío</span><span class="num">Gratis</span></div>
+      <div><b>Total</b><b class="num" id="res-total">$26,00</b></div>
+    </div>
+    <button class="btn" type="button" data-ir="listo">Pagar <span id="pagar-total">$26,00</span> <span class="sim" style="background:rgba(255,255,255,.25);color:inherit">simulado</span></button>
+    <p class="nota">Datos de ejemplo. No se cobra nada.</p>
+  </section>
+
+  <section class="pantalla" id="listo" data-nombre="Compra lista">
+    <p class="eyebrow">Andrea · pedido confirmado</p>
+    <h1 class="titulo">¡Listo! Su café llega el martes</h1>
+    <p>Le escribimos por WhatsApp cuando el repartidor lo deje en su puerta.</p>
+    <div class="card marcada"><b>Y cuando llegue</b><p>También va a poder regalarle $8 a una amiga. Así llegó usted.</p></div>
+    <button class="btn" type="button" data-ir="gano" id="ver-camila">Ver qué le llega a Camila</button>
+  </section>
+
+  <section class="pantalla" id="gano" data-nombre="El aviso a quien invitó">
+    <div class="bloqueo">
+      <div class="hora">9:41</div><div class="fecha">sábado <span class="sim">simulado</span></div>
+      <div class="notif"><span class="ico">T</span><span><b>Tueste</b> <small>· ahora</small><br>Andrea compró con su regalo. Ganó $5 de crédito.</span></div>
+    </div>
+    <div class="card">
+      <div class="fila"><b>Su crédito</b><span class="grande" style="font-size:30px">$5</span></div>
+      <p class="sub">Se descuenta solo en su próximo pedido.</p>
+      <div class="fila"><b>Avance</b><span class="num" id="avance2-txt">1 de 3 amigos</span></div>
+      <div class="barra" aria-hidden="true"><i id="avance2-barra" style="width:33%"></i></div>
+      <p class="nota">Con 2 amigos más, una bolsa de 340 g de regalo.</p>
+    </div>
+    <button class="btn wa" type="button" data-ir="whatsapp">Invitar a otro amigo</button>
+    <button class="btn2" type="button" data-ir="panel">Ver el panel de Diego</button>
+  </section>
+
+  <section class="pantalla" id="panel" data-nombre="Panel de Diego">
+    <p class="eyebrow">Panel de Diego · referidos de octubre</p>
+    <div class="kpis">
+      <div class="kpi"><span>Clientes nuevos por referidos cada 100 clientes</span><strong>6 → 21,9</strong><small>hoy (dato) → meta <span class="sim">simulado</span></small></div>
+      <div class="kpi"><span>Costo por cliente referido</span><strong>$14,81</strong><small>peor caso $23,10 · tope $25</small></div>
+      <div class="kpi"><span>Referidos al mes</span><strong>9 → 41</strong><small>con 147 clientes nuevos al mes</small></div>
+      <div class="kpi"><span>Parte que viene de Meta</span><strong>68 % → 53 %</strong><small>de los clientes nuevos</small></div>
+    </div>
+    <div class="card">
+      <div class="fila"><b>Embudo por cada 1.000 clientes</b><span class="nota">gris: hoy · verde: meta <span class="sim">simulado</span></span></div>
+      <div class="embudo" id="embudo-a"></div>
+      <p class="nota">Donde más se pierde hoy: del correo a la página (34 %). El 88 % nunca ve el programa.</p>
+    </div>
+    <div class="card">
+      <b>Recompensas por cliente referido (regla de Diego: máximo $25)</b>
+      <div class="scroll"><table class="tabla">
+        <thead><tr><th>Recompensa</th><th>Costo</th><th>Por referido</th></tr></thead>
+        <tbody>
+          <tr><td>Amigo: $8 en su primer pedido</td><td>$8,00</td><td>$8,00</td></tr>
+          <tr><td>Quien invita: $5 por amigo que compra</td><td>$5,00</td><td>$5,00</td></tr>
+          <tr><td>Al 3.er amigo: bolsa de 340 g</td><td>$5,44</td><td>$1,81</td></tr>
+          <tr><td>2 amigos suscritos: un mes gratis</td><td>$16,58</td><td>$8,29</td></tr>
+          <tr class="total"><td>Peor combinación (todo junto)</td><td></td><td>$23,10 <span class="pill ok">≤ $25</span></td></tr>
+        </tbody></table></div>
+      <p class="nota">Cliente de Meta: ($4.000 + $1.000 de agencia) ÷ 100 = $50. Un mes gratis cuesta $10,88 de café + $4,50 de envío + $1,20 de caja.</p>
+    </div>
+    <div class="card marcada">
+      <b>El número de la semana</b>
+      <p>Clientes nuevos por referidos cada 100 clientes que reciben su café. Hoy 6.</p>
+      <b>Prueba A/B</b>
+      <p>Si el aviso para invitar sale cuando llega el café, los clientes que ven el programa pasan de 12 % a 35 %, y vigilamos que el costo por cliente referido no pase de $25 ni suban las bajas de la lista de correos.</p>
+    </div>
+    <button class="btn2" type="button" data-ir="llega">Volver al inicio</button>
+  </section>
+</div>
+
+<aside class="lado" aria-label="Guion de la demo">
+  <div class="card"><p class="eyebrow">Qué ataca</p><h3>El momento de invitar</h3><p>De 1.000 clientes, 880 nunca ven el programa: el correo llega antes que el café. El aviso sale cuando llega el paquete, que es cuando el 6 % ya publica fotos sin que nadie se lo pida.</p></div>
+  <div class="card"><p class="eyebrow">La meta</p><h3>De 6 a 22 referidos por cada 100 clientes</h3><p>Ven el programa 12 % → 35 %, y compra el 50 % de los amigos que abren la página con el regalo aplicado (hoy 40 %). Cada referido cuesta como máximo $23,10, menos de la mitad de los $50 de Meta.</p></div>
+  <div class="card"><p class="eyebrow">Recorrido</p><ol><li>Aviso cuando llega el café</li><li>Invitar en un toque</li><li>Mensaje listo por WhatsApp</li><li>Página del amigo con el regalo aplicado</li><li>Pago en un paso</li><li>Aviso y avance de quien invitó</li><li>Panel de Diego</li></ol></div>
+  <p class="nota">Nombres, pedidos, links y fechas son simulados. Las tasas de hoy salen del caso; las de la meta son supuestos del equipo.</p>
+</aside>
+</div>
+
+<script>/*BASEJS*/</script>
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  let prod = { nombre: '2 bolsas de 340 g', precio: 34 };
+  document.querySelectorAll('.prod').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.prod').forEach((x) => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+    prod = b.dataset.prod === 'sub' ? { nombre: 'Suscripción, primer mes', precio: 30.6 } : { nombre: '2 bolsas de 340 g', precio: 34 };
+    $('#res-prod').textContent = prod.nombre; $('#res-precio').textContent = dinero(prod.precio, 2);
+    $('#res-total').textContent = $('#pagar-total').textContent = dinero(prod.precio - 8, 2);
+  }));
+  $('#enviar').addEventListener('click', () => {
+    const g = document.createElement('div'); g.className = 'globo';
+    g.innerHTML = $('#mensaje').textContent.replace('tueste.cr/r/camila', '<a href="#amigo">tueste.cr/r/camila</a>') + ' <small>7:21 ✓✓</small>';
+    $('#chat').appendChild(g); $('#enviar').hidden = true; $('#como-andrea').hidden = false; toast('Mensaje enviado (simulado)');
+  });
+  document.addEventListener('pantalla', (e) => {
+    if (e.detail === 'whatsapp') { $('#enviar').hidden = false; $('#como-andrea').hidden = true; }
+    if (e.detail === 'gano') { $('#avance-txt').textContent = '1 de 3 amigos'; $('#avance-barra').style.width = '33%'; document.querySelector('.nivel[data-n="1"]').classList.add('hecho'); }
+  });
+  // embudo del panel: hoy (dato del caso) y meta (simulado), por cada 1.000 clientes
+  const pasos = [['Reciben el aviso o el correo', 1000, 1000], ['Ven el programa', 120, 350], ['Invitan', 100, 292], ['Invitaciones enviadas', 300, 875], ['Amigos que abren la página', 150, 438], ['Amigos que compran', 60, 219]];
+  const max = 1000;
+  $('#embudo-a').innerHTML = pasos.map(([n, h, m], i) => `<div class="e ${i === 1 ? 'peor' : ''}"><span>${n}</span><span class="num">${h.toLocaleString('es-CR').replace(/\s/g, '.')} → <b>${m.toLocaleString('es-CR').replace(/\s/g, '.')}</b></span><div class="b"><i style="width:${(h / max) * 100}%"></i></div><div class="b"><i class="n" style="width:${Math.min(100, (m / max) * 100)}%"></i></div></div>`).join('');
+})();
+</script>

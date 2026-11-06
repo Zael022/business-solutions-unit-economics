@@ -1,0 +1,11 @@
+PASA  tueste.html · se recorre de punta a punta con los botones hasta el panel: última pantalla: panel
+PASA  tueste.html · marca lo simulado: 7 etiquetas «simulado»
+PASA  tueste.html · sin errores ni desbordes en el celular
+PASA  agendo.html · se recorre de punta a punta con los botones hasta el panel: última pantalla: panel
+PASA  agendo.html · marca lo simulado: 8 etiquetas «simulado»
+PASA  agendo.html · sin errores ni desbordes en el celular
+PASA  sol-de-casa.html · se recorre de punta a punta con los botones hasta el panel: última pantalla: panel
+PASA  sol-de-casa.html · marca lo simulado: 7 etiquetas «simulado»
+PASA  sol-de-casa.html · sin errores ni desbordes en el celular
+
+RESULTADO: 9 pasan, 0 fallan.

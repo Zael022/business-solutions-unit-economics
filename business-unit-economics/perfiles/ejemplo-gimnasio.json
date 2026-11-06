@@ -1,0 +1,428 @@
+{
+ "id": "ejemplo-gimnasio",
+ "nombre": "Pulso (ejemplo de una cuarta empresa)",
+ "subtitulo": "Ejemplo ficticio de entrada · Modelo mixto: leads con clase de prueba (capacidad de entrenadores) + membresía mensual",
+ "fuente": "Datos de ejemplo escritos para mostrar cómo entra un caso nuevo; no vienen de ningún PDF",
+ "modelo": "mixto: lead generation (embudo y capacidad) + suscripción mensual",
+ "especializaciones": [
+  "leadgen",
+  "suscripcion"
+ ],
+ "decision": "¿Pulso triplica la inversión en Meta para llenar el gimnasio nuevo?",
+ "parametros": [
+  {
+   "id": "precio",
+   "etiqueta": "Membresía mensual",
+   "unidad": "$",
+   "valor": 45,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Membresía",
+   "control": true,
+   "min": 20,
+   "max": 90,
+   "paso": 1
+  },
+  {
+   "id": "costo_var",
+   "etiqueta": "Costo variable por socio al mes (toallas, app, pasarela)",
+   "unidad": "$",
+   "valor": 9,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Membresía",
+   "control": true,
+   "min": 0,
+   "max": 30,
+   "paso": 0.5
+  },
+  {
+   "id": "churn",
+   "etiqueta": "Cancelación mensual",
+   "unidad": "%",
+   "valor": 0.08,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Membresía",
+   "control": true,
+   "min": 0.01,
+   "max": 0.25,
+   "paso": 0.005
+  },
+  {
+   "id": "inv_meta",
+   "etiqueta": "Inversión en Meta",
+   "unidad": "$",
+   "valor": 3000,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 9000,
+   "paso": 250
+  },
+  {
+   "id": "hist_meta",
+   "etiqueta": "Historial: inversión → leads",
+   "unidad": "historial",
+   "valor": [
+    [
+     1500,
+     260
+    ],
+    [
+     3000,
+     450
+    ],
+    [
+     6000,
+     700
+    ],
+    [
+     9000,
+     820
+    ]
+   ],
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "contacto",
+   "etiqueta": "Leads contactados",
+   "unidad": "%",
+   "valor": 0.6,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0.1,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "agenda",
+   "etiqueta": "Contactados que agendan clase de prueba",
+   "unidad": "%",
+   "valor": 0.5,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0.05,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "asiste",
+   "etiqueta": "Agendados que asisten",
+   "unidad": "%",
+   "valor": 0.7,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0.1,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "cierre",
+   "etiqueta": "Clases de prueba que terminan en membresía",
+   "unidad": "%",
+   "valor": 0.35,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0.05,
+   "max": 0.8,
+   "paso": 0.01
+  },
+  {
+   "id": "cap_clases",
+   "etiqueta": "Clases de prueba que caben al mes",
+   "unidad": "n",
+   "valor": 120,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Capacidad"
+  },
+  {
+   "id": "costo_clase",
+   "etiqueta": "Costo de una clase de prueba",
+   "unidad": "$",
+   "valor": 8,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Capacidad",
+   "control": true,
+   "min": 0,
+   "max": 40,
+   "paso": 1
+  },
+  {
+   "id": "cap_entrenador",
+   "etiqueta": "Clases que suma un entrenador extra",
+   "unidad": "n",
+   "valor": 60,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Capacidad"
+  },
+  {
+   "id": "costo_entrenador",
+   "etiqueta": "Costo mensual de un entrenador extra",
+   "unidad": "$",
+   "valor": 1100,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Capacidad"
+  },
+  {
+   "id": "organicos",
+   "etiqueta": "Socios nuevos sin anuncios al mes",
+   "unidad": "n",
+   "valor": 15,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "socios_hoy",
+   "etiqueta": "Socios activos hoy",
+   "unidad": "n",
+   "valor": 380,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Caja"
+  },
+  {
+   "id": "caja0",
+   "etiqueta": "Plata en el banco hoy",
+   "unidad": "$",
+   "valor": 15000,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Caja"
+  },
+  {
+   "id": "piso",
+   "etiqueta": "Piso de caja",
+   "unidad": "$",
+   "valor": 4000,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Caja"
+  },
+  {
+   "id": "fijos",
+   "etiqueta": "Costos fijos mensuales",
+   "unidad": "$",
+   "valor": 12500,
+   "origen": "dato",
+   "fuente": "Ejemplo",
+   "grupo": "Caja"
+  }
+ ],
+ "unidad": {
+  "horizonte": 12,
+  "segmentos": [
+   {
+    "id": "socio",
+    "nombre": "Socio mensual",
+    "tipo": "suscripcion",
+    "peso": 1,
+    "precio": "$precio",
+    "contribMes": "$precio-$costo_var",
+    "churn": "$churn"
+   }
+  ]
+ },
+ "adquisicion": {
+  "canales": [
+   {
+    "id": "meta",
+    "nombre": "Meta",
+    "inversion": "$inv_meta",
+    "historial": "$hist_meta",
+    "unidadTope": "Leads",
+    "etapas": [
+     {
+      "nombre": "Contactados",
+      "tasa": "$contacto"
+     },
+     {
+      "nombre": "Agendan clase",
+      "tasa": "$agenda"
+     },
+     {
+      "nombre": "Clases pedidas",
+      "tasa": "$asiste"
+     },
+     {
+      "nombre": "Clases pedidas",
+      "capacidad": true
+     },
+     {
+      "nombre": "Socios nuevos",
+      "tasa": "$cierre"
+     }
+    ]
+   }
+  ],
+  "capacidad": {
+   "base": "$cap_clases",
+   "costoUnidad": "$costo_clase",
+   "prioridad": [
+    "meta"
+   ]
+  },
+  "organicos": "$organicos",
+  "referencia": {
+   "inv_meta": 3000
+  }
+ },
+ "escenarios": [
+  {
+   "id": "hoy",
+   "nombre": "Hoy ($3.000)",
+   "rol": "hoy",
+   "cambios": {}
+  },
+  {
+   "id": "triple",
+   "nombre": "Triplicar ($9.000)",
+   "rol": "propuesta",
+   "cambios": {
+    "inv_meta": 9000
+   }
+  },
+  {
+   "id": "alt",
+   "nombre": "$3.000 y mejor cierre (40 %)",
+   "rol": "alternativa",
+   "cambios": {
+    "inv_meta": 3000,
+    "cierre": 0.4
+   }
+  }
+ ],
+ "cambios": [
+  {
+   "id": "cierre",
+   "nombre": "Mejor guion de cierre en la clase de prueba (40 %, supuesto)",
+   "valores": {
+    "cierre": 0.4
+   }
+  }
+ ],
+ "simulacion": {
+  "meses": 24,
+  "cajaInicial": "$caja0",
+  "piso": "$piso",
+  "costosFijos": "$fijos",
+  "cohortesIniciales": [
+   {
+    "n": "$socios_hoy"
+   }
+  ],
+  "capacidadPorContratacion": "$cap_entrenador",
+  "costoContratacion": "$costo_entrenador",
+  "rangos": {
+   "meta": [
+    0,
+    9000
+   ]
+  },
+  "reglas": [
+   {
+    "tipo": "maxContratados",
+    "max": 2,
+    "texto": "Máximo 2 entrenadores extra"
+   }
+  ],
+  "objetivo": {
+   "principal": "cajaFinal",
+   "desempate": "activosFinal"
+  },
+  "etiquetaActivos": "Socios activos",
+  "etiquetaTotal": "Socios nuevos de anuncios (24 meses)"
+ },
+ "planes": [
+  {
+   "nombre": "Plan 1 · $3.000 fijos (hoy)",
+   "rol": "hoy",
+   "inversiones": {
+    "meta": 3000
+   }
+  },
+  {
+   "nombre": "Plan 2 · Triplicar: $9.000 fijos",
+   "rol": "propuesta",
+   "inversiones": {
+    "meta": 9000
+   }
+  },
+  {
+   "nombre": "Plan 3 · $4.500 y mejor cierre desde el mes 1",
+   "inversiones": {
+    "meta": 4500
+   },
+   "cambios": {
+    "cierre": 1
+   }
+  },
+  {
+   "nombre": "Plan 4 · $6.000, mejor cierre y un entrenador en el mes 2",
+   "inversiones": {
+    "meta": 6000
+   },
+   "cambios": {
+    "cierre": 1
+   },
+   "contrataciones": [
+    2
+   ]
+  }
+ ],
+ "busqueda": {
+  "canales": {
+   "meta": {
+    "valores": [
+     0,
+     1500,
+     3000,
+     4500,
+     6000,
+     7500,
+     9000
+    ],
+    "cambioEn": [
+     4,
+     7
+    ]
+   }
+  },
+  "contrataciones": [
+   [],
+   [
+    2
+   ],
+   [
+    2,
+    4
+   ]
+  ],
+  "cambios": [
+   {},
+   {
+    "cierre": 1
+   }
+  ]
+ },
+ "riesgos": [
+  "Todos los datos de este perfil son un ejemplo de entrada, no un caso real."
+ ]
+}

@@ -1,0 +1,717 @@
+{
+ "id": "sol-de-casa",
+ "nombre": "Sol de Casa",
+ "subtitulo": "Caso C · Generación de leads con embudo comercial y capacidad de visitas · ¿Pasar todo a Meta?",
+ "fuente": "Caso C - Sol de Casa.pdf (FC Studio)",
+ "modelo": "lead generation: leads → contacto → agenda → visita (con capacidad) → venta única con cobro diferido",
+ "especializaciones": [
+  "leadgen"
+ ],
+ "decision": "¿Andrés acepta la propuesta de Leadly (todo a Meta) y cómo reparte el presupuesto y la capacidad de visitas?",
+ "parametros": [
+  {
+   "id": "precio",
+   "etiqueta": "Precio promedio de una instalación",
+   "unidad": "$",
+   "valor": 6500,
+   "origen": "dato",
+   "fuente": "Sección 1",
+   "grupo": "Venta",
+   "control": true,
+   "min": 3000,
+   "max": 10000,
+   "paso": 100
+  },
+  {
+   "id": "mb",
+   "etiqueta": "Margen bruto (100 % − equipos − instalación)",
+   "unidad": "%",
+   "valor": 0.28,
+   "origen": "dato",
+   "fuente": "Sección 1 · la instalación se ajusta: 1 − equipos − margen",
+   "grupo": "Venta",
+   "control": true,
+   "min": 0.05,
+   "max": 0.45,
+   "paso": 0.01
+  },
+  {
+   "id": "equipos",
+   "etiqueta": "Equipos (se pagan el mes de la firma)",
+   "unidad": "%",
+   "valor": 0.55,
+   "origen": "dato",
+   "fuente": "Sección 1",
+   "grupo": "Venta"
+  },
+  {
+   "id": "comision",
+   "etiqueta": "Comisión de la asesora (mes de la firma)",
+   "unidad": "%",
+   "valor": 0.03,
+   "origen": "dato",
+   "fuente": "Sección 1 · va en la contribución, no en el CAC",
+   "grupo": "Venta",
+   "control": true,
+   "min": 0,
+   "max": 0.1,
+   "paso": 0.005
+  },
+  {
+   "id": "cobro_firma",
+   "etiqueta": "Parte del precio que se cobra al firmar",
+   "unidad": "%",
+   "valor": 0.5,
+   "origen": "dato",
+   "fuente": "Sección 1 (el resto, al mes siguiente)",
+   "grupo": "Venta"
+  },
+  {
+   "id": "bat",
+   "etiqueta": "Clientes que agregan la batería",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "supuesto propio",
+   "fuente": "Sección 4: prueba de 3 en 20 (muestra chica, no se usa en la base)",
+   "grupo": "Venta",
+   "control": true,
+   "min": 0,
+   "max": 0.5,
+   "paso": 0.01
+  },
+  {
+   "id": "bat_precio",
+   "etiqueta": "Precio de la batería",
+   "unidad": "$",
+   "valor": 3000,
+   "origen": "dato",
+   "fuente": "Sección 4",
+   "grupo": "Venta"
+  },
+  {
+   "id": "bat_mb",
+   "etiqueta": "Margen bruto de la batería",
+   "unidad": "%",
+   "valor": 0.2,
+   "origen": "dato",
+   "fuente": "Sección 4",
+   "grupo": "Venta"
+  },
+  {
+   "id": "inv_meta",
+   "etiqueta": "Inversión en Meta",
+   "unidad": "$",
+   "valor": 4000,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Meta",
+   "control": true,
+   "min": 0,
+   "max": 10000,
+   "paso": 250
+  },
+  {
+   "id": "hist_meta",
+   "etiqueta": "Historial Meta: inversión → leads",
+   "unidad": "historial",
+   "valor": [
+    [
+     2000,
+     280
+    ],
+    [
+     4000,
+     500
+    ],
+    [
+     6000,
+     680
+    ],
+    [
+     8000,
+     840
+    ],
+    [
+     10000,
+     960
+    ]
+   ],
+   "origen": "dato",
+   "fuente": "Sección 5 · supuesto 5 con ($0, 0)",
+   "grupo": "Meta"
+  },
+  {
+   "id": "modo_meta",
+   "etiqueta": "Cómo se calculan los leads de Meta",
+   "unidad": "texto",
+   "valor": "historial",
+   "origen": "dato",
+   "fuente": "«constante» = CPL de $8 de la agencia (supuesto 6)",
+   "grupo": "Meta"
+  },
+  {
+   "id": "cpl_agencia",
+   "etiqueta": "CPL de Meta según la agencia",
+   "unidad": "$",
+   "valor": 8,
+   "origen": "dato",
+   "fuente": "Propuesta de Leadly",
+   "grupo": "Meta"
+  },
+  {
+   "id": "m_factor",
+   "etiqueta": "Leads de Meta que quedan después del filtro",
+   "unidad": "%",
+   "valor": 1,
+   "origen": "dato",
+   "fuente": "1 = sin filtro; 0,8 con el supuesto 7",
+   "grupo": "Meta"
+  },
+  {
+   "id": "m_contacto",
+   "etiqueta": "Meta · leads contactados",
+   "unidad": "%",
+   "valor": 0.55,
+   "origen": "dato",
+   "fuente": "CRM",
+   "grupo": "Meta",
+   "control": true,
+   "min": 0.1,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "m_agenda",
+   "etiqueta": "Meta · contactados que agendan",
+   "unidad": "%",
+   "valor": 0.3,
+   "origen": "dato",
+   "fuente": "CRM",
+   "grupo": "Meta",
+   "control": true,
+   "min": 0.05,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "m_visita",
+   "etiqueta": "Meta · visitas agendadas que se hacen",
+   "unidad": "%",
+   "valor": 0.7,
+   "origen": "dato",
+   "fuente": "CRM",
+   "grupo": "Meta",
+   "control": true,
+   "min": 0.1,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "m_cierre",
+   "etiqueta": "Meta · visitas que terminan en venta",
+   "unidad": "%",
+   "valor": 0.18,
+   "origen": "dato",
+   "fuente": "CRM",
+   "grupo": "Meta",
+   "control": true,
+   "min": 0.02,
+   "max": 0.6,
+   "paso": 0.01
+  },
+  {
+   "id": "inv_google",
+   "etiqueta": "Inversión en Google",
+   "unidad": "$",
+   "valor": 4000,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Google",
+   "control": true,
+   "min": 0,
+   "max": 8000,
+   "paso": 250
+  },
+  {
+   "id": "hist_google",
+   "etiqueta": "Historial Google: inversión → leads (tope 160)",
+   "unidad": "historial",
+   "valor": [
+    [
+     2000,
+     55
+    ],
+    [
+     4000,
+     100
+    ],
+    [
+     6000,
+     135
+    ],
+    [
+     8000,
+     160
+    ]
+   ],
+   "origen": "dato",
+   "fuente": "Sección 5",
+   "grupo": "Google"
+  },
+  {
+   "id": "g_contacto",
+   "etiqueta": "Google · leads contactados",
+   "unidad": "%",
+   "valor": 0.85,
+   "origen": "dato",
+   "fuente": "CRM",
+   "grupo": "Google",
+   "control": true,
+   "min": 0.1,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "g_agenda",
+   "etiqueta": "Google · contactados que agendan",
+   "unidad": "%",
+   "valor": 0.55,
+   "origen": "dato",
+   "fuente": "CRM",
+   "grupo": "Google",
+   "control": true,
+   "min": 0.05,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "g_visita",
+   "etiqueta": "Google · visitas agendadas que se hacen",
+   "unidad": "%",
+   "valor": 0.85,
+   "origen": "dato",
+   "fuente": "CRM",
+   "grupo": "Google",
+   "control": true,
+   "min": 0.1,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "g_cierre",
+   "etiqueta": "Google · visitas que terminan en venta",
+   "unidad": "%",
+   "valor": 0.3,
+   "origen": "dato",
+   "fuente": "CRM",
+   "grupo": "Google",
+   "control": true,
+   "min": 0.02,
+   "max": 0.6,
+   "paso": 0.01
+  },
+  {
+   "id": "costo_visita",
+   "etiqueta": "Costo por visita hecha",
+   "unidad": "$",
+   "valor": 60,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Visitas",
+   "control": true,
+   "min": 0,
+   "max": 200,
+   "paso": 5
+  },
+  {
+   "id": "capacidad_base",
+   "etiqueta": "Visitas al mes con los 2 técnicos",
+   "unidad": "n",
+   "valor": 100,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Visitas"
+  },
+  {
+   "id": "tecnicos_extra",
+   "etiqueta": "Técnicos extra (nivel 1: ya capacitados)",
+   "unidad": "n",
+   "valor": 0,
+   "origen": "supuesto propio",
+   "fuente": "En el nivel 3 rinden desde el mes siguiente a contratarlos",
+   "grupo": "Visitas",
+   "control": true,
+   "min": 0,
+   "max": 2,
+   "paso": 1
+  },
+  {
+   "id": "cap_tecnico",
+   "etiqueta": "Visitas que suma un técnico extra",
+   "unidad": "n",
+   "valor": 50,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Visitas"
+  },
+  {
+   "id": "costo_tecnico",
+   "etiqueta": "Costo mensual de un técnico extra",
+   "unidad": "$",
+   "valor": 1800,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Visitas"
+  },
+  {
+   "id": "caja0",
+   "etiqueta": "Plata en el banco hoy",
+   "unidad": "$",
+   "valor": 12000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "piso",
+   "etiqueta": "Piso de seguridad",
+   "unidad": "$",
+   "valor": 5000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "fijos",
+   "etiqueta": "Costos fijos mensuales",
+   "unidad": "$",
+   "valor": 18000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "ventas_mes0",
+   "etiqueta": "Ventas del mes 0 (se instalan y cobran en el mes 1)",
+   "unidad": "n",
+   "valor": 22,
+   "origen": "dato",
+   "fuente": "Sección 3 y 7",
+   "grupo": "Caja"
+  }
+ ],
+ "unidad": {
+  "horizonte": 2,
+  "segmentos": [
+   {
+    "id": "venta",
+    "nombre": "Instalación (venta única)",
+    "tipo": "venta",
+    "peso": 1,
+    "precio": "$precio",
+    "cobros": [
+     "($precio+$bat*$bat_precio)*$cobro_firma",
+     "($precio+$bat*$bat_precio)*(1-$cobro_firma)"
+    ],
+    "pagos": [
+     "($equipos+$comision)*$precio+$bat*$bat_precio*(1-$bat_mb+$comision)",
+     "(1-$equipos-$mb)*$precio"
+    ]
+   }
+  ]
+ },
+ "adquisicion": {
+  "canales": [
+   {
+    "id": "meta",
+    "nombre": "Meta",
+    "inversion": "$inv_meta",
+    "historial": "$hist_meta",
+    "modo": "$modo_meta",
+    "costoUnitario": "$cpl_agencia",
+    "factor": "$m_factor",
+    "unidadTope": "Leads",
+    "etapas": [
+     {
+      "nombre": "Contactados",
+      "tasa": "$m_contacto"
+     },
+     {
+      "nombre": "Agendan visita",
+      "tasa": "$m_agenda"
+     },
+     {
+      "nombre": "Visitas pedidas",
+      "tasa": "$m_visita"
+     },
+     {
+      "nombre": "Visitas pedidas",
+      "capacidad": true
+     },
+     {
+      "nombre": "Ventas",
+      "tasa": "$m_cierre"
+     }
+    ]
+   },
+   {
+    "id": "google",
+    "nombre": "Google",
+    "inversion": "$inv_google",
+    "historial": "$hist_google",
+    "unidadTope": "Leads",
+    "etapas": [
+     {
+      "nombre": "Contactados",
+      "tasa": "$g_contacto"
+     },
+     {
+      "nombre": "Agendan visita",
+      "tasa": "$g_agenda"
+     },
+     {
+      "nombre": "Visitas pedidas",
+      "tasa": "$g_visita"
+     },
+     {
+      "nombre": "Visitas pedidas",
+      "capacidad": true
+     },
+     {
+      "nombre": "Ventas",
+      "tasa": "$g_cierre"
+     }
+    ]
+   }
+  ],
+  "capacidad": {
+   "base": "$capacidad_base+$tecnicos_extra*$cap_tecnico",
+   "costoUnidad": "$costo_visita",
+   "prioridad": [
+    "google",
+    "meta"
+   ]
+  },
+  "organicos": 0
+ },
+ "leadgen": {
+  "trampa": {
+   "barato": "meta",
+   "caro": "google"
+  },
+  "costoMesExtra": "$tecnicos_extra*$costo_tecnico"
+ },
+ "escenarios": [
+  {
+   "id": "hoy",
+   "nombre": "Hoy ($4.000 + $4.000)",
+   "rol": "hoy",
+   "cambios": {}
+  },
+  {
+   "id": "agencia",
+   "nombre": "Agencia con el historial",
+   "rol": "propuesta",
+   "cambios": {
+    "inv_meta": 8000,
+    "inv_google": 0
+   }
+  },
+  {
+   "id": "agencia_cpl",
+   "nombre": "Agencia como la cuenta (CPL $8)",
+   "rol": "extra",
+   "cambios": {
+    "inv_meta": 8000,
+    "inv_google": 0,
+    "modo_meta": "constante"
+   }
+  },
+  {
+   "id": "propuesta",
+   "nombre": "Propuesta: respuesta y filtro + 1 técnico",
+   "rol": "alternativa",
+   "cambios": {
+    "m_factor": 0.8,
+    "m_contacto": 0.8,
+    "m_agenda": 0.4,
+    "m_visita": 0.75,
+    "m_cierre": 0.22,
+    "tecnicos_extra": 1
+   }
+  }
+ ],
+ "cambios": [
+  {
+   "id": "mejora",
+   "nombre": "Llamar en menos de 5 minutos y filtrar el formulario de Meta (supuesto 7)",
+   "valores": {
+    "m_factor": 0.8,
+    "m_contacto": 0.8,
+    "m_agenda": 0.4,
+    "m_visita": 0.75,
+    "m_cierre": 0.22
+   }
+  }
+ ],
+ "simulacion": {
+  "meses": 24,
+  "cajaInicial": "$caja0",
+  "piso": "$piso",
+  "costosFijos": "$fijos",
+  "cohortesIniciales": [
+   {
+    "n": "$ventas_mes0"
+   }
+  ],
+  "capacidadPorContratacion": "$cap_tecnico",
+  "costoContratacion": "$costo_tecnico",
+  "rangos": {
+   "meta": [
+    0,
+    10000
+   ],
+   "google": [
+    0,
+    8000
+   ]
+  },
+  "reglas": [
+   {
+    "tipo": "noBaja",
+    "desde": 19,
+    "texto": "Desde el mes 19 la inversión total no puede bajar de un mes al siguiente"
+   },
+   {
+    "tipo": "maxContratados",
+    "max": 2,
+    "texto": "Máximo 2 técnicos extra"
+   }
+  ],
+  "objetivo": {
+   "principal": "cajaFinal",
+   "desempate": "clientesTotal"
+  },
+  "etiquetaActivos": "Ventas del mes",
+  "etiquetaTotal": "Instalaciones totales (24 meses)"
+ },
+ "planes": [
+  {
+   "nombre": "Plan 1 · Actual: $4.000 Meta + $4.000 Google",
+   "rol": "hoy",
+   "inversiones": {
+    "meta": 4000,
+    "google": 4000
+   }
+  },
+  {
+   "nombre": "Plan 2 · Agencia: $8.000 Meta + $0 Google",
+   "rol": "propuesta",
+   "inversiones": {
+    "meta": 8000,
+    "google": 0
+   }
+  },
+  {
+   "nombre": "Plan 3 · $6.000 Meta + $8.000 Google, 1 técnico en el mes 2",
+   "inversiones": {
+    "meta": 6000,
+    "google": 8000
+   },
+   "contrataciones": [
+    2
+   ]
+  },
+  {
+   "nombre": "Plan 4 · Respuesta y filtro desde el mes 1, $7.000 Meta + $6.000 Google, técnicos en los meses 2 y 3",
+   "inversiones": {
+    "meta": 7000,
+    "google": 6000
+   },
+   "contrataciones": [
+    2,
+    3
+   ],
+   "cambios": {
+    "mejora": 1
+   }
+  },
+  {
+   "nombre": "Plan 5 · Mejor encontrado: respuesta y filtro desde el mes 1, Meta $4.000 meses 1-2 y $7.000 después, Google $6.000, técnicos en los meses 1 y 2",
+   "inversiones": {
+    "meta": {
+     "tramos": [
+      [
+       1,
+       4000
+      ],
+      [
+       3,
+       7000
+      ]
+     ]
+    },
+    "google": 6000
+   },
+   "contrataciones": [
+    1,
+    2
+   ],
+   "cambios": {
+    "mejora": 1
+   }
+  }
+ ],
+ "busqueda": {
+  "canales": {
+   "meta": {
+    "valores": [
+     2000,
+     4000,
+     6000,
+     7000,
+     8000,
+     10000
+    ],
+    "cambioEn": [
+     3,
+     4
+    ]
+   },
+   "google": {
+    "valores": [
+     4000,
+     6000,
+     8000
+    ]
+   }
+  },
+  "contrataciones": [
+   [],
+   [
+    1,
+    2
+   ],
+   [
+    2,
+    3
+   ],
+   [
+    1,
+    3
+   ]
+  ],
+  "cambios": [
+   {},
+   {
+    "mejora": 1
+   }
+  ]
+ },
+ "riesgos": [
+  "El efecto de responder rápido y filtrar viene de casos parecidos (supuesto 7), no de Sol de Casa.",
+  "Los equipos se pagan al firmar y el técnico se paga un mes antes de rendir: los primeros meses la caja queda cerca del piso.",
+  "Las tasas del embudo podrían bajar al invertir más (supuesto 3)."
+ ],
+ "trampa": "CPL: el lead de Meta cuesta $8 y el de Google $40 (5 veces menos), pero el cliente de Meta cuesta 34 % más (CAC real $718 contra $536)."
+}

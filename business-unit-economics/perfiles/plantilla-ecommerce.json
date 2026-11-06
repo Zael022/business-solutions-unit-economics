@@ -1,0 +1,360 @@
+{
+ "id": "plantilla-ecommerce",
+ "nombre": "Plantilla · E-commerce con recompra (y suscripción opcional)",
+ "subtitulo": "Completá los datos marcados en «Datos y supuestos»",
+ "modelo": "ecommerce",
+ "especializaciones": [
+  "ecommerce"
+ ],
+ "decision": "Escribí la decisión que tiene que tomar el dueño",
+ "parametros": [
+  {
+   "id": "precio",
+   "etiqueta": "Precio del pedido típico",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Pedido",
+   "control": true,
+   "min": 0,
+   "max": 200,
+   "paso": 1
+  },
+  {
+   "id": "unidades",
+   "etiqueta": "Unidades por pedido",
+   "unidad": "n",
+   "valor": 1,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Pedido"
+  },
+  {
+   "id": "costo_unidad",
+   "etiqueta": "Costo de producto por unidad",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Pedido",
+   "control": true,
+   "min": 0,
+   "max": 100,
+   "paso": 0.5
+  },
+  {
+   "id": "costos_pedido",
+   "etiqueta": "Envío + empaque por pedido (lo paga la empresa)",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Pedido",
+   "control": true,
+   "min": 0,
+   "max": 30,
+   "paso": 0.5
+  },
+  {
+   "id": "comision",
+   "etiqueta": "Comisión de la pasarela",
+   "unidad": "%",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Pedido",
+   "control": true,
+   "min": 0,
+   "max": 0.1,
+   "paso": 0.005
+  },
+  {
+   "id": "descuento",
+   "etiqueta": "Descuento en el primer pedido",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Pedido",
+   "control": true,
+   "min": 0,
+   "max": 0.6,
+   "paso": 0.01
+  },
+  {
+   "id": "frecuencia",
+   "etiqueta": "Pedidos por cliente según su mes de vida (lista de 12)",
+   "unidad": "lista",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Recompra"
+  },
+  {
+   "id": "pct_sub",
+   "etiqueta": "Clientes que se suscriben",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Suscripción",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "precio_sub",
+   "etiqueta": "Precio mensual de la suscripción",
+   "unidad": "$",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Suscripción"
+  },
+  {
+   "id": "churn",
+   "etiqueta": "Cancelación mensual de suscriptores",
+   "unidad": "%",
+   "valor": 0.1,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Suscripción",
+   "control": true,
+   "min": 0.01,
+   "max": 0.3,
+   "paso": 0.005
+  },
+  {
+   "id": "inv",
+   "etiqueta": "Inversión en anuncios al mes",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 50000,
+   "paso": 250
+  },
+  {
+   "id": "hist",
+   "etiqueta": "Historial: inversión → clientes nuevos (pares [inversión, clientes])",
+   "unidad": "historial",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "fee",
+   "etiqueta": "Fee de agencia o herramientas (si hay inversión)",
+   "unidad": "$",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 5000,
+   "paso": 50
+  },
+  {
+   "id": "organicos",
+   "etiqueta": "Clientes nuevos sin anuncios al mes",
+   "unidad": "n",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "roas_plataforma",
+   "etiqueta": "ROAS que reporta la plataforma",
+   "unidad": "x",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Reporte"
+  },
+  {
+   "id": "ventas_atribuidas",
+   "etiqueta": "Ventas que la plataforma se atribuye",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Reporte"
+  },
+  {
+   "id": "ventas_totales",
+   "etiqueta": "Ventas totales de la tienda",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Reporte"
+  },
+  {
+   "id": "inv_rtg",
+   "etiqueta": "Inversión en retargeting",
+   "unidad": "$",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Reporte"
+  },
+  {
+   "id": "caja0",
+   "etiqueta": "Plata en el banco hoy",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  },
+  {
+   "id": "piso",
+   "etiqueta": "Piso de caja",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  },
+  {
+   "id": "fijos",
+   "etiqueta": "Costos fijos mensuales",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  },
+  {
+   "id": "base_contrib",
+   "etiqueta": "Contribución de los clientes actuales el mes 1",
+   "unidad": "$",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  },
+  {
+   "id": "base_caida",
+   "etiqueta": "Caída mensual de esa contribución",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  }
+ ],
+ "unidad": {
+  "horizonte": 12,
+  "segmentos": [
+   {
+    "id": "suelto",
+    "nombre": "Cliente de pedidos sueltos",
+    "tipo": "pedidos",
+    "peso": "1-$pct_sub",
+    "frecuencia": "$frecuencia",
+    "frecuenciaDespues": 0,
+    "pedidos": [
+     {
+      "nombre": "Pedido típico",
+      "peso": 1,
+      "precio": "$precio",
+      "unidades": "$unidades",
+      "costoUnidad": "$costo_unidad",
+      "costosPorPedido": "$costos_pedido",
+      "comisionPct": "$comision",
+      "descuentoPrimer": "$descuento"
+     }
+    ]
+   },
+   {
+    "id": "sub",
+    "nombre": "Suscriptor",
+    "tipo": "suscripcion",
+    "peso": "$pct_sub",
+    "precio": "$precio_sub",
+    "contribMes": "$precio_sub*(1-$comision)-$unidades*$costo_unidad-$costos_pedido",
+    "churn": "$churn"
+   }
+  ]
+ },
+ "adquisicion": {
+  "canales": [
+   {
+    "id": "ads",
+    "nombre": "Anuncios",
+    "inversion": "$inv",
+    "historial": "$hist",
+    "unidadTope": "Clientes nuevos"
+   }
+  ],
+  "fee": {
+   "monto": "$fee",
+   "siHayInversion": true
+  },
+  "organicos": "$organicos"
+ },
+ "ecommerce": {
+  "valorPrimerPedido": "$precio*(1-$descuento*(1-$pct_sub))",
+  "roasAtribuido": "$roas_plataforma",
+  "ventasAtribuidas": "$ventas_atribuidas",
+  "ventasTienda": "$ventas_totales",
+  "invRetargeting": "$inv_rtg",
+  "invReporte": "$inv"
+ },
+ "escenarios": [
+  {
+   "id": "hoy",
+   "nombre": "Hoy",
+   "rol": "hoy",
+   "cambios": {}
+  },
+  {
+   "id": "prop",
+   "nombre": "Propuesta recibida",
+   "rol": "propuesta",
+   "cambios": {}
+  },
+  {
+   "id": "alt",
+   "nombre": "Alternativa propia",
+   "rol": "alternativa",
+   "cambios": {}
+  }
+ ],
+ "cambios": [],
+ "simulacion": {
+  "meses": 24,
+  "cajaInicial": "$caja0",
+  "piso": "$piso",
+  "costosFijos": "$fijos",
+  "rangos": {},
+  "reglas": [],
+  "objetivo": {
+   "principal": "cajaFinal",
+   "desempate": "activosFinal"
+  },
+  "base": {
+   "monto": "$base_contrib",
+   "caida": "$base_caida"
+  }
+ },
+ "planes": [
+  {
+   "nombre": "Plan 1 · inversión de hoy",
+   "rol": "hoy",
+   "inversiones": {
+    "ads": "$inv"
+   }
+  }
+ ],
+ "riesgos": []
+}

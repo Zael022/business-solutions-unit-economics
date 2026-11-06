@@ -1,0 +1,163 @@
+
+## Controles básicos
+PASA  Tueste · contribución de un pedido de 2 bolsas de $34: motor=15.89 esperado=15.89
+PASA  Tueste · contribución = 15,89: motor=15.89 esperado=15.89
+PASA  Agendo · 500 trials × 14 % = 70 clientes de anuncios: motor=70 esperado=70
+PASA  Agendo · CAC paid = (10.000 + 1.200 + 70 × 20) ÷ 70 = 180: motor=180 esperado=180
+PASA  Sol de Casa · contribución = 6.500 × 28 % − 3 % × 6.500 = 1.625: motor=1625 esperado=1625
+
+## Tueste · nivel 1
+PASA  Contribución del pedido de suscripción: motor=12.643 esperado=12.643
+PASA  ROAS de break-even del pedido suelto (1 ÷ margen): motor=2.139711 esperado=2.139711
+PASA  ROAS de break-even de la suscripción: motor=2.420312 esperado=2.420312
+PASA  CAC de anuncios 8.000 ÷ 165: motor=48.484848 esperado=48.484848
+PASA  CAC real (8.000 + 1.000) ÷ 165: motor=54.545455 esperado=54.545455
+PASA  ROAS real del primer pedido 165 × 34 ÷ 8.000: motor=0.70125 esperado=0.70125
+PASA  Parte de las ventas que Meta se atribuye 24.000 ÷ 28.000: motor=0.857143 esperado=0.857143
+PASA  LTV del suscriptor (12 meses, 0,91 cada mes): motor=95.177138 esperado=95.177138
+PASA  LTV del cliente suelto (3 pedidos × 15,89): motor=47.67 esperado=47.67
+PASA  LTV promedio 0,85 × suelto + 0,15 × suscriptor: motor=54.796071 esperado=54.796071
+PASA  LTV:CAC hoy: motor=1.004595 esperado=1.004595
+PASA  Payback hoy = mes 12 (la curva cruza el cero recién en el mes 12): motor=12 esperado=12
+PASA  Agencia · contribución del primer pedido con 30 % de descuento: motor=6.149 esperado=6.149
+PASA  Agencia · ROAS de break-even con descuento: motor=3.870548 esperado=3.870548
+PASA  Agencia · CAC marginal de anuncios (16.000 − 8.000) ÷ (235 − 165): motor=114.285714 esperado=114.285714
+PASA  Agencia · cada cliente extra NO deja plata
+PASA  Agencia · no recupera el CAC en 12 meses
+PASA  CAC marginal de octubre (8.000 → 12.000) = 4.000 ÷ 45: motor=88.888889 esperado=88.888889
+PASA  Interpolación: $6.000 → 132,5 clientes (entre 100 y 165): motor=132.5 esperado=132.5
+PASA  Interpolación: $2.000 → 50 clientes (recta desde cero): motor=50 esperado=50
+PASA  Pack · contribución del pedido de 2 bolsas que paga su envío: motor=20.39 esperado=20.39
+PASA  Pack · contribución del pack de 3 bolsas: motor=23.62 esperado=23.62
+PASA  Pack · contribución promedio con 50 % de pack: motor=22.005 esperado=22.005
+PASA  Propuesta · CAC real (4.000 + 1.000) ÷ 100: motor=50 esperado=50
+PASA  Propuesta · payback 7 meses: motor=7
+PASA  Control «pedidos en 12 meses» = 3 deja la tabla igual
+PASA  Control «pedidos en 12 meses» = 4 suma un pedido de 15,89 al LTV del suelto: motor=63.56 esperado=63.56
+
+## Tueste · nivel 3
+PASA  Mes 1 · clientes nuevos 165 + 47: motor=212 esperado=212
+PASA  Mes 1 · contribución de los clientes actuales: motor=9000 esperado=9000
+PASA  Mes 1 · contribución del grupo nuevo: motor=3265.4254 esperado=3265.4254
+PASA  Mes 1 · salidas 8.000 + 1.000 + 6.500: motor=15500 esperado=15500
+PASA  Mes 1 · caja final: motor=31765.4254 esperado=31765.4254
+PASA  Mes 2 · contribución de los clientes actuales baja 3 %: motor=8730 esperado=8730
+PASA  Mes 2 · grupo del mes 1 compra 0,15 pedidos sueltos y sigue el 91 % de suscriptores: motor=4060.795234 esperado=4060.795234
+PASA  Agencia ($16.000 fijos) rompe el piso de $5.000 en el mes 4: motor=4
+PASA  Agencia no cumple las reglas
+PASA  Regla: desde el mes 13 la inversión no baja del promedio 1-12
+PASA  Regla: rango de $0 a $20.000
+PASA  Sin inversión no se paga el fee
+
+## Agendo · nivel 1
+PASA  CAC blended 12.600 ÷ 120: motor=105 esperado=105
+PASA  LTV a 24 meses (19,5 × (1 − 0,94²⁴) ÷ 0,06): motor=251.387453 esperado=251.387453
+PASA  LTV sin tope 19,5 ÷ 0,06: motor=325 esperado=325
+PASA  LTV:CAC paid: motor=1.396597 esperado=1.396597
+PASA  LTV:CAC blended (el «2,4» de la lámina): motor=2.394166 esperado=2.394166
+PASA  LTV a 24 meses del plan anual 187,2 + 0,7 × 187,2: motor=318.24 esperado=318.24
+PASA  Payback del cliente mensual = 14 meses: motor=14
+PASA  Payback del cliente anual = 1 mes (paga 12 meses por adelantado)
+PASA  Valeria · trials con $30.000 según el historial: motor=900 esperado=900
+PASA  Valeria · 2 vendedoras (900 ÷ 500, hacia arriba)
+PASA  Valeria · CAC marginal (34.920 − 12.600) ÷ (126 − 70): motor=398.571429 esperado=398.571429
+PASA  Valeria · caja atrapada al mes 22.320 − 56 × 19,5: motor=21228 esperado=21228
+PASA  Valeria con CAC constante · 1.500 trials: motor=1500 esperado=1500
+PASA  Valeria con CAC constante · CAC paid 37.800 ÷ 210: motor=180 esperado=180
+PASA  Sin trials no hay vendedoras (0 trials → 0)
+
+## Agendo · nivel 3 (prepagos y renovaciones)
+PASA  Mes 1 · trials: motor=500 esperado=500
+PASA  Mes 1 · clientes activos 1.150 × 0,94 + 120: motor=1201 esperado=1201
+PASA  Mes 1 · entradas 1.201 × 19,5: motor=23419.5 esperado=23419.5
+PASA  Mes 1 · salidas 10.000 + 1.200 + 1.400 + 14.000: motor=26600 esperado=26600
+PASA  Mes 1 · caja final: motor=56819.5 esperado=56819.5
+PASA  Valeria ($30.000) rompe el piso de $10.000 en el mes 3
+PASA  Plan anual · entradas del mes 1 = mensuales × 19,5 + anuales × 187,2: motor=31469.1 esperado=31469.1
+PASA  Plan anual · mes 13: cobro = mensuales × 19,5 + (nuevos anuales + 70 % del grupo del mes 1) × 187,2: motor=38239.339031 esperado=38239.339031
+PASA  Plan anual · activos anuales del mes 12 = 12 grupos completos: motor=576 esperado=576
+
+## Sol de Casa · nivel 1
+PASA  Visitas pedidas de Meta 500 × 0,55 × 0,30 × 0,70: motor=57.75 esperado=57.75
+PASA  Ventas de Google: motor=11.92125 esperado=11.92125
+PASA  CAC real de Meta (4.000 + 60 × visitas) ÷ ventas: motor=718.133718 esperado=718.133718
+PASA  CAC real de Google: motor=535.535284 esperado=535.535284
+PASA  La trampa: el cliente de Meta cuesta 34 % más: motor=0.340964 esperado=0.340964
+PASA  La trampa: el lead de Meta es 5 veces más barato: motor=5 esperado=5
+PASA  Valor de una visita de Google 0,30 × 1.625 − 60: motor=427.5 esperado=427.5
+PASA  Valor de una visita de Meta 0,18 × 1.625 − 60: motor=232.5 esperado=232.5
+PASA  Payback en caja: mes 1 (firma) = −CAC + 3.250 − 3.770: motor=-1140.590377 esperado=-1140.590377
+PASA  Payback en caja = mes 2 (el de la instalación)
+PASA  Agencia con CPL $8 · 1.000 leads: motor=1000 esperado=1000
+PASA  Capacidad · se piden 115,5 visitas: motor=115.5 esperado=115.5
+PASA  Capacidad · solo se hacen 100: motor=100 esperado=100
+PASA  Capacidad · ventas = 100 × 18 %: motor=18 esperado=18
+PASA  Prioridad: con 50 visitas, Google usa sus 39,74 y Meta el resto: motor=10.2625 esperado=10.2625
+PASA  Agencia con el historial · ventas 840 × 0,55 × 0,30 × 0,70 × 0,18: motor=17.4636 esperado=17.4636
+
+## Sol de Casa · nivel 3 (cobros y pagos diferidos, capacidad, contratación)
+PASA  Mes 1 · ventas: motor=22.31625 esperado=22.31625
+PASA  Mes 1 · entradas = 3.250 × ventas del mes + 3.250 × 22 del mes 0: motor=144027.8125 esperado=144027.8125
+PASA  Mes 1 · salidas = 3.770 × ventas + 1.105 × 22 + 60 × visitas + 8.000 + 18.000: motor=140291.5125 esperado=140291.5125
+PASA  Mes 1 · caja final: motor=15736.3 esperado=15736.3
+PASA  Mes 2 · cobra la segunda mitad de las ventas del mes 1: motor=145055.625 esperado=145055.625
+PASA  Técnico contratado en el mes 2: capacidad 100 en el mes 2 y 150 en el mes 3
+PASA  Técnico: se paga desde el mes en que se contrata: motor=1800 esperado=1800
+PASA  Regla: máximo 2 técnicos extra
+PASA  Regla: desde el mes 19 la inversión total no baja
+PASA  Regla: Google de $0 a $8.000
+PASA  Agencia ($8.000 en Meta) rompe el piso en el mes 5
+
+## Casos extremos
+PASA  Tueste con $0: sin NaN ni infinitos
+PASA  Tueste con $0: CAC y LTV:CAC quedan vacíos (no infinitos)
+PASA  Agendo con $0: sin NaN ni infinitos
+PASA  Agendo con $0: CAC y LTV:CAC quedan vacíos (no infinitos)
+PASA  Sol de Casa con $0: sin NaN ni infinitos
+PASA  Sol de Casa con $0: CAC y LTV:CAC quedan vacíos (no infinitos)
+PASA  Agendo con conversión 0: sin NaN ni infinitos
+PASA  Agendo con conversión 0: CAC y LTV:CAC quedan vacíos (no infinitos)
+PASA  Sol de Casa sin capacidad: sin NaN ni infinitos
+PASA  Sol de Casa sin capacidad: CAC y LTV:CAC quedan vacíos (no infinitos)
+PASA  Margen negativo: la contribución sale negativa y el ROAS de break-even queda vacío
+PASA  Margen negativo: LTV:CAC negativo y semáforo rojo
+PASA  Dato vacío: el escenario no se calcula y dice qué falta
+PASA  Fuera del historial: no extrapola (se queda en 250) y avisa
+PASA  Expresión no permitida en un perfil se rechaza
+PASA  Tueste · Plan 1 · $8.000 fijos (hoy): simulación sin NaN
+PASA  Tueste · Plan 2 · Agencia: $16.000 fijos: simulación sin NaN
+PASA  Tueste · Plan 3 · $4.000 fijos, sin otros cambios: simulación sin NaN
+PASA  Tueste · Plan 4 · Pack desde el mes 1; $4.000 meses 1-3 y $8.000 después: simulación sin NaN
+PASA  Tueste · Plan 5 · Pack desde el mes 1 y $8.000 fijos: simulación sin NaN
+PASA  Agendo · Plan 1 · $10.000 fijos (hoy): simulación sin NaN
+PASA  Agendo · Plan 2 · Valeria: $30.000 fijos: simulación sin NaN
+PASA  Agendo · Plan 3 · $15.000 meses 1-18 y $27.000 después: simulación sin NaN
+PASA  Agendo · Plan 4 · Plan anual 40 % desde el mes 1; $23.000 meses 1-12 y $30.000 después: simulación sin NaN
+PASA  Sol de Casa · Plan 1 · Actual: $4.000 Meta + $4.000 Google: simulación sin NaN
+PASA  Sol de Casa · Plan 2 · Agencia: $8.000 Meta + $0 Google: simulación sin NaN
+PASA  Sol de Casa · Plan 3 · $6.000 Meta + $8.000 Google, 1 técnico en el mes 2: simulación sin NaN
+PASA  Sol de Casa · Plan 4 · Respuesta y filtro desde el mes 1, $7.000 Meta + $6.000 Google, técnicos en los meses 2 y 3: simulación sin NaN
+PASA  Sol de Casa · Plan 5 · Mejor encontrado: respuesta y filtro desde el mes 1, Meta $4.000 meses 1-2 y $7.000 después, Google $6.000, técnicos en los meses 1 y 2: simulación sin NaN
+
+## Coherencia de la recomendación y del mejor plan
+PASA  Tueste: la recomendación rechaza la propuesta recibida: No aceptar la propuesta. Arreglar antes de escalar.
+PASA  Tueste: no recomienda escalar con LTV:CAC < 3
+PASA  Tueste: la alternativa mejora el LTV:CAC de hoy: hoy 1.00 · propuesta 0.64 · alternativa 1.41
+PASA  Tueste: el mejor plan de la búsqueda (682 planes) es el último plan propio: meta: $8000 · cambios {"pack":1}
+PASA  Tueste: ningún plan válido de la lista supera al mejor
+PASA  Agendo: la recomendación rechaza la propuesta recibida: No aceptar la propuesta. Arreglar antes de escalar.
+PASA  Agendo: no recomienda escalar con LTV:CAC < 3
+PASA  Agendo: la alternativa mejora el LTV:CAC de hoy: hoy 1.40 · propuesta 0.91 · alternativa 1.68
+PASA  Agendo: el mejor plan de la búsqueda (1122 planes) es el último plan propio: ads: $23000 meses 1-12, $30000 desde 13 · cambios {"anual":1}
+PASA  Agendo: ningún plan válido de la lista supera al mejor
+PASA  Sol de Casa: la recomendación rechaza la propuesta recibida: No aceptar la propuesta. Arreglar antes de escalar.
+PASA  Sol de Casa: no recomienda escalar con LTV:CAC < 3
+PASA  Sol de Casa: la alternativa mejora el LTV:CAC de hoy: hoy 2.62 · propuesta 2.05 · alternativa 3.33
+PASA  Sol de Casa: el mejor plan de la búsqueda (1584 planes) es el último plan propio: meta: $4000 meses 1-2, $7000 desde 3 · google: $6000 · contrata en meses 1, 2 · cambios {"mejora":1}
+PASA  Sol de Casa: ningún plan válido de la lista supera al mejor
+PASA  Perfil ejemplo-gimnasio se calcula sin errores: No aceptar la propuesta. Arreglar antes de escalar.
+PASA  Perfil plantilla-ecommerce se calcula sin errores: Faltan datos para decidir.
+PASA  Perfil plantilla-suscripcion se calcula sin errores: Faltan datos para decidir.
+PASA  Perfil plantilla-leadgen se calcula sin errores: Faltan datos para decidir.
+
+RESULTADO: 143 pasan, 0 fallan.

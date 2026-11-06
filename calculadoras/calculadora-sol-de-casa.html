@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de unit economics</title>
+<style>:root{--fondo:#f4f5f2;--fondo-t:#fcfcfb;--tx:#1b1b1a;--tx2:#52514e;--tx3:#8a897f;--borde:#e2e1db;--acento:#1f3a5f;
+--s1:#2a78d6;--s2:#eb6834;--s3:#1baf7a;--s4:#eda100;--s5:#e87ba4;--s7:#6250d6;--ok:#1f8a55;--medio:#b07a00;--mal:#c0392b}
+@media (prefers-color-scheme:dark){:root{--fondo:#121211;--fondo-t:#1a1a19;--tx:#f0efec;--tx2:#c3c2b7;--tx3:#8f8e85;--borde:#33332f;--acento:#8fb3e8;
+--s1:#3987e5;--s2:#d95926;--s3:#199e70;--s4:#c98500;--s5:#d55181;--s7:#9085e9;--ok:#3fae73;--medio:#d9a21f;--mal:#e66767}}
+*{box-sizing:border-box}body{margin:0;font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;background:var(--fondo);color:var(--tx);font-size:14px}
+header{background:#14202e;color:#fff;padding:16px 24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+header h1{margin:0;font-size:22px}header p{margin:3px 0 0;color:#b8c4d3}.dec{font-size:13px;color:#e6edf5!important}
+.acciones{display:flex;gap:8px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer}.boton{background:var(--s1);color:#fff;border:0;border-radius:8px;padding:8px 14px;font-weight:600}
+.chip{background:var(--fondo-t);color:var(--tx);border:1px solid var(--borde);border-radius:16px;padding:5px 11px;font-size:12.5px}.chip.claro{background:transparent;color:#fff;border-color:#4b5b6e}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.tabs{display:flex;gap:2px;padding:0 24px;background:#14202e;overflow-x:auto}.tab{background:transparent;color:#b8c4d3;border:0;padding:10px 14px;border-bottom:3px solid transparent;white-space:nowrap}
+.tab.activa{color:#fff;border-bottom-color:var(--s1)}
+.app{display:grid;grid-template-columns:320px 1fr;gap:16px;padding:16px 20px}
+.controles{background:var(--fondo-t);border:1px solid var(--borde);border-radius:12px;padding:12px 14px;align-self:start;position:sticky;top:10px;max-height:calc(100vh - 20px);overflow:auto}
+.controles h2{font-size:14px;margin:6px 0 8px}.ctl{margin-bottom:10px}.ctl label{display:flex;justify-content:space-between;gap:8px;font-size:12.5px;color:var(--tx2)}
+.ctl label b{color:var(--tx);white-space:nowrap}.ctl input{width:100%;accent-color:var(--s1)}
+.grupo{font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--tx3);margin:12px 0 6px;border-top:1px solid var(--borde);padding-top:8px}
+main{min-width:0}.panel{display:none}.panel.activa{display:block}
+h2{font-size:16px;margin:18px 0 8px}
+.reco{background:var(--fondo-t);border:1px solid var(--borde);border-left:5px solid var(--acento);border-radius:10px;padding:10px 16px;margin-bottom:12px}
+.reco h3{margin:2px 0 6px;font-size:17px}.reco ul{margin:0;padding-left:18px}.reco li{margin:3px 0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;margin-bottom:12px}
+.kpi{background:var(--fondo-t);border:1px solid var(--borde);border-top:3px solid var(--s1);border-radius:10px;padding:9px 12px}
+.kpi span{font-size:12px;color:var(--tx2);display:block}.kpi strong{font-size:20px;display:block;margin:2px 0}.kpi small{font-size:11.5px;color:var(--tx3)}
+.kpi.ok{border-top-color:var(--ok)}.kpi.medio{border-top-color:var(--medio)}.kpi.mal{border-top-color:var(--mal)}
+.sem{display:inline-block;padding:1px 7px;border-radius:9px;font-size:11px;font-weight:700;color:#fff}.sem.ok{background:var(--ok)}.sem.medio{background:var(--medio)}.sem.mal{background:var(--mal)}
+.trampa{background:var(--fondo-t);border:1px solid var(--borde);border-left:5px solid var(--mal);border-radius:10px;padding:10px 16px;margin-bottom:12px}
+.trampa h3{margin:0 0 4px;color:var(--mal);font-size:15px}.trampa p{margin:0;line-height:1.45}
+.aviso{background:#fff4e5;color:#6b4300;border:1px solid #f0d3a2;border-radius:8px;padding:8px 12px;margin:6px 0}
+@media (prefers-color-scheme:dark){.aviso{background:#3a2c12;color:#f5d9a3;border-color:#6b5320}}
+.graficos{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:12px}
+.tarjeta{background:var(--fondo-t);border:1px solid var(--borde);border-radius:12px;padding:12px 14px}.tarjeta h3{margin:0 0 6px;font-size:14px}
+.g svg{width:100%;height:auto;display:block}.g text{font-size:11px;fill:var(--tx2)}.g .val{fill:var(--tx);font-weight:600}
+.g .grid{stroke:var(--borde);stroke-width:1}.g .base{stroke:var(--tx3);stroke-width:1}.g .ref{stroke:var(--tx2);stroke-width:1.5;stroke-dasharray:5 4}.g .ref.mal{stroke:var(--mal)}.g .ref.ok{stroke:var(--ok)}
+.g .reft{fill:var(--tx2);font-weight:600}.g .reft.mal{fill:var(--mal)}.g .reft.ok{fill:var(--ok)}.g .hit{fill:transparent}
+.leyenda{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--tx2);margin-top:4px}.leyenda i{display:inline-block;width:14px;height:3px;margin-right:5px;vertical-align:middle;border-radius:2px}
+.nota{font-size:12.5px;color:var(--tx2);margin:6px 0}
+.tip{position:absolute;display:none;background:var(--fondo-t);color:var(--tx);border:1px solid var(--borde);border-radius:6px;padding:6px 9px;font-size:12px;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,.15);z-index:9}
+.scroll{overflow-x:auto}.tabla{width:100%;border-collapse:collapse;font-size:12.8px;background:var(--fondo-t)}
+.tabla th,.tabla td{padding:6px 8px;border-bottom:1px solid var(--borde);text-align:right;vertical-align:top}.tabla th:first-child,.tabla td:first-child{text-align:left}
+.tabla th{background:var(--fondo);font-weight:600}.tabla.mes td,.tabla.mes th{white-space:nowrap}.tabla tr.bajo td{background:rgba(192,57,43,.12)}
+.tabla.datos td{text-align:left}.tabla.datos tr.g td{background:var(--fondo);font-weight:700;font-size:12px;text-transform:uppercase;color:var(--tx3)}.tabla tr.falta td{background:rgba(237,161,0,.15)}
+input.celda{width:84px;font:inherit;padding:2px 4px;background:var(--fondo);color:var(--tx);border:1px solid var(--borde);border-radius:4px;text-align:right}
+input.dato{width:100%;min-width:120px;font:inherit;padding:3px 6px;background:#fffbe0;color:#0000c8;border:1px solid var(--borde);border-radius:4px}
+@media (prefers-color-scheme:dark){input.dato{background:#2d2a12;color:#9fb6ff}}
+.orig{font-size:11px;padding:1px 6px;border-radius:8px;background:var(--fondo);border:1px solid var(--borde)}.orig.supuesto,.orig.supuesto-propio{background:rgba(237,161,0,.18)}
+.fila-ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0}.cambio{font-size:12.5px}
+textarea#json{width:100%;min-height:420px;font:12px/1.4 ui-monospace,Consolas,monospace;background:var(--fondo-t);color:var(--tx);border:1px solid var(--borde);border-radius:8px;padding:10px}
+#mes1 ol{margin:0;padding-left:20px}#mes1 li{margin:3px 0}
+footer{padding:4px 20px 18px;font-size:12px;color:var(--tx3)}
+@media (max-width:900px){.app{grid-template-columns:1fr;padding:12px}.controles{position:static;max-height:none}.graficos{grid-template-columns:1fr}header{padding:12px 16px}}
+@media print{.controles,.tabs,.acciones,#sim_edit{display:none}.app{grid-template-columns:1fr}.panel{display:block!important}}
+.kpi.ancho{grid-column:1/-1;border-top-color:var(--s3)}.kpi.ancho .tabla{margin:6px 0}
+</style></head>
+<body>
+<header>
+  <div><h1 id="titulo"></h1><p id="sub"></p><p id="decision" class="dec"></p></div>
+  <div class="acciones"><button class="boton" id="reset">Volver a los datos del caso</button><button class="chip claro" onclick="window.print()">Imprimir</button></div>
+</header>
+<nav class="tabs"><button class="tab activa" id="t_calc">Calculadora y tablero</button><button class="tab" id="t_sim">Simulador de 24 meses</button><button class="tab" id="t_datos">Datos y supuestos</button><button class="tab" id="t_perfil">Perfil de la empresa</button></nav>
+<div class="app">
+  <aside class="controles">
+    <h2>Escenarios</h2><div id="escs" class="chips"></div>
+    <h2>Controles</h2><div id="ctls"></div>
+  </aside>
+  <main>
+    <section class="panel activa" id="p_calc">
+      <div id="reco" class="reco"></div>
+      <div id="avisos"></div>
+      <div id="kpis" class="kpis"></div>
+      <div id="trampa" class="trampa"></div>
+      <div class="graficos">
+        <div class="tarjeta" id="card_trampa"><h3>La trampa en un gráfico</h3><div id="g_trampa" class="g" aria-label="La trampa del caso"></div></div>
+        <div class="tarjeta"><h3>Curva de caja de un cliente</h3><div id="g_curva" class="g" aria-label="Curva de caja acumulada de un cliente"></div></div>
+        <div class="tarjeta"><h3>LTV frente al CAC (líneas de 1 a 1 y 3 a 1)</h3><div id="g_ltvcac" class="g" aria-label="LTV frente a CAC"></div></div>
+        <div class="tarjeta" id="card_extra"><h3 id="extra_tit"></h3><div id="g_extra" class="g" aria-label="Embudo"></div></div>
+        <div class="tarjeta" id="card_cap"><h3>Visitas pedidas frente a la capacidad</h3><div id="g_cap" class="g" aria-label="Capacidad"></div></div>
+        <div class="tarjeta"><h3>Respuesta a la inversión (historial, con el punto $0 = 0)</h3><div id="g_resp" class="g" aria-label="Respuesta a la inversión"></div></div>
+        <div class="tarjeta"><h3>CAC marginal de cada tramo del historial</h3><div id="g_marg" class="g" aria-label="CAC marginal por tramo"></div></div>
+      </div>
+      <h2>Escenarios lado a lado</h2><div id="tabla" class="scroll"></div>
+    </section>
+    <section class="panel" id="p_sim">
+      <div id="sim">
+        <h2>Comparación de planes</h2><div id="sim_tabla" class="scroll"></div>
+        <p><button class="boton" id="buscar">Buscar el mejor plan</button> <span id="busq" class="nota"></span></p>
+        <div class="graficos">
+          <div class="tarjeta"><h3>Caja mes a mes con la línea del piso</h3><div id="g_caja" class="g" aria-label="Caja mes a mes"></div></div>
+          <div class="tarjeta"><h3 id="g_act_tit"></h3><div id="g_act" class="g" aria-label="Activos o capacidad"></div></div>
+        </div>
+        <h2>Revisión del mes 1 (plan editable)</h2><div id="mes1" class="tarjeta"></div>
+        <h2>Plan editable, mes a mes</h2><div id="sim_edit"></div>
+      </div>
+    </section>
+    <section class="panel" id="p_datos"><div id="datos"></div></section>
+    <section class="panel" id="p_perfil"><div id="perfil"></div></section>
+  </main>
+</div>
+<footer>Motor compartido «business-unit-economics». Cifras mensuales. Edad 1 = mes en que llega el cliente; el payback es el primer mes en que la caja acumulada del cliente llega a cero.</footer>
+<script>window.PERFIL={"id":"sol-de-casa","nombre":"Sol de Casa","subtitulo":"Caso C · Generación de leads con embudo comercial y capacidad de visitas · ¿Pasar todo a Meta?","fuente":"Caso C - Sol de Casa.pdf (FC Studio)","modelo":"lead generation: leads → contacto → agenda → visita (con capacidad) → venta única con cobro diferido","especializaciones":["leadgen"],"decision":"¿Andrés acepta la propuesta de Leadly (todo a Meta) y cómo reparte el presupuesto y la capacidad de visitas?","parametros":[{"id":"precio","etiqueta":"Precio promedio de una instalación","unidad":"$","valor":6500,"origen":"dato","fuente":"Sección 1","grupo":"Venta","control":true,"min":3000,"max":10000,"paso":100},{"id":"mb","etiqueta":"Margen bruto (100 % − equipos − instalación)","unidad":"%","valor":0.28,"origen":"dato","fuente":"Sección 1 · la instalación se ajusta: 1 − equipos − margen","grupo":"Venta","control":true,"min":0.05,"max":0.45,"paso":0.01},{"id":"equipos","etiqueta":"Equipos (se pagan el mes de la firma)","unidad":"%","valor":0.55,"origen":"dato","fuente":"Sección 1","grupo":"Venta"},{"id":"comision","etiqueta":"Comisión de la asesora (mes de la firma)","unidad":"%","valor":0.03,"origen":"dato","fuente":"Sección 1 · va en la contribución, no en el CAC","grupo":"Venta","control":true,"min":0,"max":0.1,"paso":0.005},{"id":"cobro_firma","etiqueta":"Parte del precio que se cobra al firmar","unidad":"%","valor":0.5,"origen":"dato","fuente":"Sección 1 (el resto, al mes siguiente)","grupo":"Venta"},{"id":"bat","etiqueta":"Clientes que agregan la batería","unidad":"%","valor":0,"origen":"supuesto propio","fuente":"Sección 4: prueba de 3 en 20 (muestra chica, no se usa en la base)","grupo":"Venta","control":true,"min":0,"max":0.5,"paso":0.01},{"id":"bat_precio","etiqueta":"Precio de la batería","unidad":"$","valor":3000,"origen":"dato","fuente":"Sección 4","grupo":"Venta"},{"id":"bat_mb","etiqueta":"Margen bruto de la batería","unidad":"%","valor":0.2,"origen":"dato","fuente":"Sección 4","grupo":"Venta"},{"id":"inv_meta","etiqueta":"Inversión en Meta","unidad":"$","valor":4000,"origen":"dato","fuente":"Sección 3","grupo":"Meta","control":true,"min":0,"max":10000,"paso":250},{"id":"hist_meta","etiqueta":"Historial Meta: inversión → leads","unidad":"historial","valor":[[2000,280],[4000,500],[6000,680],[8000,840],[10000,960]],"origen":"dato","fuente":"Sección 5 · supuesto 5 con ($0, 0)","grupo":"Meta"},{"id":"modo_meta","etiqueta":"Cómo se calculan los leads de Meta","unidad":"texto","valor":"historial","origen":"dato","fuente":"«constante» = CPL de $8 de la agencia (supuesto 6)","grupo":"Meta"},{"id":"cpl_agencia","etiqueta":"CPL de Meta según la agencia","unidad":"$","valor":8,"origen":"dato","fuente":"Propuesta de Leadly","grupo":"Meta"},{"id":"m_factor","etiqueta":"Leads de Meta que quedan después del filtro","unidad":"%","valor":1,"origen":"dato","fuente":"1 = sin filtro; 0,8 con el supuesto 7","grupo":"Meta"},{"id":"m_contacto","etiqueta":"Meta · leads contactados","unidad":"%","valor":0.55,"origen":"dato","fuente":"CRM","grupo":"Meta","control":true,"min":0.1,"max":1,"paso":0.01},{"id":"m_agenda","etiqueta":"Meta · contactados que agendan","unidad":"%","valor":0.3,"origen":"dato","fuente":"CRM","grupo":"Meta","control":true,"min":0.05,"max":1,"paso":0.01},{"id":"m_visita","etiqueta":"Meta · visitas agendadas que se hacen","unidad":"%","valor":0.7,"origen":"dato","fuente":"CRM","grupo":"Meta","control":true,"min":0.1,"max":1,"paso":0.01},{"id":"m_cierre","etiqueta":"Meta · visitas que terminan en venta","unidad":"%","valor":0.18,"origen":"dato","fuente":"CRM","grupo":"Meta","control":true,"min":0.02,"max":0.6,"paso":0.01},{"id":"inv_google","etiqueta":"Inversión en Google","unidad":"$","valor":4000,"origen":"dato","fuente":"Sección 3","grupo":"Google","control":true,"min":0,"max":8000,"paso":250},{"id":"hist_google","etiqueta":"Historial Google: inversión → leads (tope 160)","unidad":"historial","valor":[[2000,55],[4000,100],[6000,135],[8000,160]],"origen":"dato","fuente":"Sección 5","grupo":"Google"},{"id":"g_contacto","etiqueta":"Google · leads contactados","unidad":"%","valor":0.85,"origen":"dato","fuente":"CRM","grupo":"Google","control":true,"min":0.1,"max":1,"paso":0.01},{"id":"g_agenda","etiqueta":"Google · contactados que agendan","unidad":"%","valor":0.55,"origen":"dato","fuente":"CRM","grupo":"Google","control":true,"min":0.05,"max":1,"paso":0.01},{"id":"g_visita","etiqueta":"Google · visitas agendadas que se hacen","unidad":"%","valor":0.85,"origen":"dato","fuente":"CRM","grupo":"Google","control":true,"min":0.1,"max":1,"paso":0.01},{"id":"g_cierre","etiqueta":"Google · visitas que terminan en venta","unidad":"%","valor":0.3,"origen":"dato","fuente":"CRM","grupo":"Google","control":true,"min":0.02,"max":0.6,"paso":0.01},{"id":"costo_visita","etiqueta":"Costo por visita hecha","unidad":"$","valor":60,"origen":"dato","fuente":"Sección 2","grupo":"Visitas","control":true,"min":0,"max":200,"paso":5},{"id":"capacidad_base","etiqueta":"Visitas al mes con los 2 técnicos","unidad":"n","valor":100,"origen":"dato","fuente":"Sección 2","grupo":"Visitas"},{"id":"tecnicos_extra","etiqueta":"Técnicos extra (nivel 1: ya capacitados)","unidad":"n","valor":0,"origen":"supuesto propio","fuente":"En el nivel 3 rinden desde el mes siguiente a contratarlos","grupo":"Visitas","control":true,"min":0,"max":2,"paso":1},{"id":"cap_tecnico","etiqueta":"Visitas que suma un técnico extra","unidad":"n","valor":50,"origen":"dato","fuente":"Sección 2","grupo":"Visitas"},{"id":"costo_tecnico","etiqueta":"Costo mensual de un técnico extra","unidad":"$","valor":1800,"origen":"dato","fuente":"Sección 2","grupo":"Visitas"},{"id":"caja0","etiqueta":"Plata en el banco hoy","unidad":"$","valor":12000,"origen":"dato","fuente":"Sección 7","grupo":"Caja"},{"id":"piso","etiqueta":"Piso de seguridad","unidad":"$","valor":5000,"origen":"dato","fuente":"Sección 7","grupo":"Caja"},{"id":"fijos","etiqueta":"Costos fijos mensuales","unidad":"$","valor":18000,"origen":"dato","fuente":"Sección 7","grupo":"Caja"},{"id":"ventas_mes0","etiqueta":"Ventas del mes 0 (se instalan y cobran en el mes 1)","unidad":"n","valor":22,"origen":"dato","fuente":"Sección 3 y 7","grupo":"Caja"}],"unidad":{"horizonte":2,"segmentos":[{"id":"venta","nombre":"Instalación (venta única)","tipo":"venta","peso":1,"precio":"$precio","cobros":["($precio+$bat*$bat_precio)*$cobro_firma","($precio+$bat*$bat_precio)*(1-$cobro_firma)"],"pagos":["($equipos+$comision)*$precio+$bat*$bat_precio*(1-$bat_mb+$comision)","(1-$equipos-$mb)*$precio"]}]},"adquisicion":{"canales":[{"id":"meta","nombre":"Meta","inversion":"$inv_meta","historial":"$hist_meta","modo":"$modo_meta","costoUnitario":"$cpl_agencia","factor":"$m_factor","unidadTope":"Leads","etapas":[{"nombre":"Contactados","tasa":"$m_contacto"},{"nombre":"Agendan visita","tasa":"$m_agenda"},{"nombre":"Visitas pedidas","tasa":"$m_visita"},{"nombre":"Visitas pedidas","capacidad":true},{"nombre":"Ventas","tasa":"$m_cierre"}]},{"id":"google","nombre":"Google","inversion":"$inv_google","historial":"$hist_google","unidadTope":"Leads","etapas":[{"nombre":"Contactados","tasa":"$g_contacto"},{"nombre":"Agendan visita","tasa":"$g_agenda"},{"nombre":"Visitas pedidas","tasa":"$g_visita"},{"nombre":"Visitas pedidas","capacidad":true},{"nombre":"Ventas","tasa":"$g_cierre"}]}],"capacidad":{"base":"$capacidad_base+$tecnicos_extra*$cap_tecnico","costoUnidad":"$costo_visita","prioridad":["google","meta"]},"organicos":0},"leadgen":{"trampa":{"barato":"meta","caro":"google"},"costoMesExtra":"$tecnicos_extra*$costo_tecnico"},"escenarios":[{"id":"hoy","nombre":"Hoy ($4.000 + $4.000)","rol":"hoy","cambios":{}},{"id":"agencia","nombre":"Agencia con el historial","rol":"propuesta","cambios":{"inv_meta":8000,"inv_google":0}},{"id":"agencia_cpl","nombre":"Agencia como la cuenta (CPL $8)","rol":"extra","cambios":{"inv_meta":8000,"inv_google":0,"modo_meta":"constante"}},{"id":"propuesta","nombre":"Propuesta: respuesta y filtro + 1 técnico","rol":"alternativa","cambios":{"m_factor":0.8,"m_contacto":0.8,"m_agenda":0.4,"m_visita":0.75,"m_cierre":0.22,"tecnicos_extra":1}}],"cambios":[{"id":"mejora","nombre":"Llamar en menos de 5 minutos y filtrar el formulario de Meta (supuesto 7)","valores":{"m_factor":0.8,"m_contacto":0.8,"m_agenda":0.4,"m_visita":0.75,"m_cierre":0.22}}],"simulacion":{"meses":24,"cajaInicial":"$caja0","piso":"$piso","costosFijos":"$fijos","cohortesIniciales":[{"n":"$ventas_mes0"}],"capacidadPorContratacion":"$cap_tecnico","costoContratacion":"$costo_tecnico","rangos":{"meta":[0,10000],"google":[0,8000]},"reglas":[{"tipo":"noBaja","desde":19,"texto":"Desde el mes 19 la inversión total no puede bajar de un mes al siguiente"},{"tipo":"maxContratados","max":2,"texto":"Máximo 2 técnicos extra"}],"objetivo":{"principal":"cajaFinal","desempate":"clientesTotal"},"etiquetaActivos":"Ventas del mes","etiquetaTotal":"Instalaciones totales (24 meses)"},"planes":[{"nombre":"Plan 1 · Actual: $4.000 Meta + $4.000 Google","rol":"hoy","inversiones":{"meta":4000,"google":4000}},{"nombre":"Plan 2 · Agencia: $8.000 Meta + $0 Google","rol":"propuesta","inversiones":{"meta":8000,"google":0}},{"nombre":"Plan 3 · $6.000 Meta + $8.000 Google, 1 técnico en el mes 2","inversiones":{"meta":6000,"google":8000},"contrataciones":[2]},{"nombre":"Plan 4 · Respuesta y filtro desde el mes 1, $7.000 Meta + $6.000 Google, técnicos en los meses 2 y 3","inversiones":{"meta":7000,"google":6000},"contrataciones":[2,3],"cambios":{"mejora":1}},{"nombre":"Plan 5 · Mejor encontrado: respuesta y filtro desde el mes 1, Meta $4.000 meses 1-2 y $7.000 después, Google $6.000, técnicos en los meses 1 y 2","inversiones":{"meta":{"tramos":[[1,4000],[3,7000]]},"google":6000},"contrataciones":[1,2],"cambios":{"mejora":1}}],"busqueda":{"canales":{"meta":{"valores":[2000,4000,6000,7000,8000,10000],"cambioEn":[3,4]},"google":{"valores":[4000,6000,8000]}},"contrataciones":[[],[1,2],[2,3],[1,3]],"cambios":[{},{"mejora":1}]},"riesgos":["El efecto de responder rápido y filtrar viene de casos parecidos (supuesto 7), no de Sol de Casa.","Los equipos se pagan al firmar y el técnico se paga un mes antes de rendir: los primeros meses la caja queda cerca del piso.","Las tasas del embudo podrían bajar al invertir más (supuesto 3)."],"trampa":"CPL: el lead de Meta cuesta $8 y el de Google $40 (5 veces menos), pero el cliente de Meta cuesta 34 % más (CAC real $718 contra $536)."};</script>
+<script>/* Motor de unit economics compartido (navegador y Node).
+ * Un perfil JSON describe el negocio; este archivo no cambia de un caso a otro.
+ * Convenciones: cifras mensuales; edad 1 = mes en que llega el cliente; curva[0] = −CAC. */
+(function (raiz, fabrica) {
+  if (typeof module === 'object' && module.exports) module.exports = fabrica();
+  else raiz.UE = fabrica();
+})(typeof self !== 'undefined' ? self : this, function () {
+  'use strict';
+  const EPS = 1e-9;
+  const esNum = (x) => typeof x === 'number' && isFinite(x);
+  const div = (a, b) => (!esNum(a) || !esNum(b) || Math.abs(b) < EPS ? null : a / b);
+  const suma = (v) => v.reduce((s, x) => s + x, 0);
+  const clon = (o) => JSON.parse(JSON.stringify(o));
+
+  class FaltaDato extends Error { constructor(id) { super('Falta el dato «' + id + '»'); this.id = id; } }
+
+  /* ---------------------------------------------------------- parámetros */
+  function valores(perfil, cambios) {
+    const p = {};
+    for (const d of perfil.parametros) p[d.id] = clon(d.valor);
+    if (cambios) for (const k of Object.keys(cambios)) p[k] = clon(cambios[k]);
+    return p;
+  }
+  // Evalúa un número, "$parametro" o una expresión aritmética con $parametros, min() y max().
+  function ev(x, p) {
+    if (x === null || x === undefined) return 0;
+    if (typeof x === 'number' || typeof x === 'boolean') return x;
+    if (Array.isArray(x)) return x.map((v) => ev(v, p));
+    if (typeof x !== 'string') return x;
+    const ref = /^\$([A-Za-z_][\w]*)$/.exec(x.trim());
+    if (ref) {
+      if (!(ref[1] in p)) throw new Error('Parámetro inexistente: ' + x);
+      const v = p[ref[1]];
+      if (v === null || v === undefined || (typeof v === 'number' && !isFinite(v))) throw new FaltaDato(ref[1]);
+      return v;
+    }
+    const sinRefs = x.replace(/\$([A-Za-z_][\w]*)/g, '0');
+    if (!/^[\d\s+\-*/().,<>=?:!&|]*$/.test(sinRefs.replace(/\b(min|max)\(/g, '('))) throw new Error('Expresión no permitida: ' + x);
+    const js = x.replace(/\$([A-Za-z_][\w]*)/g, (_, n) => {
+      if (!(n in p)) throw new Error('Parámetro inexistente: $' + n);
+      const v = p[n];
+      if (v === null || v === undefined || (typeof v === 'number' && !isFinite(v))) throw new FaltaDato(n);
+      return '(' + JSON.stringify(v) + ')';
+    });
+    const r = Function('min', 'max', '"use strict";return (' + js + ');')(Math.min, Math.max);
+    if (typeof r === 'number' && !isFinite(r)) throw new Error('La expresión no da un número válido: ' + x);
+    return r;
+  }
+  function faltantes(perfil, p) {
+    const usados = new Set(JSON.stringify(perfil).match(/\$[A-Za-z_]\w*/g) || []);
+    return perfil.parametros.filter((d) => usados.has('$' + d.id) && (p[d.id] === null || p[d.id] === undefined || p[d.id] === '')).map((d) => d.id);
+  }
+
+  /* ---------------------------------------------------------- curva de respuesta (historial) */
+  function puntos(hist) {
+    const pts = hist.map(([x, y]) => [Number(x), Number(y)]).filter(([x, y]) => esNum(x) && esNum(y)).sort((a, b) => a[0] - b[0]);
+    if (!pts.length || pts[0][0] > 0) pts.unshift([0, 0]); // con $0 llegan 0 (recta desde cero)
+    return pts;
+  }
+  function interp(x, hist) {
+    const pts = puntos(hist);
+    if (!esNum(x) || x <= 0) return { v: 0, fuera: x < 0 };
+    for (let i = 1; i < pts.length; i++) {
+      const [x0, y0] = pts[i - 1], [x1, y1] = pts[i];
+      if (x <= x1 + EPS) return { v: x1 === x0 ? y1 : y0 + ((x - x0) * (y1 - y0)) / (x1 - x0), fuera: false };
+    }
+    return { v: pts[pts.length - 1][1], fuera: true }; // sin extrapolar: se queda en el último dato
+  }
+  function tramos(hist) {
+    const pts = puntos(hist), out = [];
+    for (let i = 1; i < pts.length; i++) out.push({ de: pts[i - 1][0], a: pts[i][0], extra: pts[i][1] - pts[i - 1][1], cac: div(pts[i][0] - pts[i - 1][0], pts[i][1] - pts[i - 1][1]) });
+    return out;
+  }
+
+  /* ---------------------------------------------------------- unidad: lo que deja un cliente mes a mes */
+  function pedido(o, p, conDescuento) {
+    const precio = ev(o.precio, p), desc = conDescuento ? ev(o.descuentoPrimer || 0, p) : 0;
+    const paga = precio * (1 - desc);
+    const costo = ev(o.unidades || 1, p) * ev(o.costoUnidad || 0, p) + ev(o.costosPorPedido || 0, p) + ev(o.comisionPct || 0, p) * paga;
+    return { paga, contrib: paga - costo, margen: div(paga - costo, paga), roasBE: paga - costo > EPS ? div(paga, paga - costo) : null }; // con margen ≤ 0 no hay ROAS que alcance
+  }
+  function segmento(s, p, H) {
+    const z = () => new Array(H + 1).fill(0);
+    const contrib = z(), cobros = z(), pagos = z(), activos = z(), info = { id: s.id, nombre: s.nombre, tipo: s.tipo };
+    if (s.tipo === 'pedidos') {
+      const tipos = s.pedidos.map((o) => ({ nombre: o.nombre, peso: ev(o.peso === undefined ? 1 : o.peso, p), n: pedido(o, p, false), d: pedido(o, p, true) }));
+      const prom = suma(tipos.map((t) => t.peso * t.n.contrib)), primero = suma(tipos.map((t) => t.peso * t.d.contrib));
+      let frec = ev(s.frecuencia, p).slice(); const despues = ev(s.frecuenciaDespues || 0, p);
+      if (s.pedidosEn12 !== undefined) { // escala las recompras (meses 2 a 12) para que el total de 12 meses sea el pedido
+        const meta = ev(s.pedidosEn12, p), resto = suma(frec.slice(1, 12));
+        const k = resto > EPS ? Math.max(0, meta - frec[0]) / resto : 0;
+        frec = frec.map((f, i) => (i >= 1 && i < 12 ? f * k : f));
+      }
+      for (let a = 1; a <= H; a++) {
+        const f = a <= frec.length ? frec[a - 1] : despues;
+        contrib[a] = a === 1 ? primero + (f - 1) * prom : f * prom;
+      }
+      Object.assign(info, { tiposPedido: tipos, contribPedido: prom, contribPrimerPedido: primero, pedidos12: suma(frec.slice(0, 12)) });
+    } else if (s.tipo === 'suscripcion') {
+      const c = ev(s.contribMes, p), ch = ev(s.churn, p);
+      for (let a = 1; a <= H; a++) { activos[a] = Math.pow(1 - ch, a - 1); contrib[a] = c * activos[a]; }
+      Object.assign(info, { contribMes: c, churn: ch, precio: s.precio !== undefined ? ev(s.precio, p) : null, ltvSinTope: div(c, ch) });
+    } else if (s.tipo === 'prepago') {
+      const c = ev(s.contribPeriodo, p), m = ev(s.meses || 12, p), r = ev(s.renovacion || 0, p);
+      for (let a = 1; a <= H; a++) { const k = Math.floor((a - 1) / m); activos[a] = Math.pow(r, k); if ((a - 1) % m === 0) contrib[a] = c * activos[a]; }
+      Object.assign(info, { contribPeriodo: c, meses: m, renovacion: r });
+    } else if (s.tipo === 'venta') {
+      const cb = ev(s.cobros, p), pg = ev(s.pagos, p);
+      for (let a = 1; a <= H; a++) { cobros[a] = cb[a - 1] || 0; pagos[a] = pg[a - 1] || 0; contrib[a] = cobros[a] - pagos[a]; }
+      activos[1] = 1; // la venta cuenta como cliente del mes en que se firma
+      Object.assign(info, { contribVenta: suma(cb) - suma(pg), precio: s.precio !== undefined ? ev(s.precio, p) : null });
+    } else throw new Error('Tipo de segmento desconocido: ' + s.tipo);
+    if (s.tipo !== 'venta') for (let a = 1; a <= H; a++) cobros[a] = contrib[a];
+    return { info, contrib, cobros, pagos, activos };
+  }
+  function unidad(perfil, p, H) {
+    const segs = perfil.unidad.segmentos.map((s) => ({ peso: ev(s.peso === undefined ? 1 : s.peso, p), ...segmento(s, p, H) }));
+    const pesoTotal = suma(segs.map((s) => s.peso));
+    const mezcla = (k) => Array.from({ length: H + 1 }, (_, a) => suma(segs.map((s) => s.peso * s[k][a])));
+    return { segmentos: segs, pesoTotal, contrib: mezcla('contrib'), cobros: mezcla('cobros'), pagos: mezcla('pagos'), activos: mezcla('activos') };
+  }
+  const ltvA = (vec, H) => suma(vec.slice(1, H + 1));
+
+  /* ---------------------------------------------------------- adquisición de un mes */
+  function adquirir(adq, p, invs, capacidad) {
+    const canales = adq.canales.map((c) => {
+      const inv = invs && c.id in invs ? invs[c.id] : ev(c.inversion, p);
+      const modo = c.modo ? ev(c.modo, p) : 'historial';
+      let base, fuera = false;
+      if (modo === 'constante') base = div(inv, ev(c.costoUnitario, p)) || 0;
+      else { const r = interp(inv, ev(c.historial, p)); base = r.v; fuera = r.fuera; }
+      const tope = base * ev(c.factor === undefined ? 1 : c.factor, p);
+      const etapas = [{ nombre: c.unidadTope || 'Contactos', n: tope }];
+      let n = tope, pedidas = null, iCap = -1;
+      (c.etapas || []).forEach((e, i) => {
+        if (e.capacidad) { pedidas = n; iCap = i; etapas.push({ nombre: e.nombre, n, capacidad: true }); return; }
+        n *= ev(e.tasa, p); etapas.push({ nombre: e.nombre, n, tasa: ev(e.tasa, p) });
+      });
+      return { id: c.id, nombre: c.nombre, inv, modo, fuera, tope, etapas, pedidas, iCap, clientes: n, def: c };
+    });
+    let pedidasTot = 0, hechasTot = 0;
+    if (adq.capacidad) {
+      let libre = capacidad === undefined || capacidad === null ? ev(adq.capacidad.base, p) : capacidad;
+      const capTot = libre;
+      const orden = (adq.capacidad.prioridad || canales.map((c) => c.id)).map((id) => canales.find((c) => c.id === id)).filter(Boolean);
+      for (const c of orden) {
+        if (c.pedidas === null) continue;
+        const hechas = Math.max(0, Math.min(c.pedidas, libre)); libre -= hechas; pedidasTot += c.pedidas; hechasTot += hechas;
+        c.hechas = hechas; let n = hechas;
+        c.def.etapas.slice(c.iCap + 1).forEach((e) => { n *= ev(e.tasa, p); });
+        c.etapas = c.etapas.slice(0, c.iCap + 2);
+        c.etapas[c.iCap + 1] = { nombre: c.etapas[c.iCap + 1].nombre, n: c.pedidas, capacidad: true };
+        c.etapas.push({ nombre: 'Hechas (dentro de la capacidad)', n: hechas });
+        let m = hechas; c.def.etapas.slice(c.iCap + 1).forEach((e) => { m *= ev(e.tasa, p); c.etapas.push({ nombre: e.nombre, n: m, tasa: ev(e.tasa, p) }); });
+        c.clientes = n;
+      }
+      var cap = { capacidad: capTot, pedidas: pedidasTot, hechas: hechasTot, uso: div(pedidasTot, capTot), perdidas: Math.max(0, pedidasTot - hechasTot) };
+    }
+    const ads = suma(canales.map((c) => c.inv));
+    const pagados = suma(canales.map((c) => c.clientes));
+    const fee = adq.fee ? (ads > EPS || !ev(adq.fee.siHayInversion === undefined ? true : adq.fee.siHayInversion, p) ? ev(adq.fee.monto, p) : 0) : 0;
+    const escalones = (adq.escalones || []).map((e) => {
+      const u = suma(canales.map((c) => c.tope));
+      const cant = u > EPS ? Math.ceil(u / ev(e.cada, p) - EPS) : 0;
+      return { nombre: e.nombre, cantidad: cant, costo: cant * ev(e.costo, p) };
+    });
+    const comision = ev(adq.costoPorCliente || 0, p) * pagados;
+    const costoUnidadCap = adq.capacidad ? ev(adq.capacidad.costoUnidad || 0, p) : 0;
+    const visitas = costoUnidadCap * hechasTot;
+    const organicos = ev(adq.organicos || 0, p);
+    const total = ads + fee + suma(escalones.map((e) => e.costo)) + comision + visitas;
+    canales.forEach((c) => {
+      const costo = c.inv + costoUnidadCap * (c.hechas || 0) + ev(adq.costoPorCliente || 0, p) * c.clientes;
+      Object.assign(c, { costoUnitario: div(c.inv, c.tope), cacAnuncios: div(c.inv, c.clientes), cacReal: div(costo, c.clientes) });
+    });
+    return { canales, ads, fee, escalones, comision, visitas, organicos, pagados, total, cap: cap || null, fuera: canales.some((c) => c.fuera),
+      cacAnuncios: div(ads, pagados), cacReal: div(total, pagados), cacBlended: div(total, pagados + organicos), costoUnitario: div(ads, suma(canales.map((c) => c.tope))) };
+  }
+
+  /* ---------------------------------------------------------- nivel 1: un escenario */
+  const semaforo = (r) => (r === null ? null : r < 1 ? 'rojo' : r < 3 ? 'amarillo' : 'verde');
+  function curvaCaja(cac, vec, H) {
+    const c = [cac === null ? null : -cac];
+    for (let a = 1; a <= H; a++) c.push(c[a - 1] === null ? null : c[a - 1] + vec[a]);
+    return c;
+  }
+  const payback = (curva) => { if (curva[0] === null) return null; const i = curva.findIndex((v, k) => k > 0 && v >= -EPS); return i < 0 ? null : i; };
+
+  function escenario(perfil, cambios, opciones) {
+    const p = valores(perfil, cambios);
+    const falta = faltantes(perfil, p);
+    if (falta.length) return { ok: false, faltan: falta, p };
+    try {
+      const H = ev(perfil.unidad.horizonte || 12, p);
+      const U = unidad(perfil, p, Math.max(H, 24));
+      const A = adquirir(perfil.adquisicion, p, opciones && opciones.inversiones);
+      const ltv = ltvA(U.contrib, H);
+      const curva = curvaCaja(A.cacReal, U.cobros.map((x, i) => x - U.pagos[i]), H);
+      const r = { ok: true, p, H, U, A, ltv, curva, payback: payback(curva),
+        ltvCac: div(ltv, A.cacReal), ltvCacBlended: div(ltv, A.cacBlended), semaforo: semaforo(div(ltv, A.cacReal)),
+        primerMesPagaCac: A.cacReal === null ? null : U.cobros[1] - U.pagos[1] >= A.cacReal, avisos: [] };
+      if (A.fuera) r.avisos.push('La inversión pasa el último dato del historial: no se extrapola, se usa el último punto.');
+      if (Math.abs(U.pesoTotal - 1) > 1e-6) r.avisos.push('Los pesos de la mezcla de clientes suman ' + U.pesoTotal.toFixed(3) + ' y no 1.');
+      if (A.pagados <= EPS) r.avisos.push('Con esta inversión no llegan clientes pagados: CAC, LTV:CAC y payback no se pueden calcular.');
+      // CAC marginal frente a la inversión de referencia (por canal con historial)
+      const ref = perfil.adquisicion.referencia ? valores(perfil, perfil.adquisicion.referencia) : null;
+      if (ref) {
+        const B = adquirir(perfil.adquisicion, ref);
+        r.marginal = { costoExtra: A.total - B.total, clientesExtra: A.pagados - B.pagados, cac: div(A.total - B.total, A.pagados - B.pagados),
+          invExtra: A.ads - B.ads, cacAnuncios: div(A.ads - B.ads, A.pagados - B.pagados) };
+        if (Math.abs(r.marginal.invExtra) < EPS) { r.marginal.cac = null; r.marginal.cacAnuncios = null; } // sin cambio de inversión no hay CAC marginal
+        r.marginal.dejaPlata = r.marginal.clientesExtra > EPS && r.marginal.cac !== null ? ltv > r.marginal.cac : null;
+      }
+      for (const esp of perfil.especializaciones || []) if (ESPECIALIZACIONES[esp]) r[esp] = ESPECIALIZACIONES[esp](perfil, p, r);
+      return r;
+    } catch (e) {
+      if (e instanceof FaltaDato) return { ok: false, faltan: [e.id], p };
+      throw e;
+    }
+  }
+
+  /* ---------------------------------------------------------- especializaciones (solo lo propio de cada modelo) */
+  const ESPECIALIZACIONES = {
+    ecommerce(perfil, p, r) {
+      const e = perfil.ecommerce || {}, seg = r.U.segmentos.find((s) => s.info.tipo === 'pedidos');
+      const sub = r.U.segmentos.find((s) => s.info.tipo === 'suscripcion');
+      const valor1 = e.valorPrimerPedido !== undefined ? ev(e.valorPrimerPedido, p) : null;
+      const roasReal = valor1 === null ? null : div(r.A.pagados * valor1, r.A.ads);
+      const t0 = seg ? seg.info.tiposPedido[0] : null;
+      const out = {
+        tiposPedido: seg ? seg.info.tiposPedido.map((t) => ({ nombre: t.nombre, peso: t.peso, paga: t.n.paga, contrib: t.n.contrib, margen: t.n.margen, roasBE: t.n.roasBE, pagaPrimero: t.d.paga, contribPrimero: t.d.contrib, roasBEPrimero: t.d.roasBE })) : [],
+        contribPedido: seg ? seg.info.contribPedido : null, contribPrimerPedido: seg ? seg.info.contribPrimerPedido : null,
+        suscripcion: sub && sub.info.precio ? { precio: sub.info.precio, contrib: sub.info.contribMes, margen: div(sub.info.contribMes, sub.info.precio), roasBE: sub.info.contribMes > EPS ? div(sub.info.precio, sub.info.contribMes) : null } : null,
+        ltvPorSegmento: r.U.segmentos.map((s) => ({ nombre: s.info.nombre, peso: s.peso, ltv: ltvA(s.contrib, r.H) })),
+        roasRealPrimerPedido: roasReal, roasBE: t0 ? t0.n.roasBE : null, roasBEPrimerPedido: t0 ? t0.d.roasBE : null,
+      };
+      if (e.roasAtribuido !== undefined) {
+        const vt = ev(e.ventasTienda, p), va = ev(e.ventasAtribuidas, p);
+        out.trampa = { roasAtribuido: ev(e.roasAtribuido, p), roasReal, roasBE: out.roasBEPrimerPedido,
+          parteAtribuida: div(va, vt), parteRetargeting: div(ev(e.invRetargeting, p), ev(e.invReporte, p)) };
+      }
+      return out;
+    },
+    suscripcion(perfil, p, r) {
+      const e = perfil.suscripcion || {};
+      const mens = r.U.segmentos.find((s) => s.info.tipo === 'suscripcion'), pre = r.U.segmentos.find((s) => s.info.tipo === 'prepago');
+      const out = {
+        contribMes: mens ? mens.info.contribMes : null, ltvSinTope: mens ? mens.info.ltvSinTope : null,
+        ltvMensual: mens ? ltvA(mens.contrib, r.H) : null, ltvPrepago: pre ? ltvA(pre.contrib, r.H) : null,
+        contribPrepago: pre ? pre.info.contribPeriodo : null, pesoPrepago: pre ? pre.peso : 0,
+        costoPorRegistro: r.A.costoUnitario, vecesCostoRegistro: div(r.A.cacReal, r.A.costoUnitario),
+        vendedoras: r.A.escalones.length ? r.A.escalones[0].cantidad : null,
+        ltvCacPaid: r.ltvCac, ltvCacBlended: r.ltvCacBlended, laminaLtvCac: e.ltvCacReportado !== undefined ? ev(e.ltvCacReportado, p) : null,
+      };
+      // curvas por tipo de cliente con el mismo CAC
+      if (mens) out.curvaMensual = curvaCaja(r.A.cacReal, mens.cobros, r.H);
+      if (pre) out.curvaPrepago = curvaCaja(r.A.cacReal, pre.cobros, r.H);
+      out.paybackMensual = out.curvaMensual ? payback(out.curvaMensual) : null;
+      out.paybackPrepago = out.curvaPrepago ? payback(out.curvaPrepago) : null;
+      if (r.marginal) {
+        const primerMes = r.U.cobros[1];
+        out.cajaAtrapadaMes = r.marginal.costoExtra - r.marginal.clientesExtra * primerMes;
+      }
+      return out;
+    },
+    leadgen(perfil, p, r) {
+      const seg = r.U.segmentos.find((s) => s.info.tipo === 'venta');
+      const contrib = seg ? seg.info.contribVenta : ltvA(r.U.contrib, r.H);
+      const cu = perfil.adquisicion.capacidad ? ev(perfil.adquisicion.capacidad.costoUnidad || 0, p) : 0;
+      const canales = r.A.canales.map((c) => {
+        const cierre = c.def.etapas.slice(c.iCap + 1).reduce((x, e) => x * ev(e.tasa, p), 1);
+        return { id: c.id, nombre: c.nombre, inv: c.inv, leads: c.tope, etapas: c.etapas, pedidas: c.pedidas, hechas: c.hechas, clientes: c.clientes,
+          cpl: c.costoUnitario, cacAnuncios: c.cacAnuncios, cacReal: c.cacReal, ltvCac: div(contrib, c.cacReal), semaforo: semaforo(div(contrib, c.cacReal)),
+          visitasPorVenta: div(1, cierre), valorVisita: cierre * contrib - cu };
+      });
+      const out = { contribVenta: contrib, canales, cap: r.A.cap, ventas: r.A.pagados };
+      const tr = (perfil.leadgen || {}).trampa;
+      if (tr) {
+        const a = canales.find((c) => c.id === tr.barato), b = canales.find((c) => c.id === tr.caro);
+        if (a && b) out.trampa = { cplVeces: div(b.cpl, a.cpl), cacMasCaro: a.cacReal !== null && b.cacReal !== null ? a.cacReal / b.cacReal - 1 : null, barato: a.nombre, caro: b.nombre };
+      }
+      const extra = (perfil.leadgen || {}).costoMesExtra;
+      out.resultadoMes = contrib * r.A.pagados - r.A.total - (extra ? ev(extra, p) : 0);
+      return out;
+    },
+  };
+
+  /* ---------------------------------------------------------- nivel 3: simulador mensual por cohortes */
+  function plan(perfil, desc, base) {
+    const S = perfil.simulacion, M = S.meses || 24, pb = () => valores(perfil, base), out = { nombre: desc.nombre, descripcion: desc.descripcion || '', inversiones: {}, contratados: new Array(M).fill(0), cambios: desc.cambios || {} };
+    for (const c of perfil.adquisicion.canales) {
+      const d = (desc.inversiones || {})[c.id];
+      out.inversiones[c.id] = Array.isArray(d) ? d.slice(0, M) : typeof d === 'number' ? new Array(M).fill(d) : typeof d === 'string' ? new Array(M).fill(ev(d, pb())) : d && d.tramos ? expandir(d.tramos, M) : new Array(M).fill(0);
+    }
+    if (desc.contrataciones) { // meses en que se contrata (1 técnico por mes listado)
+      for (const m of desc.contrataciones) for (let t = m; t <= M; t++) out.contratados[t - 1]++;
+    }
+    return out;
+  }
+  function expandir(tramos, M) { // [[desdeMes, valor], ...]
+    const v = new Array(M).fill(0);
+    for (let t = 1; t <= M; t++) for (const [d, x] of tramos) if (t >= d) v[t - 1] = x;
+    return v;
+  }
+  function simular(perfil, pl, base) {
+    const S = perfil.simulacion, M = S.meses || 24, H = M + 2;
+    const p0 = valores(perfil, base);
+    const cache = new Map();
+    const activos = (t) => Object.keys(pl.cambios).filter((k) => pl.cambios[k] && t >= pl.cambios[k]).sort();
+    const paramsMes = (t) => {
+      const ids = activos(t); const key = ids.join('|');
+      if (!cache.has(key)) {
+        const ch = Object.assign({}, base || {});
+        for (const id of ids) Object.assign(ch, (perfil.cambios.find((c) => c.id === id) || { valores: {} }).valores);
+        const p = valores(perfil, ch); cache.set(key, { p, U: unidad(perfil, p, H) });
+      }
+      return cache.get(key);
+    };
+    const cohortes = (S.cohortesIniciales || []).map((c) => ({ mes: 0, n: ev(c.n, p0), U: unidad(perfil, valores(perfil, Object.assign({}, base || {}, c.cambios || {})), H) }));
+    let caja = ev(S.cajaInicial, p0); const piso = ev(S.piso, p0), fijos = ev(S.costosFijos || 0, p0);
+    const filas = [];
+    for (let t = 1; t <= M; t++) {
+      const { p, U } = paramsMes(t);
+      const contr = pl.contratados[t - 1], contrPrev = t > 1 ? pl.contratados[t - 2] : 0;
+      const cap = perfil.adquisicion.capacidad ? ev(perfil.adquisicion.capacidad.base, p) + ev(S.capacidadPorContratacion || 0, p) * contrPrev : null;
+      const invs = {}; for (const c of perfil.adquisicion.canales) invs[c.id] = pl.inversiones[c.id][t - 1];
+      const A = adquirir(perfil.adquisicion, p, invs, cap);
+      const nuevos = A.pagados + A.organicos;
+      cohortes.push({ mes: t, n: nuevos, U });
+      let cobros = 0, pagos = 0, act = 0, contribNuevos = 0;
+      for (const c of cohortes) { const a = t - c.mes + 1; if (a < 1 || a > H) continue; cobros += c.n * c.U.cobros[a]; pagos += c.n * c.U.pagos[a]; act += c.n * c.U.activos[a]; if (c.mes > 0) contribNuevos += c.n * (c.U.cobros[a] - c.U.pagos[a]); }
+      const baseDecae = S.base ? ev(S.base.monto, p) * Math.pow(1 - ev(S.base.caida, p), t - 1) : 0;
+      const costoContr = ev(S.costoContratacion || 0, p) * contr;
+      const entradas = cobros + baseDecae, salidas = pagos + A.total + fijos + costoContr;
+      caja += entradas - salidas;
+      filas.push({ mes: t, inversiones: invs, inversion: A.ads, tope: suma(A.canales.map((c) => c.tope)), escalones: A.escalones.map((e) => e.cantidad),
+        clientesPagados: A.pagados, nuevos, pedidas: A.cap ? A.cap.pedidas : null, capacidad: cap, hechas: A.cap ? A.cap.hechas : null,
+        contratados: contr, baseDecae, contribNuevos, cobros, pagos, adquisicion: A.total, fijos, costoContr, entradas, salidas, caja, activos: act,
+        adq: A, bajoPiso: caja < piso - EPS, sinCapacidad: A.cap ? A.cap.pedidas > A.cap.capacidad + EPS : false, cambios: activos(t) });
+    }
+    return resumen(perfil, pl, filas, p0, piso);
+  }
+  function resumen(perfil, pl, filas, p0, piso) {
+    const S = perfil.simulacion, M = filas.length;
+    const cajas = filas.map((f) => f.caja), min = Math.min(...cajas);
+    const fallas = [];
+    const bajo = filas.find((f) => f.bajoPiso); if (bajo) fallas.push('La caja baja del piso en el mes ' + bajo.mes);
+    for (const c of perfil.adquisicion.canales) {
+      const r = (S.rangos || {})[c.id]; if (!r) continue;
+      const v = pl.inversiones[c.id];
+      if (Math.min(...v) < r[0] - EPS || Math.max(...v) > r[1] + EPS) fallas.push(`Inversión en ${c.nombre} fuera del rango $${r[0]}–$${r[1]}`);
+    }
+    for (const regla of S.reglas || []) {
+      const tot = filas.map((f) => f.inversion);
+      if (regla.tipo === 'minimoPromedio') {
+        const prom = suma(tot.slice(regla.ventana[0] - 1, regla.ventana[1])) / (regla.ventana[1] - regla.ventana[0] + 1);
+        if (tot.slice(regla.desde - 1).some((x) => x < prom - 1e-6)) fallas.push(regla.texto);
+      } else if (regla.tipo === 'noBaja') {
+        for (let t = regla.desde; t <= M; t++) if (tot[t - 1] < tot[t - 2] - 1e-6) { fallas.push(regla.texto); break; }
+      } else if (regla.tipo === 'maxContratados') {
+        if (Math.max(...pl.contratados) > regla.max) fallas.push(regla.texto);
+      }
+    }
+    const r = { plan: pl, filas, cajaMin: min, mesCajaMin: cajas.indexOf(min) + 1, cajaFinal: cajas[M - 1], activosFinal: filas[M - 1].activos,
+      clientesTotal: suma(filas.map((f) => f.clientesPagados)), primerMesBajoPiso: bajo ? bajo.mes : null, cumple: fallas.length === 0, fallas, piso };
+    const obj = S.objetivo || { principal: 'cajaFinal', desempate: 'activosFinal' };
+    r.puntaje = [r.cumple ? 1 : 0, r[obj.principal], r[obj.desempate]];
+    return r;
+  }
+  const mejor = (a, b) => { for (let i = 0; i < 3; i++) { if (a.puntaje[i] > b.puntaje[i] + 1e-9) return a; if (a.puntaje[i] < b.puntaje[i] - 1e-9) return b; } return a; };
+
+  // Búsqueda en una grilla de planes con el MISMO modelo y reglas. Devuelve el mejor y cuántos evaluó.
+  function buscar(perfil, espacio, base) {
+    const M = perfil.simulacion.meses || 24;
+    const canales = perfil.adquisicion.canales.map((c) => c.id);
+    const opcionesCanal = canales.map((id) => {
+      const e = espacio.canales[id] || { valores: [0] }, out = [];
+      for (const a of e.valores) {
+        out.push({ tramos: [[1, a]], txt: `$${a}` });
+        for (const k of e.cambioEn || []) for (const b of e.valores) if (b !== a) out.push({ tramos: [[1, a], [k, b]], txt: `$${a} meses 1-${k - 1}, $${b} desde ${k}` });
+      }
+      return out;
+    });
+    const contrataciones = espacio.contrataciones || [[]];
+    const cambios = espacio.cambios || [{}];
+    let best = null, n = 0;
+    const rec = (i, acc) => {
+      if (i === canales.length) {
+        for (const ct of contrataciones) for (const cb of cambios) {
+          const desc = { nombre: 'búsqueda', inversiones: {}, contrataciones: ct, cambios: cb };
+          canales.forEach((id, j) => { desc.inversiones[id] = { tramos: acc[j].tramos }; });
+          const r = simular(perfil, plan(perfil, desc), base); n++;
+          r.texto = canales.map((id, j) => id + ': ' + acc[j].txt).join(' · ') + (ct.length ? ' · contrata en meses ' + ct.join(', ') : '') + (Object.keys(cb).length ? ' · cambios ' + JSON.stringify(cb) : '');
+          best = best ? mejor(best, r) : r;
+        }
+        return;
+      }
+      for (const o of opcionesCanal[i]) rec(i + 1, acc.concat([o]));
+    };
+    rec(0, []);
+    return { mejor: best, evaluados: n, meses: M };
+  }
+
+  /* ---------------------------------------------------------- recomendación razonada */
+  function recomendar(perfil, res, sims) {
+    const hoy = res.find((r) => r.rol === 'hoy'), prop = res.find((r) => r.rol === 'propuesta'), alt = res.find((r) => r.rol === 'alternativa');
+    const f = (x, d = 2) => { if (x === null || x === undefined || !isFinite(x)) return 'sin dato'; const [e, g] = Math.abs(x).toFixed(d).split('.'); return (x < 0 ? '−' : '') + e.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + (g ? ',' + g : ''); };
+    const razones = [], riesgos = [];
+    const lc = hoy && hoy.r.ok ? hoy.r.ltvCac : null;
+    let negocio = lc === null ? 'faltan datos para decidir' : lc < 1 ? 'pausar o reducir la inversión' : lc < 3 ? 'arreglar antes de escalar' : 'escalar con cuidado';
+    if (lc !== null) razones.push(`Hoy cada cliente devuelve ${f(lc)} veces lo que cuesta (LTV ${f(hoy.r.ltv)} / CAC ${f(hoy.r.A.cacReal)}); payback ${hoy.r.payback ?? 'mayor al horizonte'}.`);
+    let propuesta = null;
+    if (prop && prop.r.ok) {
+      const pr = prop.r, m = pr.marginal, contras = [];
+      if (lc !== null && pr.ltvCac !== null && pr.ltvCac < lc - 1e-9) contras.push(`baja el LTV:CAC de ${f(lc)} a ${f(pr.ltvCac)}`);
+      if (pr.ltvCac !== null && pr.ltvCac < 1) contras.push('cada cliente cuesta más de lo que deja');
+      if (m && m.clientesExtra > 0 && m.cac !== null && m.cac > pr.ltv) contras.push(`cada cliente extra cuesta ${f(m.cac)} y deja ${f(pr.ltv)}`);
+      if (hoy && hoy.r.ok && pr.A.pagados < hoy.r.A.pagados - 1e-9) contras.push(`trae menos clientes que hoy (${f(pr.A.pagados, 1)} contra ${f(hoy.r.A.pagados, 1)})`);
+      const sp = sims && sims.find((s) => s.rol === 'propuesta');
+      if (sp && sp.r.primerMesBajoPiso) contras.push(`la caja rompe el piso en el mes ${sp.r.primerMesBajoPiso}`);
+      propuesta = contras.length ? 'rechazar' : 'aceptar';
+      razones.push(`La propuesta «${prop.nombre}»: ${contras.length ? contras.join('; ') : 'no empeora los números'}.`);
+    }
+    if (alt && alt.r.ok && lc !== null) razones.push(`La alternativa «${alt.nombre}» lleva el LTV:CAC de ${f(lc)} a ${f(alt.r.ltvCac)} y el payback de ${hoy.r.payback ?? 'más del horizonte'} a ${alt.r.payback ?? 'más del horizonte'} meses.`);
+    if (sims && sims.length) {
+      const validos = sims.filter((s) => s.r.cumple);
+      if (validos.length) { const b = validos.reduce((a, c) => (mejor(a.r, c.r) === a.r ? a : c)); razones.push(`Entre los planes comparados, el mejor que cumple las reglas es «${b.nombre}».`); }
+    }
+    if (hoy && hoy.r.ok && hoy.r.A.fuera) riesgos.push('La inversión sale del historial: el resultado no se extrapola.');
+    for (const s of perfil.riesgos || []) riesgos.push(s);
+    const titulo = (propuesta === 'rechazar' ? 'No aceptar la propuesta. ' : propuesta === 'aceptar' ? 'La propuesta no empeora los números. ' : '') + negocio.charAt(0).toUpperCase() + negocio.slice(1) + '.';
+    return { decision: negocio, propuesta, titulo, razones, riesgos };
+  }
+
+  function calcularTodo(perfil, base) {
+    const res = (perfil.escenarios || []).map((e) => ({ id: e.id, nombre: e.nombre, rol: e.rol, r: escenario(perfil, Object.assign({}, base || {}, e.cambios || {})) }));
+    let sims = null;
+    if (perfil.simulacion && perfil.planes) {
+      try { sims = perfil.planes.map((d) => ({ nombre: d.nombre, rol: d.rol, r: simular(perfil, plan(perfil, d, base), base) })); }
+      catch (e) { if (e instanceof FaltaDato) sims = null; else throw e; }
+    }
+    return { escenarios: res, sims, recomendacion: recomendar(perfil, res, sims) };
+  }
+
+  /* ---------------------------------------------------------- growth: embudos, ciclos, recompensas y canales (Sesión 2) */
+  const growth = {
+    // pasos: [{nombre, n}] en orden. Devuelve la tasa de cada paso al siguiente y dónde se pierde más.
+    embudo(pasos) {
+      const filas = pasos.map((p, i) => ({ nombre: p.nombre, n: p.n, tasa: i ? div(p.n, pasos[i - 1].n) : null, perdidos: i ? pasos[i - 1].n - p.n : 0 }));
+      const conTasa = filas.filter((f) => f.tasa !== null);
+      const peorTasa = conTasa.reduce((a, b) => (b.tasa < a.tasa ? b : a), conTasa[0]);
+      const masPerdidos = conTasa.reduce((a, b) => (b.perdidos > a.perdidos ? b : a), conTasa[0]);
+      return { filas, total: div(pasos[pasos.length - 1].n, pasos[0].n), peorTasa, masPerdidos };
+    },
+    // Coeficiente viral K = clientes nuevos que trae cada cliente.
+    k(...factores) { return factores.reduce((x, f) => x * f, 1); },
+    // Con N clientes nuevos al mes por otras vías y un ciclo K < 1, los referidos se estabilizan en N·K/(1−K).
+    referidosPorMes(base, K) { return K >= 1 ? null : (base * K) / (1 - K); },
+    // recompensas: [{nombre, costo, repartidoEntre}] que se pagan por un cliente referido; tope opcional.
+    costoRecompensas(recompensas, tope, extra = 0) {
+      const filas = recompensas.map((r) => ({ ...r, porReferido: r.costo / (r.repartidoEntre || 1) }));
+      const total = suma(filas.map((f) => f.porReferido)) + extra;
+      return { filas, extra, total, tope: tope === undefined ? null : tope, cumple: tope === undefined ? null : total <= tope + EPS, margen: tope === undefined ? null : tope - total };
+    },
+    // Peor combinación: combos = [[nombres...]]; devuelve el costo de cada combinación posible.
+    peorCombinacion(recompensas, combos, tope, extra = 0) {
+      const res = combos.map((c) => ({ combo: c, costo: extra + suma(c.map((n) => { const r = recompensas.find((x) => x.nombre === n); return r.costo / (r.repartidoEntre || 1); })) }));
+      const peor = res.reduce((a, b) => (b.costo > a.costo ? b : a), res[0]);
+      return { combinaciones: res, peor, cumple: peor.costo <= tope + EPS };
+    },
+    // Conversión a pago según hasta dónde llegó cada grupo: grupos = [{n, tasa}] sobre el total.
+    conversionPorGrupos(grupos) { const tot = suma(grupos.map((g) => g.n)); return div(suma(grupos.map((g) => g.n * g.tasa)), tot); },
+    // Clientes activos mes a mes con altas fijas y una baja mensual (el balde con agujeros).
+    balde(altas, baja, meses, inicio = 0) { const v = []; let n = inicio; for (let m = 1; m <= meses; m++) { n = n * (1 - baja) + altas; v.push(n); } return { serie: v, techo: div(altas, baja) }; },
+    // Matriz de 90 días: rápido/lento según el payback (meses) frente a un límite; seguro/incierto o mucho/poco según el canal.
+    cuadrante(c, limiteMeses = 3) {
+      const rapido = c.paybackMeses !== null && c.paybackMeses !== undefined && c.paybackMeses <= limiteMeses;
+      return rapido ? (c.seguro ? 'Siempre activo' : 'Probar') : (c.puedeDarMucho ? 'Largo plazo' : 'Descartar por ahora');
+    },
+  };
+
+  return { ev, valores, faltantes, growth, interp, puntos, tramos, pedido, unidad, adquirir, escenario, semaforo, curvaCaja, payback, plan, expandir, simular, buscar, mejor, recomendar, calcularTodo, div, FaltaDato, ESPECIALIZACIONES };
+});
+</script>
+<script>/* Gráficos SVG sin librerías externas: líneas, barras y dispersión, con tooltip y leyenda. */
+(function (raiz) {
+  'use strict';
+  const COL = ['var(--s1)', 'var(--s2)', 'var(--s3)', 'var(--s4)', 'var(--s5)', 'var(--s7)'];
+  const W = 640, H = 300, M = { t: 16, r: 18, b: 42, l: 64 };
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  function escala(min, max) {
+    if (min === max) { max = min + 1; }
+    const paso0 = (max - min) / 5, pot = Math.pow(10, Math.floor(Math.log10(Math.abs(paso0) || 1)));
+    const paso = [1, 2, 2.5, 5, 10].map((k) => k * pot).find((s) => s >= paso0) || paso0;
+    const lo = Math.floor(min / paso) * paso, hi = Math.ceil(max / paso) * paso, ticks = [];
+    for (let v = lo; v <= hi + paso / 2; v += paso) ticks.push(+v.toFixed(10));
+    return { lo, hi, ticks };
+  }
+  let tip;
+  function tooltip(svg) {
+    if (!tip) { tip = document.createElement('div'); tip.className = 'tip'; document.body.appendChild(tip); }
+    svg.addEventListener('mousemove', (e) => {
+      const t = e.target.closest('[data-tip]');
+      if (!t) { tip.style.display = 'none'; return; }
+      tip.innerHTML = t.getAttribute('data-tip'); tip.style.display = 'block';
+      tip.style.left = Math.min(e.pageX + 12, window.scrollX + window.innerWidth - tip.offsetWidth - 8) + 'px'; tip.style.top = e.pageY + 12 + 'px';
+    });
+    svg.addEventListener('mouseleave', () => { tip.style.display = 'none'; });
+  }
+  function marco(el, ys, yFmt, refsY) {
+    const vals = ys.concat((refsY || []).map((r) => r.y)).filter((v) => v !== null && isFinite(v));
+    let mn = Math.min(0, ...vals), mx = Math.max(0, ...vals);
+    const e = escala(mn, mx), py = (v) => M.t + (H - M.t - M.b) * (1 - (v - e.lo) / (e.hi - e.lo));
+    let s = '';
+    for (const t of e.ticks) s += `<line class="grid" x1="${M.l}" x2="${W - M.r}" y1="${py(t)}" y2="${py(t)}"/><text class="eje" x="${M.l - 6}" y="${py(t) + 4}" text-anchor="end">${esc(yFmt(t))}</text>`;
+    s += `<line class="base" x1="${M.l}" x2="${W - M.r}" y1="${py(0)}" y2="${py(0)}"/>`;
+    return { e, py, s };
+  }
+  function refs(refsY, py, yFmt) {
+    return (refsY || []).map((r) => `<line class="ref ${r.clase || ''}" x1="${M.l}" x2="${W - M.r}" y1="${py(r.y)}" y2="${py(r.y)}"/><text class="reft ${r.clase || ''}" x="${W - M.r - 4}" y="${py(r.y) - 5}" text-anchor="end">${esc(r.texto || yFmt(r.y))}</text>`).join('');
+  }
+  function leyenda(series) {
+    if (series.length < 2) return '';
+    return '<div class="leyenda">' + series.map((s, i) => `<span><i style="background:${s.color || COL[i]}"${s.punteada ? ' class="pt"' : ''}></i>${esc(s.nombre)}</span>`).join('') + '</div>';
+  }
+  function poner(el, svg, series, nota) {
+    el.innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(el.getAttribute('aria-label') || '')}">${svg}</svg>` + leyenda(series) + (nota ? `<p class="nota">${nota}</p>` : '');
+    tooltip(el.querySelector('svg'));
+  }
+
+  // series: [{nombre, datos:[y], color, punteada}], x: etiquetas
+  function lineas(el, o) {
+    const yFmt = o.yFmt || String, xs = o.x, n = xs.length;
+    const all = [].concat(...o.series.map((s) => s.datos));
+    const { py, s: base } = marco(el, all, yFmt, o.refY);
+    const px = (i) => M.l + ((W - M.l - M.r) * i) / Math.max(1, n - 1);
+    let s = base, pasoX = Math.ceil(n / 12);
+    xs.forEach((x, i) => { if (i % pasoX === 0 || i === n - 1) s += `<text class="eje" x="${px(i)}" y="${H - M.b + 16}" text-anchor="middle">${esc(x)}</text>`; });
+    if (o.xTitulo) s += `<text class="eje" x="${(W + M.l) / 2}" y="${H - 6}" text-anchor="middle">${esc(o.xTitulo)}</text>`;
+    s += refs(o.refY, py, yFmt);
+    for (const r of o.refX || []) { const i = xs.indexOf(r.x); if (i < 0) continue; s += `<line class="ref ${r.clase || ''}" x1="${px(i)}" x2="${px(i)}" y1="${M.t}" y2="${H - M.b}"/><text class="reft ${r.clase || ''}" x="${px(i) + 4}" y="${M.t + 12}">${esc(r.texto)}</text>`; }
+    o.series.forEach((se, k) => {
+      const c = se.color || COL[k];
+      let d = '', abierto = false;
+      se.datos.forEach((v, i) => { if (v === null || !isFinite(v)) { abierto = false; return; } d += (abierto ? 'L' : 'M') + px(i).toFixed(1) + ' ' + py(v).toFixed(1); abierto = true; });
+      s += `<path d="${d}" fill="none" stroke="${c}" stroke-width="2" ${se.punteada ? 'stroke-dasharray="6 4"' : ''}/>`;
+      se.datos.forEach((v, i) => { if (v === null || !isFinite(v)) return; s += `<circle cx="${px(i)}" cy="${py(v)}" r="${n > 30 ? 0 : 3}" fill="${c}"/><circle class="hit" cx="${px(i)}" cy="${py(v)}" r="9" data-tip="<b>${esc(se.nombre)}</b><br>${esc(o.xNombre || '')} ${esc(xs[i])}: ${esc(yFmt(v))}"/>`; });
+    });
+    poner(el, s, o.series, o.nota);
+  }
+  // categorias: [..], series: [{nombre, datos:[..], color}] ; colores por barra opcional (o.coloresBarra)
+  function barras(el, o) {
+    const yFmt = o.yFmt || String, cats = o.categorias, ns = o.series.length;
+    const all = [].concat(...o.series.map((s) => s.datos));
+    const { py, s: base } = marco(el, all, yFmt, o.refY);
+    const anchoG = (W - M.l - M.r) / cats.length, anchoB = Math.min(46, (anchoG * 0.7) / ns);
+    let s = base;
+    cats.forEach((c, i) => {
+      const x0 = M.l + anchoG * i + (anchoG - anchoB * ns - 2 * (ns - 1)) / 2;
+      s += `<text class="eje" x="${M.l + anchoG * (i + 0.5)}" y="${H - M.b + 16}" text-anchor="middle">${esc(c)}</text>`;
+      o.series.forEach((se, k) => {
+        const v = se.datos[i]; if (v === null || v === undefined || !isFinite(v)) return;
+        const col = (o.coloresBarra && o.coloresBarra[i]) || se.color || COL[k];
+        const y = py(Math.max(v, 0)), h = Math.abs(py(v) - py(0)), x = x0 + k * (anchoB + 2);
+        s += `<rect x="${x}" y="${y}" width="${anchoB}" height="${Math.max(h, 0.5)}" rx="3" fill="${col}" data-tip="<b>${esc(c)}</b>${ns > 1 ? ' · ' + esc(se.nombre) : ''}<br>${esc(yFmt(v))}"/>`;
+        if (o.etiquetas) s += `<text class="val" x="${x + anchoB / 2}" y="${v >= 0 ? y - 5 : y + h + 13}" text-anchor="middle">${esc(yFmt(v))}</text>`;
+      });
+    });
+    s += refs(o.refY, py, yFmt);
+    poner(el, s, ns > 1 ? o.series : [], o.nota);
+  }
+  // puntos: [{x, y, nombre, color}], rectas por el origen: [{m, texto}]
+  function dispersion(el, o) {
+    const xFmt = o.xFmt || String, yFmt = o.yFmt || String;
+    const xs = o.puntos.map((p) => p.x).filter(isFinite), ys = o.puntos.map((p) => p.y).filter(isFinite);
+    const ex = escala(0, Math.max(...xs, 1) * 1.15), ey = escala(0, Math.max(...ys, 1) * 1.1);
+    const px = (v) => M.l + (W - M.l - M.r) * (v - ex.lo) / (ex.hi - ex.lo), py = (v) => M.t + (H - M.t - M.b) * (1 - (v - ey.lo) / (ey.hi - ey.lo));
+    let s = '';
+    for (const t of ey.ticks) s += `<line class="grid" x1="${M.l}" x2="${W - M.r}" y1="${py(t)}" y2="${py(t)}"/><text class="eje" x="${M.l - 6}" y="${py(t) + 4}" text-anchor="end">${esc(yFmt(t))}</text>`;
+    for (const t of ex.ticks) s += `<text class="eje" x="${px(t)}" y="${H - M.b + 16}" text-anchor="middle">${esc(xFmt(t))}</text>`;
+    s += `<text class="eje" x="${(W + M.l) / 2}" y="${H - 6}" text-anchor="middle">${esc(o.xTitulo || '')}</text><text class="eje" x="14" y="${M.t + 4}">${esc(o.yTitulo || '')}</text>`;
+    s += `<defs><clipPath id="c${el.id}"><rect x="${M.l}" y="${M.t}" width="${W - M.l - M.r}" height="${H - M.t - M.b}"/></clipPath></defs>`;
+    for (const r of o.rectas || []) {
+      const x2 = Math.min(ex.hi, ey.hi / r.m);
+      s += `<line class="ref ${r.clase || ''}" clip-path="url(#c${el.id})" x1="${px(0)}" y1="${py(0)}" x2="${px(x2)}" y2="${py(r.m * x2)}"/><text class="reft ${r.clase || ''}" x="${px(x2) - 4}" y="${py(r.m * x2) + 14}" text-anchor="end">${esc(r.texto)}</text>`;
+    }
+    o.puntos.forEach((p, i) => { if (!isFinite(p.x) || !isFinite(p.y)) return; const c = p.color || COL[i];
+      s += `<circle cx="${px(p.x)}" cy="${py(p.y)}" r="7" fill="${c}" stroke="var(--fondo-t)" stroke-width="2" data-tip="<b>${esc(p.nombre)}</b><br>CAC ${esc(xFmt(p.x))} · LTV ${esc(yFmt(p.y))}<br>LTV:CAC ${(p.y / p.x).toFixed(2)}"/>`; });
+    poner(el, s, o.puntos.map((p, i) => ({ nombre: p.nombre, color: p.color || COL[i] })), o.nota);
+  }
+  raiz.G = { lineas, barras, dispersion, COL };
+})(typeof self !== 'undefined' ? self : this);
+</script>
+<script>/* Interfaz común de las calculadoras. Lee window.PERFIL (y window.PLANTILLAS en la universal). */
+(function () {
+  'use strict';
+  const UE = window.UE, G = window.G;
+  const clon = (o) => JSON.parse(JSON.stringify(o));
+  const $ = (s, el) => (el || document).querySelector(s);
+  const UNIVERSAL = !!window.UNIVERSAL;
+  let ORIGINAL = clon(window.PERFIL), perfil = clon(ORIGINAL), base = {}, editable = null, busqueda = null;
+
+  /* ------------------------------------------------ formato (miles con punto, decimales con coma) */
+  function numero(v, d) {
+    if (v === null || v === undefined || !isFinite(v)) return '—';
+    const neg = v < 0, s = Math.abs(v).toFixed(d), [e, f] = s.split('.');
+    return (neg ? '−' : '') + e.replace(/\B(?=(\d{3})+(?!\d))/g, '.') + (f ? ',' + f : '');
+  }
+  const F = {
+    usd: (v, d) => (v === null || v === undefined || !isFinite(v) ? '—' : (v < 0 ? '−$' : '$') + numero(Math.abs(v), d === undefined ? (Math.abs(v) < 1000 ? 2 : 0) : d)),
+    pct: (v, d = 1) => (v === null || !isFinite(v) ? '—' : numero(v * 100, d) + ' %'),
+    x: (v, d = 2) => (v === null || !isFinite(v) ? '—' : numero(v, d) + '×'),
+    n: (v, d = 1) => numero(v, d),
+    meses: (v) => (v === null || v === undefined ? 'no recupera' : v + (v === 1 ? ' mes' : ' meses')),
+  };
+  const fmtU = (v, u) => (u === '$' ? F.usd(v) : u === '%' ? F.pct(v) : u === 'x' ? F.x(v) : u === 'texto' ? String(v) : Array.isArray(v) ? JSON.stringify(v) : F.n(v, Number.isInteger(v) ? 0 : 2));
+  const SEM = { rojo: ['mal', 'ROJO: pierde plata'], amarillo: ['medio', 'AMARILLO: deja poco'], verde: ['ok', 'VERDE: sano'] };
+  const sem = (s) => (s ? `<span class="sem ${SEM[s][0]}">${SEM[s][1]}</span>` : '');
+  const tiene = (e) => (perfil.especializaciones || []).includes(e);
+  const def = (id) => perfil.parametros.find((d) => d.id === id);
+
+  /* ------------------------------------------------ controles */
+  function renderControles() {
+    const cont = $('#ctls'); cont.innerHTML = '';
+    const pv = UE.valores(perfil, base);
+    let grupo = null;
+    for (const d of perfil.parametros.filter((x) => x.control)) {
+      if (d.grupo !== grupo) { grupo = d.grupo; cont.insertAdjacentHTML('beforeend', `<div class="grupo">${d.grupo}</div>`); }
+      const w = document.createElement('div'); w.className = 'ctl';
+      const v = pv[d.id] === null ? d.min || 0 : pv[d.id];
+      w.innerHTML = `<label for="c_${d.id}"><span>${d.etiqueta}</span><b id="v_${d.id}">${fmtU(v, d.unidad)}</b></label><input type="range" id="c_${d.id}" min="${d.min}" max="${d.max}" step="${d.paso}" value="${v}">`;
+      cont.appendChild(w);
+      w.querySelector('input').addEventListener('input', (e) => { base[d.id] = parseFloat(e.target.value); $('#v_' + d.id).textContent = fmtU(base[d.id], d.unidad); actualizar(); });
+    }
+    const esc = $('#escs'); esc.innerHTML = '';
+    for (const e of perfil.escenarios || []) {
+      const b = document.createElement('button'); b.className = 'chip'; b.textContent = e.nombre;
+      b.onclick = () => { Object.assign(base, e.cambios || {}); renderControles(); actualizar(); };
+      esc.appendChild(b);
+    }
+  }
+
+  /* ------------------------------------------------ nivel 1 y 2 */
+  function kpis(r) {
+    if (!r.ok) return `<div class="aviso">Faltan datos para calcular: ${r.faltan.map((id) => (def(id) || { etiqueta: id }).etiqueta).join(', ')}.</div>`;
+    const k = (t, v, a, c = '') => `<div class="kpi ${c}"><span>${t}</span><strong>${v}</strong><small>${a}</small></div>`;
+    const out = [];
+    if (tiene('ecommerce')) {
+      const e = r.ecommerce, t0 = e.tiposPedido[0];
+      out.push(k('Margen de contribución del pedido', F.usd(e.contribPedido), t0 ? `${F.pct(e.contribPedido / t0.paga)} del pedido de ${F.usd(t0.paga)}` : ''));
+      out.push(k('ROAS de break-even', F.x(e.roasBEPrimerPedido), 'del primer pedido (1 ÷ margen)'));
+      out.push(k('ROAS real del primer pedido', F.x(e.roasRealPrimerPedido), 'clientes nuevos × primer pedido ÷ inversión', e.roasRealPrimerPedido < e.roasBEPrimerPedido ? 'mal' : 'ok'));
+    }
+    if (tiene('suscripcion')) {
+      const s = r.suscripcion;
+      out.push(k('Margen mensual de un cliente', F.usd(s.contribMes), 'precio × margen bruto'));
+      if (s.vendedoras !== null) out.push(k('Vendedoras necesarias', F.n(s.vendedoras, 0), `para ${F.n(r.A.canales[0].tope, 0)} trials`));
+    }
+    const venta = r.U.segmentos.some((s) => s.info.tipo === 'venta');
+    if (tiene('leadgen')) {
+      if (venta) out.push(k('Contribución de una venta', F.usd(r.leadgen.contribVenta), 'antes de marketing'));
+      const cap = r.leadgen.cap;
+      out.push(k('Visitas pedidas / capacidad', `${F.n(cap.pedidas, 1)} / ${F.n(cap.capacidad, 0)}`, cap.pedidas > cap.capacidad ? `⚠ se pierden ${F.n(cap.perdidas, 1)} visitas` : `uso ${F.pct(cap.uso)}`, cap.pedidas > cap.capacidad ? 'mal' : 'ok'));
+      out.push(k('Ventas al mes', F.n(r.A.pagados, 1), 'después de la capacidad'));
+    }
+    out.push(k('CAC de anuncios', F.usd(r.A.cacAnuncios), 'solo inversión ÷ clientes de anuncios'));
+    out.push(k(tiene('suscripcion') ? 'CAC paid' : 'CAC real', F.usd(r.A.cacReal), 'todo lo que cuesta conseguirlos ÷ clientes de anuncios'));
+    if (tiene('suscripcion')) out.push(k('CAC blended', F.usd(r.A.cacBlended), 'mezcla los orgánicos: no sirve para decidir anuncios'));
+    out.push(k(`LTV a ${r.H} ${r.H === 1 ? 'mes' : 'meses'}`, F.usd(r.ltv), venta ? 'una venta (sin recompra)' : 'sobre contribución, no sobre ventas'));
+    out.push(k(tiene('suscripcion') ? 'LTV:CAC paid' : 'LTV:CAC', F.x(r.ltvCac), sem(r.semaforo), r.semaforo ? SEM[r.semaforo][0] : ''));
+    if (tiene('suscripcion')) out.push(k('LTV:CAC blended', F.x(r.ltvCacBlended), 'el que se ve sano y engaña'));
+    out.push(k('Payback', F.meses(r.payback), r.primerMesPagaCac ? 'el primer mes ya paga el CAC' : 'el primer mes no alcanza a pagar el CAC'));
+    if (r.marginal) out.push(k('CAC marginal', r.marginal.cac === null ? '—' : r.marginal.clientesExtra > 0.01 ? F.usd(r.marginal.cac) : r.marginal.clientesExtra < -0.01 ? 'menos clientes' : '—', r.marginal.clientesExtra > 0.01 ? `${F.n(r.marginal.clientesExtra, 0)} clientes extra frente a la referencia` : r.marginal.clientesExtra < -0.01 ? `se dejan de traer ${F.n(-r.marginal.clientesExtra, 0)} clientes que costaban ${F.usd(r.marginal.cac)} c/u` : 'igual a la referencia', r.marginal.dejaPlata === false ? 'mal' : ''));
+    if (tiene('suscripcion')) out.push(k('LTV sin tope (solo para comparar)', F.usd(r.suscripcion.ltvSinTope), 'margen ÷ cancelación: supone clientes eternos'));
+    if (tiene('leadgen')) {
+      const cs = r.leadgen.canales, tot = { leads: 0, pedidas: 0, hechas: 0, clientes: 0, inv: 0 };
+      cs.forEach((c) => { for (const x in tot) tot[x] += c[x] || 0; });
+      out.push(`<div class="kpi ancho"><span>Por canal y en total</span><div class="scroll"><table class="tabla"><thead><tr><th>Canal</th><th>Leads</th><th>Visitas pedidas</th><th>Visitas hechas</th><th>Ventas</th><th>CPL</th><th>CAC de anuncios</th><th>CAC real</th><th>LTV:CAC</th><th>Valor de una visita</th></tr></thead><tbody>` +
+        cs.map((c) => `<tr><td>${c.nombre}</td><td>${F.n(c.leads, 0)}</td><td>${F.n(c.pedidas, 1)}</td><td>${F.n(c.hechas, 1)}</td><td>${F.n(c.clientes, 2)}</td><td>${F.usd(c.cpl)}</td><td>${F.usd(c.cacAnuncios)}</td><td>${F.usd(c.cacReal)}</td><td>${F.x(c.ltvCac)} ${sem(c.semaforo)}</td><td>${F.usd(c.valorVisita)}</td></tr>`).join('') +
+        `<tr><td><b>Total</b></td><td>${F.n(tot.leads, 0)}</td><td>${F.n(tot.pedidas, 1)}</td><td>${F.n(tot.hechas, 1)}</td><td>${F.n(tot.clientes, 2)}</td><td>${F.usd(UE.div(tot.inv, tot.leads))}</td><td>${F.usd(r.A.cacAnuncios)}</td><td>${F.usd(r.A.cacReal)}</td><td>${F.x(r.ltvCac)} ${sem(r.semaforo)}</td><td>—</td></tr></tbody></table></div><small>Capacidad: ${F.n(r.leadgen.cap.capacidad, 0)} visitas; se usan ${F.n(r.leadgen.cap.hechas, 1)}. ${r.leadgen.cap.perdidas > 0.01 ? '⚠ Se pierden ' + F.n(r.leadgen.cap.perdidas, 1) + ' visitas pedidas.' : ''}</small></div>`);
+    }
+    return out.join('');
+  }
+  function textoTrampa(r) {
+    if (!r.ok) return '';
+    if (tiene('ecommerce') && r.ecommerce.trampa) {
+      const t = r.ecommerce.trampa;
+      return `<h3>La trampa: el ROAS de ${F.x(t.roasAtribuido, 1)} de Ads Manager</h3><p>Meta se atribuye el ${F.pct(t.parteAtribuida, 0)} de las ventas de la tienda, incluidas recompras, y el ${F.pct(t.parteRetargeting, 0)} de la inversión va a gente que ya visitó o ya compró. Contando solo el primer pedido de los clientes nuevos, el ROAS real es <b>${F.x(t.roasReal)}</b>, cuando el mínimo para no perder es <b>${F.x(t.roasBE)}</b>.</p>`;
+    }
+    if (tiene('suscripcion') && r.suscripcion.laminaLtvCac !== null) {
+      const s = r.suscripcion;
+      return `<h3>La trampa: el LTV:CAC de ${F.x(s.laminaLtvCac, 1)} de la lámina</h3><p>Ese número divide por todos los clientes nuevos, incluidos ${F.n(r.A.organicos, 0)} orgánicos que no costaron nada (CAC blended ${F.usd(r.A.cacBlended)}). Para decidir sobre anuncios hay que mirar solo a los clientes de anuncios: CAC paid <b>${F.usd(r.A.cacReal)}</b> y LTV:CAC <b>${F.x(r.ltvCac)}</b>. El costo por registro de ${F.usd(s.costoPorRegistro)} es el de una prueba gratis: el CAC paid es ${F.n(s.vecesCostoRegistro, 1)} veces eso.</p>`;
+    }
+    if (tiene('leadgen') && r.leadgen.trampa && r.leadgen.trampa.cplVeces) {
+      const t = r.leadgen.trampa;
+      return `<h3>La trampa: el costo por lead</h3><p>El lead de ${t.barato} es <b>${F.n(t.cplVeces, 1)} veces más barato</b> que el de ${t.caro}, pero el cliente de ${t.barato} cuesta <b>${F.pct(t.cacMasCaro, 0)} ${t.cacMasCaro >= 0 ? 'más' : 'menos'}</b>. Lo que importa es el costo por cliente que firma, incluidas las visitas.</p>`;
+    }
+    return '';
+  }
+  const FILAS = () => {
+    const f = [
+      ['Clientes de anuncios', (r) => F.n(r.A.pagados, 1)],
+      ['Inversión en anuncios', (r) => F.usd(r.A.ads, 0)],
+      ['CAC de anuncios', (r) => F.usd(r.A.cacAnuncios)],
+      [tiene('suscripcion') ? 'CAC paid' : 'CAC real', (r) => F.usd(r.A.cacReal)],
+      ['CAC blended', (r) => F.usd(r.A.cacBlended)],
+      [`LTV`, (r) => F.usd(r.ltv)],
+      ['LTV:CAC', (r) => F.x(r.ltvCac) + ' ' + sem(r.semaforo)],
+      ['Payback', (r) => F.meses(r.payback)],
+      ['CAC marginal frente a la referencia', (r) => (r.marginal && Math.abs(r.marginal.clientesExtra) > 0.01 && r.marginal.cac !== null ? F.usd(r.marginal.cac) + (r.marginal.clientesExtra < 0 ? ' (clientes que se dejan de traer)' : '') : '—')],
+    ];
+    if (tiene('ecommerce')) f.splice(1, 0, ['Contribución del primer pedido', (r) => F.usd(r.ecommerce.contribPrimerPedido)], ['Contribución de los pedidos siguientes', (r) => F.usd(r.ecommerce.contribPedido)], ['ROAS de break-even del primer pedido', (r) => F.x(r.ecommerce.roasBEPrimerPedido)], ['ROAS real del primer pedido', (r) => F.x(r.ecommerce.roasRealPrimerPedido)]);
+    if (tiene('suscripcion')) f.splice(1, 0, ['Trials', (r) => F.n(r.A.canales[0].tope, 0)], ['Vendedoras', (r) => F.n(r.suscripcion.vendedoras, 0)], ['Costo por registro', (r) => F.usd(r.suscripcion.costoPorRegistro)], ['LTV:CAC blended', (r) => F.x(r.ltvCacBlended)], ['Caja atrapada al mes frente a la referencia', (r) => F.usd(r.suscripcion.cajaAtrapadaMes)]);
+    if (tiene('leadgen')) f.splice(1, 0, ['Visitas pedidas / capacidad', (r) => `${F.n(r.leadgen.cap.pedidas, 1)} / ${F.n(r.leadgen.cap.capacidad, 0)}`], ...[0, 1].map((i) => [`${perfil.adquisicion.canales[i] ? perfil.adquisicion.canales[i].nombre : ''} · CPL / CAC real / LTV:CAC`, (r) => { const c = r.leadgen.canales[i]; return c ? `${F.usd(c.cpl)} / ${F.usd(c.cacReal)} / ${F.x(c.ltvCac)}` : '—'; }]), ['Resultado del mes (después de anuncios y visitas)', (r) => F.usd(r.leadgen.resultadoMes, 0)]);
+    return f;
+  };
+  function tabla(escs) {
+    let h = '<table class="tabla"><thead><tr><th>Indicador</th>' + escs.map((e) => `<th>${e.nombre}</th>`).join('') + '</tr></thead><tbody>';
+    for (const [n, fn] of FILAS()) h += `<tr><td>${n}</td>` + escs.map((e) => `<td>${e.r.ok ? fn(e.r) : 'faltan datos'}</td>`).join('') + '</tr>';
+    return h + '</tbody></table>';
+  }
+  function graficos(r, escs) {
+    const ok = escs.filter((e) => e.r.ok);
+    if (!r.ok || !ok.length) return;
+    const H = r.H, xs = Array.from({ length: H + 1 }, (_, i) => String(i));
+    let series = ok.map((e) => ({ nombre: e.nombre, datos: e.r.curva }));
+    if (tiene('suscripcion')) {
+      const hoy = ok.find((e) => e.rol === 'hoy') || ok[0], alt = ok.find((e) => e.rol === 'alternativa');
+      series = [{ nombre: 'Cliente mensual (hoy)', datos: hoy.r.suscripcion.curvaMensual }, { nombre: 'Cliente anual (hoy)', datos: hoy.r.suscripcion.curvaPrepago }];
+      if (alt) series.push({ nombre: alt.nombre, datos: alt.r.curva });
+      series = series.filter((s) => s.datos);
+    }
+    series.push({ nombre: 'Vista actual (controles)', datos: r.curva, punteada: true, color: 'var(--tx2)' });
+    const obj = perfil.paybackObjetivo;
+    G.lineas($('#g_curva'), { x: xs, xNombre: 'Mes', xTitulo: 'Mes de vida del cliente (0 = se pagó el CAC)', series, yFmt: (v) => F.usd(v, 0), refY: [{ y: 0, texto: 'Cero: recuperó el CAC' }], refX: obj ? [{ x: String(obj), texto: `payback objetivo: ${obj} meses` }] : [] });
+    const pts = [];
+    ok.forEach((e, i) => { pts.push({ nombre: e.nombre + (tiene('suscripcion') ? ' · paid' : ''), x: e.r.A.cacReal, y: e.r.ltv, color: G.COL[i] }); });
+    if (tiene('suscripcion')) { const hoy = ok.find((e) => e.rol === 'hoy') || ok[0]; pts.push({ nombre: hoy.nombre + ' · blended', x: hoy.r.A.cacBlended, y: hoy.r.ltv, color: 'var(--tx2)' }); }
+    G.dispersion($('#g_ltvcac'), { puntos: pts, rectas: [{ m: 1, texto: '1 a 1', clase: 'mal' }, { m: 3, texto: '3 a 1', clase: 'ok' }], xFmt: (v) => F.usd(v, 0), yFmt: (v) => F.usd(v, 0), xTitulo: 'CAC', yTitulo: 'LTV' });
+    // respuesta a la inversión y CAC marginal por tramo
+    const c0 = perfil.adquisicion.canales.find((c) => c.historial) || perfil.adquisicion.canales[0];
+    const hist = UE.ev(c0.historial, r.p), pts2 = UE.puntos(hist), max = pts2[pts2.length - 1][0];
+    const paso = max / 20, invs = Array.from({ length: 21 }, (_, i) => i * paso);
+    const inv = r.A.canales.find((c) => c.id === c0.id).inv;
+    const etq = invs.map((v) => F.usd(v, 0));
+    const cerca = etq[Math.round(Math.min(inv, max) / paso)];
+    G.lineas($('#g_resp'), { x: etq, xNombre: 'Inversión', xTitulo: `Inversión mensual en ${c0.nombre}`, series: [{ nombre: c0.unidadTope || 'Clientes', datos: invs.map((v) => UE.interp(v, hist).v) }], yFmt: (v) => F.n(v, 0), refX: [{ x: cerca, texto: 'inversión elegida' }] });
+    const tr = UE.tramos(hist);
+    const conv = (c0.etapas || []).filter((e) => !e.capacidad).reduce((x, e) => x * UE.ev(e.tasa, r.p), 1) * UE.ev(c0.factor === undefined ? 1 : c0.factor, r.p);
+    G.barras($('#g_marg'), { categorias: tr.map((t) => `${F.usd(t.de, 0)}–${F.usd(t.a, 0)}`), series: [{ nombre: 'CAC marginal de anuncios por cliente', datos: tr.map((t) => (t.cac === null ? null : t.cac / conv)) }], yFmt: (v) => F.usd(v, 0), etiquetas: true, refY: [{ y: r.ltv, texto: 'LTV ' + F.usd(r.ltv, 0), clase: 'ok' }],
+      nota: (c0.etapas || []).length ? `Inversión extra ÷ clientes extra de cada tramo (${(c0.unidadTope || 'contactos').toLowerCase()} × las tasas del embudo, sin límite de capacidad). Solo anuncios: sin otros costos de adquisición.` : 'Inversión extra ÷ clientes extra de cada tramo del historial (solo anuncios).' });
+    // la trampa en un gráfico
+    if (tiene('ecommerce') && r.ecommerce.trampa) {
+      const t = r.ecommerce.trampa;
+      G.barras($('#g_trampa'), { categorias: ['ROAS de Ads Manager', 'ROAS real del 1.er pedido', 'ROAS de break-even'], series: [{ nombre: 'ROAS', datos: [t.roasAtribuido, t.roasReal, t.roasBE] }], coloresBarra: ['var(--s1)', 'var(--mal)', 'var(--tx2)'], yFmt: (v) => F.x(v, 1), etiquetas: true, refY: [{ y: t.roasBE, texto: 'break-even ' + F.x(t.roasBE), clase: 'mal' }],
+        nota: `Meta dice ${F.x(t.roasAtribuido, 1)}; lo que de verdad traen los clientes nuevos en su primer pedido es ${F.x(t.roasReal)}, debajo del mínimo de ${F.x(t.roasBE)}.` });
+    } else if (tiene('suscripcion') && r.suscripcion.laminaLtvCac !== null) {
+      const s = r.suscripcion;
+      G.barras($('#g_trampa'), { categorias: ['Lámina de Valeria', 'LTV:CAC blended', 'LTV:CAC paid'], series: [{ nombre: 'LTV:CAC', datos: [s.laminaLtvCac, s.ltvCacBlended, s.ltvCacPaid] }], coloresBarra: ['var(--s1)', 'var(--s4)', 'var(--mal)'], yFmt: (v) => F.x(v, 1), etiquetas: true, refY: [{ y: 1, texto: '1 a 1', clase: 'mal' }, { y: 3, texto: '3 a 1', clase: 'ok' }],
+        nota: `El 2,4 sale de mezclar orgánicos gratis. Con solo los clientes de anuncios: ${F.x(s.ltvCacPaid)}.` });
+      G.barras($('#g_extra'), { categorias: ['Trials', 'Clientes de anuncios', 'Clientes orgánicos'], series: [{ nombre: 'Cantidad al mes', datos: [r.A.canales[0].tope, r.A.pagados, r.A.organicos] }], yFmt: (v) => F.n(v, 0), etiquetas: true, nota: `Embudo: ${F.usd(r.A.ads, 0)} de inversión → ${F.n(r.A.canales[0].tope, 0)} trials → ${F.pct(UE.ev(perfil.adquisicion.canales[0].etapas[0].tasa, r.p))} pagan.` });
+    }
+    if (tiene('leadgen')) {
+      const cs = r.leadgen.canales, t = r.leadgen.trampa;
+      if (!(tiene('suscripcion') && r.suscripcion.laminaLtvCac !== null))
+      G.barras($('#g_trampa'), { categorias: cs.map((c) => c.nombre + ' · CPL').concat(cs.map((c) => c.nombre + ' · CAC real')), series: [{ nombre: 'Costo', datos: cs.map((c) => c.cpl).concat(cs.map((c) => c.cacReal)) }], coloresBarra: cs.map(() => 'var(--s3)').concat(cs.map(() => 'var(--s2)')), yFmt: (v) => F.usd(v, 0), etiquetas: true,
+        nota: t && t.cplVeces ? `<b>El lead de ${t.barato} es ${F.n(t.cplVeces, 1)} veces más barato, pero el cliente de ${t.barato} cuesta ${F.pct(t.cacMasCaro, 0)} ${t.cacMasCaro >= 0 ? 'más' : 'menos'}.</b>` : 'Con un solo canal activo no hay comparación de CPL.' });
+      const pasos = (c) => c.etapas.filter((e) => !e.capacidad && !/^Hechas/.test(e.nombre));
+      const etapas = pasos(cs[0]).map((e) => e.nombre);
+      G.barras($('#g_extra'), { categorias: etapas, series: cs.map((c) => ({ nombre: c.nombre, datos: pasos(c).map((e) => (c.leads > 0 ? e.n / c.leads : null)) })), yFmt: (v) => F.pct(v, 0), nota: 'Embudo de cada canal como % de sus leads (ventas después de la capacidad).' });
+      const cap = r.leadgen.cap;
+      G.barras($('#g_cap'), { categorias: cs.map((c) => c.nombre).concat(['Total']), series: [{ nombre: 'Visitas pedidas', datos: cs.map((c) => c.pedidas).concat([cap.pedidas]) }], coloresBarra: cs.map(() => 'var(--s1)').concat([cap.pedidas > cap.capacidad ? 'var(--mal)' : 'var(--s3)']), yFmt: (v) => F.n(v, 0), etiquetas: true, refY: [{ y: cap.capacidad, texto: 'capacidad ' + F.n(cap.capacidad, 0), clase: 'mal' }],
+        nota: cap.pedidas > cap.capacidad ? `⚠ Se piden ${F.n(cap.pedidas, 1)} visitas y caben ${F.n(cap.capacidad, 0)}: se pierden ${F.n(cap.perdidas, 1)} (primero se atiende ${perfil.adquisicion.capacidad.prioridad[0]}).` : `Uso de la capacidad: ${F.pct(cap.uso)}.` });
+    }
+  }
+  function recomendacion(T) {
+    const rc = T.recomendacion;
+    return `<h3>${rc.titulo}</h3><ul>${rc.razones.map((x) => `<li>${x}</li>`).join('')}</ul>` + (rc.riesgos.length ? `<p class="nota"><b>Riesgos:</b> ${rc.riesgos.join(' ')}</p>` : '');
+  }
+
+  /* ------------------------------------------------ nivel 3 */
+  function planesActuales() {
+    const lista = (perfil.planes || []).map((d) => ({ d, pl: UE.plan(perfil, d, base) }));
+    if (editable) lista.push({ d: { nombre: editable.nombre }, pl: editable, editable: true });
+    return lista;
+  }
+  function renderSim() {
+    if (!perfil.simulacion || !(perfil.planes || []).length) { $('#sim_tabla').innerHTML = '<p class="aviso">Este perfil no trae datos de caja o planes: agregá las secciones «simulacion» y «planes» para proyectar 24 meses.</p>'; return; }
+    let lista;
+    try { if (!editable) { editable = UE.plan(perfil, perfil.planes[0], base); editable.nombre = 'Plan editable'; } lista = planesActuales(); }
+    catch (e) { editable = null; $('#sim_tabla').innerHTML = `<p class="aviso">No se puede simular: ${e.message}. Completá los datos en «Datos y supuestos».</p>`; return; }
+    const S = perfil.simulacion;
+    let sims;
+    try { sims = lista.map((x) => ({ ...x, r: UE.simular(perfil, x.pl, base) })); }
+    catch (e) { $('#sim_tabla').innerHTML = `<p class="aviso">No se puede simular: ${e.message}. Completá los datos en «Datos y supuestos».</p>`; return; }
+    const etqAct = S.etiquetaActivos || 'Clientes activos', esLead = tiene('leadgen');
+    let h = '<table class="tabla"><thead><tr><th>Plan</th><th>Caja mínima (mes)</th><th>Caja mes ' + (S.meses || 24) + '</th><th>' + etqAct + ' mes ' + (S.meses || 24) + '</th><th>' + (S.etiquetaTotal || 'Clientes nuevos de anuncios (24 meses)') + '</th><th>¿Cumple las reglas?</th></tr></thead><tbody>';
+    for (const s of sims) h += `<tr><td>${s.d.nombre}</td><td>${F.usd(s.r.cajaMin, 0)} (${s.r.mesCajaMin})</td><td>${F.usd(s.r.cajaFinal, 0)}</td><td>${F.n(s.r.activosFinal, 1)}</td><td>${F.n(s.r.clientesTotal, 1)}</td><td>${s.r.cumple ? '<span class="sem ok">Sí</span>' : '<span class="sem mal">No</span> ' + s.r.fallas.join('; ')}</td></tr>`;
+    h += '</tbody></table>';
+    $('#sim_tabla').innerHTML = h;
+    const xs = Array.from({ length: S.meses || 24 }, (_, i) => String(i + 1));
+    G.lineas($('#g_caja'), { x: xs, xNombre: 'Mes', xTitulo: 'Mes', series: sims.map((s, i) => ({ nombre: s.d.nombre, datos: s.r.filas.map((f) => f.caja), punteada: s.editable, color: s.editable ? 'var(--tx2)' : G.COL[i] })), yFmt: (v) => F.usd(v, 0), refY: [{ y: sims[0].r.piso, texto: 'piso ' + F.usd(sims[0].r.piso, 0), clase: 'mal' }] });
+    const sel = sims.find((s) => s.editable) || sims[0];
+    if (esLead) G.lineas($('#g_act'), { x: xs, xNombre: 'Mes', xTitulo: 'Mes · ' + sel.d.nombre, series: [{ nombre: 'Visitas pedidas', datos: sel.r.filas.map((f) => f.pedidas) }, { nombre: 'Capacidad', datos: sel.r.filas.map((f) => f.capacidad), color: 'var(--mal)', punteada: true }], yFmt: (v) => F.n(v, 0) });
+    else G.lineas($('#g_act'), { x: xs, xNombre: 'Mes', xTitulo: 'Mes', series: sims.map((s, i) => ({ nombre: s.d.nombre, datos: s.r.filas.map((f) => f.activos), punteada: s.editable, color: s.editable ? 'var(--tx2)' : G.COL[i] })), yFmt: (v) => F.n(v, 0) });
+    $('#g_act_tit').textContent = esLead ? 'Visitas pedidas frente a la capacidad (plan editable)' : etqAct + ' mes a mes';
+    renderEditable(sel);
+  }
+  function renderEditable(sel) {
+    const S = perfil.simulacion, canales = perfil.adquisicion.canales, M = S.meses || 24, pl = editable, r = sel.r;
+    const conContr = !!S.costoContratacion;
+    let h = '<table class="tabla mes"><thead><tr><th>Mes</th>' + canales.map((c) => `<th>Inversión ${c.nombre}</th>`).join('') + (conContr ? '<th>Contratados (acum.)</th>' : '') +
+      `<th>${canales[0].unidadTope || 'Tope'}</th>` + (r.filas[0].escalones.length ? '<th>' + perfil.adquisicion.escalones[0].nombre + '</th>' : '') + (tiene('leadgen') ? '<th>Visitas pedidas</th><th>Capacidad</th><th>Hechas</th>' : '') +
+      '<th>Clientes nuevos</th>' + (S.base ? '<th>Contribución clientes actuales</th>' : '') + '<th>Contribución grupos nuevos</th><th>Entradas</th><th>Salidas</th><th>Caja final</th><th>' + (S.etiquetaActivos || 'Activos') + '</th><th>Alerta</th></tr></thead><tbody>';
+    r.filas.forEach((f, i) => {
+      h += `<tr class="${f.bajoPiso ? 'bajo' : ''}"><td>${f.mes}</td>` + canales.map((c) => `<td><input class="celda" data-c="${c.id}" data-m="${i}" type="number" step="500" value="${pl.inversiones[c.id][i]}"></td>`).join('') +
+        (conContr ? `<td><input class="celda" data-c="__contr" data-m="${i}" type="number" min="0" step="1" value="${pl.contratados[i]}"></td>` : '') +
+        `<td>${F.n(f.tope, 1)}</td>` + (f.escalones.length ? `<td>${f.escalones[0]}</td>` : '') + (tiene('leadgen') ? `<td>${F.n(f.pedidas, 1)}</td><td>${F.n(f.capacidad, 0)}</td><td>${F.n(f.hechas, 1)}</td>` : '') +
+        `<td>${F.n(f.nuevos, 1)}</td>` + (S.base ? `<td>${F.usd(f.baseDecae, 0)}</td>` : '') + `<td>${F.usd(f.contribNuevos, 0)}</td><td>${F.usd(f.entradas, 0)}</td><td>${F.usd(f.salidas, 0)}</td><td><b>${F.usd(f.caja, 0)}</b></td><td>${F.n(f.activos, 1)}</td><td>${f.bajoPiso ? '⚠ bajo el piso' : f.sinCapacidad ? 'sin capacidad' : ''}</td></tr>`;
+    });
+    h += '</tbody></table>';
+    let cb = (perfil.cambios || []).map((c) => `<label class="cambio">${c.nombre}: <select data-cambio="${c.id}"><option value="0">no</option>${Array.from({ length: M }, (_, i) => `<option value="${i + 1}" ${pl.cambios[c.id] === i + 1 ? 'selected' : ''}>desde el mes ${i + 1}</option>`).join('')}</select></label>`).join('');
+    $('#sim_edit').innerHTML = `<div class="fila-ctl">${cb}<button class="chip" id="copiar">Copiar un plan al editable…</button><select id="plan_src">${(perfil.planes || []).map((p, i) => `<option value="${i}">${p.nombre}</option>`).join('')}</select></div>` +
+      `<p class="nota">${sel.r.cumple ? 'El plan editable cumple todas las reglas.' : '⚠ ' + sel.r.fallas.join('; ')}</p><div class="scroll">${h}</div>`;
+    $('#sim_edit').querySelectorAll('input.celda').forEach((inp) => inp.addEventListener('change', (e) => {
+      const c = e.target.dataset.c, m = +e.target.dataset.m, v = parseFloat(e.target.value) || 0;
+      if (c === '__contr') pl.contratados[m] = Math.max(0, Math.round(v)); else pl.inversiones[c][m] = v;
+      renderSim();
+    }));
+    $('#sim_edit').querySelectorAll('select[data-cambio]').forEach((s) => s.addEventListener('change', (e) => { const v = +e.target.value; if (v) pl.cambios[e.target.dataset.cambio] = v; else delete pl.cambios[e.target.dataset.cambio]; renderSim(); }));
+    $('#copiar').onclick = () => { const d = perfil.planes[+$('#plan_src').value]; editable = UE.plan(perfil, d, base); editable.nombre = 'Plan editable'; renderSim(); };
+    $('#mes1').innerHTML = mes1(r);
+  }
+  function mes1(r) {
+    const f = r.filas[0], A = f.adq, S = perfil.simulacion, p0 = UE.valores(perfil, base);
+    const caja0 = UE.ev(S.cajaInicial, p0);
+    const li = [];
+    for (const c of A.canales) li.push(`${c.nombre}: inversión ${F.usd(c.inv, 0)} → ${F.n(c.tope, 2)} ${(c.def.unidadTope || '').toLowerCase()}` + (c.etapas.length > 1 ? ' → ' + c.etapas.slice(1).filter((e) => !e.capacidad).map((e) => `${e.nombre.toLowerCase()} ${F.n(e.n, 2)}`).join(' → ') : ''));
+    if (A.organicos) li.push(`Clientes que no vienen de anuncios: ${F.n(A.organicos, 0)} → clientes nuevos del mes = ${F.n(A.pagados, 2)} + ${F.n(A.organicos, 0)} = ${F.n(f.nuevos, 2)}`);
+    for (const e of A.escalones) li.push(`${e.nombre}: ${e.cantidad} × costo = ${F.usd(e.costo, 0)}`);
+    if (S.base) li.push(`Contribución de los clientes actuales: ${F.usd(f.baseDecae, 2)}`);
+    li.push(`Entradas (cobros o contribución del mes): ${F.usd(f.entradas, 2)}`);
+    const sal = [`anuncios ${F.usd(A.ads, 0)}`]; if (A.fee) sal.push(`fee ${F.usd(A.fee, 0)}`); for (const e of A.escalones) if (e.costo) sal.push(`${e.nombre.toLowerCase()} ${F.usd(e.costo, 0)}`);
+    if (A.comision) sal.push(`comisiones ${F.usd(A.comision, 2)}`); if (A.visitas) sal.push(`visitas ${F.usd(A.visitas, 2)}`); if (f.pagos) sal.push(`pagos de las ventas ${F.usd(f.pagos, 2)}`); sal.push(`fijos ${F.usd(f.fijos, 0)}`); if (f.costoContr) sal.push(`contratados ${F.usd(f.costoContr, 0)}`);
+    li.push(`Salidas: ${sal.join(' + ')} = ${F.usd(f.salidas, 2)}`);
+    li.push(`<b>Caja final del mes 1: ${F.usd(caja0, 0)} + ${F.usd(f.entradas, 2)} − ${F.usd(f.salidas, 2)} = ${F.usd(f.caja, 2)}</b>`);
+    return '<ol>' + li.map((x) => `<li>${x}</li>`).join('') + '</ol>';
+  }
+  function buscarPlan() {
+    if (!perfil.busqueda) { $('#busq').textContent = 'Este perfil no define un espacio de búsqueda.'; return; }
+    $('#busq').textContent = 'Buscando…';
+    setTimeout(() => {
+      const t = Date.now(), b = UE.buscar(perfil, perfil.busqueda, base); busqueda = b;
+      $('#busq').innerHTML = `Evaluó <b>${b.evaluados}</b> planes con el mismo modelo y las mismas reglas en ${((Date.now() - t) / 1000).toFixed(1)} s. Mejor encontrado: <b>${b.mejor.texto}</b> → caja mínima ${F.usd(b.mejor.cajaMin, 0)} (mes ${b.mejor.mesCajaMin}), caja final ${F.usd(b.mejor.cajaFinal, 0)}, ${b.mejor.cumple ? 'cumple las reglas' : 'no cumple'}. <button class="chip" id="usar">Cargar en el plan editable</button>`;
+      $('#usar').onclick = () => { editable = clon(b.mejor.plan); editable.nombre = 'Plan editable'; renderSim(); };
+    }, 20);
+  }
+
+  /* ------------------------------------------------ datos y supuestos */
+  function renderDatos() {
+    const pv = UE.valores(perfil, base), falta = new Set(UE.faltantes(perfil, pv));
+    let h = '<table class="tabla datos"><thead><tr><th>Dato</th><th>Valor</th><th>Unidad</th><th>Origen</th><th>Fuente</th></tr></thead><tbody>';
+    let grupo = null;
+    for (const d of perfil.parametros) {
+      if (d.grupo !== grupo) { grupo = d.grupo; h += `<tr class="g"><td colspan="5">${grupo || ''}</td></tr>`; }
+      const v = pv[d.id], txt = v === null || v === undefined ? '' : typeof v === 'object' ? JSON.stringify(v) : v;
+      h += `<tr class="${falta.has(d.id) ? 'falta' : ''}"><td>${d.etiqueta}</td><td><input class="dato" data-id="${d.id}" value='${String(txt).replace(/'/g, '&#39;')}' placeholder="falta"></td><td>${d.unidad || ''}</td><td><span class="orig ${(d.origen || '').replace(' ', '-')}">${d.origen || ''}</span></td><td>${d.fuente || ''}</td></tr>`;
+    }
+    h += '</tbody></table>';
+    $('#datos').innerHTML = (falta.size ? `<p class="aviso">Faltan datos: ${[...falta].map((id) => def(id).etiqueta).join(', ')}.</p>` : '') +
+      (perfil.trampa ? `<p><b>Trampa del caso:</b> ${perfil.trampa}</p>` : '') + h +
+      `<p class="nota">Los valores <b>dato</b> vienen del caso; <b>supuesto</b> es un supuesto permitido por el caso; <b>supuesto propio</b> lo agregamos nosotros y está justificado en la fuente. Todo lo demás de la calculadora es <b>calculado</b>. Las listas e historiales se escriben como JSON, por ejemplo [[4000,100],[8000,165]].</p>`;
+    $('#datos').querySelectorAll('input.dato').forEach((inp) => inp.addEventListener('change', (e) => {
+      const d = def(e.target.dataset.id), t = e.target.value.trim();
+      let v; if (t === '') v = null; else if (d.unidad === 'texto') v = t; else { try { v = JSON.parse(t.replace(',', '.')); } catch (_) { v = parseFloat(t.replace(',', '.')); } }
+      if (typeof v === 'number' && !isFinite(v)) v = null;
+      base[d.id] = v; renderControles(); actualizar(); renderDatos();
+    }));
+  }
+
+  /* ------------------------------------------------ perfil (universal) */
+  function renderPerfil() {
+    if (!UNIVERSAL) return;
+    const pl = window.PLANTILLAS || {};
+    $('#perfil').innerHTML = `<p>Elegí una plantilla o un caso para empezar, cambiá los datos en «Datos y supuestos» o editá el perfil completo en JSON. El motor no se toca: cada empresa nueva es un perfil.</p>
+      <div class="fila-ctl"><select id="plant">${Object.keys(pl).map((k) => `<option value="${k}" ${pl[k].id === perfil.id ? 'selected' : ''}>${pl[k].nombre}</option>`).join('')}</select><button class="boton" id="usarPl">Usar esta plantilla</button>
+      <button class="chip" id="bajar">Descargar el perfil (JSON)</button><label class="chip">Abrir un perfil… <input type="file" id="subir" accept=".json" hidden></label></div>
+      <textarea id="json" spellcheck="false"></textarea><div class="fila-ctl"><button class="boton" id="aplicar">Aplicar el JSON</button><span id="jsonmsg" class="nota"></span></div>`;
+    $('#json').value = JSON.stringify(perfil, null, 2);
+    $('#usarPl').onclick = () => cargar(pl[$('#plant').value]);
+    $('#aplicar').onclick = () => { try { cargar(JSON.parse($('#json').value)); $('#jsonmsg').textContent = 'Perfil aplicado.'; } catch (e) { $('#jsonmsg').textContent = 'Error: ' + e.message; } };
+    $('#bajar').onclick = () => { const p = clon(perfil); for (const d of p.parametros) if (d.id in base) d.valor = base[d.id]; const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([JSON.stringify(p, null, 2)], { type: 'application/json' })); a.download = (p.id || 'perfil') + '.json'; a.click(); };
+    $('#subir').onchange = (e) => { const f = e.target.files[0]; if (!f) return; f.text().then((t) => { try { cargar(JSON.parse(t)); } catch (err) { $('#jsonmsg').textContent = 'Error: ' + err.message; } }); };
+  }
+  function cargar(p) {
+    UE.calcularTodo(p); // valida el perfil antes de aceptarlo
+    ORIGINAL = clon(p); perfil = clon(p); base = {}; editable = null; iniciar();
+  }
+
+  /* ------------------------------------------------ ciclo */
+  function actualizar() {
+    let r, T;
+    try { r = UE.escenario(perfil, base); T = UE.calcularTodo(perfil, base); }
+    catch (e) { $('#kpis').innerHTML = `<div class="aviso">El perfil tiene un error: ${e.message}</div>`; return; }
+    $('#kpis').innerHTML = kpis(r);
+    $('#avisos').innerHTML = r.ok && r.avisos.length ? r.avisos.map((a) => `<p class="aviso">${a}</p>`).join('') : '';
+    const tt = textoTrampa(r); $('#trampa').innerHTML = tt; $('#trampa').style.display = tt ? '' : 'none';
+    const escs = T.escenarios.map((e) => ({ ...e }));
+    $('#tabla').innerHTML = tabla(escs);
+    $('#reco').innerHTML = recomendacion(T);
+    graficos(r, escs);
+    if ($('#t_sim').classList.contains('activa')) renderSim();
+  }
+  function iniciar() {
+    document.title = perfil.nombre + ' · calculadora de unit economics';
+    $('#titulo').textContent = perfil.nombre; $('#sub').textContent = perfil.subtitulo || perfil.modelo || '';
+    $('#decision').textContent = perfil.decision ? 'Decisión: ' + perfil.decision : '';
+    const esp = perfil.especializaciones || [];
+    $('#card_extra').style.display = esp.includes('suscripcion') || esp.includes('leadgen') ? '' : 'none';
+    $('#card_cap').style.display = esp.includes('leadgen') ? '' : 'none';
+    $('#card_trampa').style.display = esp.length ? '' : 'none';
+    $('#extra_tit').textContent = esp.includes('leadgen') ? 'Embudo de cada canal, lado a lado' : 'Embudo: inversión → trials → clientes';
+    renderControles(); actualizar(); renderDatos(); renderPerfil();
+  }
+  document.querySelectorAll('.tab').forEach((b) => b.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach((x) => x.classList.toggle('activa', x === b));
+    document.querySelectorAll('.panel').forEach((x) => x.classList.toggle('activa', x.id === 'p_' + b.id.slice(2)));
+    if (b.id === 't_sim') renderSim();
+    if (b.id === 't_datos') renderDatos();
+  }));
+  $('#reset').onclick = () => { base = {}; editable = null; renderControles(); actualizar(); renderDatos(); };
+  $('#buscar').onclick = buscarPlan;
+  if (!UNIVERSAL) $('#t_perfil').style.display = 'none';
+  iniciar();
+  window.APP = { get base() { return base; }, get perfil() { return perfil; }, cargar, actualizar };
+})();
+</script>
+</body></html>

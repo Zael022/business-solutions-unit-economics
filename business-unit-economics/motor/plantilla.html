@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculadora de unit economics</title>
+<style>/*CSS*/</style></head>
+<body>
+<header>
+  <div><h1 id="titulo"></h1><p id="sub"></p><p id="decision" class="dec"></p></div>
+  <div class="acciones"><button class="boton" id="reset">Volver a los datos del caso</button><button class="chip claro" onclick="window.print()">Imprimir</button></div>
+</header>
+<nav class="tabs"><button class="tab activa" id="t_calc">Calculadora y tablero</button><button class="tab" id="t_sim">Simulador de 24 meses</button><button class="tab" id="t_datos">Datos y supuestos</button><button class="tab" id="t_perfil">Perfil de la empresa</button></nav>
+<div class="app">
+  <aside class="controles">
+    <h2>Escenarios</h2><div id="escs" class="chips"></div>
+    <h2>Controles</h2><div id="ctls"></div>
+  </aside>
+  <main>
+    <section class="panel activa" id="p_calc">
+      <div id="reco" class="reco"></div>
+      <div id="avisos"></div>
+      <div id="kpis" class="kpis"></div>
+      <div id="trampa" class="trampa"></div>
+      <div class="graficos">
+        <div class="tarjeta" id="card_trampa"><h3>La trampa en un gráfico</h3><div id="g_trampa" class="g" aria-label="La trampa del caso"></div></div>
+        <div class="tarjeta"><h3>Curva de caja de un cliente</h3><div id="g_curva" class="g" aria-label="Curva de caja acumulada de un cliente"></div></div>
+        <div class="tarjeta"><h3>LTV frente al CAC (líneas de 1 a 1 y 3 a 1)</h3><div id="g_ltvcac" class="g" aria-label="LTV frente a CAC"></div></div>
+        <div class="tarjeta" id="card_extra"><h3 id="extra_tit"></h3><div id="g_extra" class="g" aria-label="Embudo"></div></div>
+        <div class="tarjeta" id="card_cap"><h3>Visitas pedidas frente a la capacidad</h3><div id="g_cap" class="g" aria-label="Capacidad"></div></div>
+        <div class="tarjeta"><h3>Respuesta a la inversión (historial, con el punto $0 = 0)</h3><div id="g_resp" class="g" aria-label="Respuesta a la inversión"></div></div>
+        <div class="tarjeta"><h3>CAC marginal de cada tramo del historial</h3><div id="g_marg" class="g" aria-label="CAC marginal por tramo"></div></div>
+      </div>
+      <h2>Escenarios lado a lado</h2><div id="tabla" class="scroll"></div>
+    </section>
+    <section class="panel" id="p_sim">
+      <div id="sim">
+        <h2>Comparación de planes</h2><div id="sim_tabla" class="scroll"></div>
+        <p><button class="boton" id="buscar">Buscar el mejor plan</button> <span id="busq" class="nota"></span></p>
+        <div class="graficos">
+          <div class="tarjeta"><h3>Caja mes a mes con la línea del piso</h3><div id="g_caja" class="g" aria-label="Caja mes a mes"></div></div>
+          <div class="tarjeta"><h3 id="g_act_tit"></h3><div id="g_act" class="g" aria-label="Activos o capacidad"></div></div>
+        </div>
+        <h2>Revisión del mes 1 (plan editable)</h2><div id="mes1" class="tarjeta"></div>
+        <h2>Plan editable, mes a mes</h2><div id="sim_edit"></div>
+      </div>
+    </section>
+    <section class="panel" id="p_datos"><div id="datos"></div></section>
+    <section class="panel" id="p_perfil"><div id="perfil"></div></section>
+  </main>
+</div>
+<footer>Motor compartido «business-unit-economics». Cifras mensuales. Edad 1 = mes en que llega el cliente; el payback es el primer mes en que la caja acumulada del cliente llega a cero.</footer>
+<script>/*DATOS*/</script>
+<script>/*MOTOR*/</script>
+<script>/*GRAFICOS*/</script>
+<script>/*APP*/</script>
+</body></html>

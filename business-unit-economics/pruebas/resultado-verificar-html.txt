@@ -1,0 +1,140 @@
+PASA  calculadora-tueste.html · datos del caso · CAC real: pantalla «$54,55» · motor 54.5455
+PASA  calculadora-tueste.html · datos del caso · LTV a 12 meses: pantalla «$54,80» · motor 54.7961
+PASA  calculadora-tueste.html · datos del caso · LTV:CAC: pantalla «1,00×» · motor 1.0046
+PASA  calculadora-tueste.html · datos del caso · ROAS real del primer pedido: pantalla «0,70×» · motor 0.7013
+PASA  calculadora-tueste.html · datos del caso · ROAS de break-even: pantalla «2,14×» · motor 2.1397
+PASA  calculadora-tueste.html · datos del caso · Margen de contribución del pedido: pantalla «$15,89» · motor 15.8900
+PASA  calculadora-tueste.html · datos del caso · Payback: pantalla «12 meses» · motor 12.0000
+PASA  calculadora-tueste.html · datos del caso · CAC marginal: pantalla «—» · motor vacío
+PASA  calculadora-tueste.html · tiene al menos 3 gráficos dibujados: 5 gráficos
+PASA  calculadora-tueste.html · con {"inv_meta":16000} · CAC real: pantalla «$72,34» · motor 72.3404
+PASA  calculadora-tueste.html · con {"inv_meta":16000} · LTV a 12 meses: pantalla «$54,80» · motor 54.7961
+PASA  calculadora-tueste.html · con {"inv_meta":16000} · LTV:CAC: pantalla «0,76×» · motor 0.7575
+PASA  calculadora-tueste.html · con {"inv_meta":16000} · ROAS real del primer pedido: pantalla «0,50×» · motor 0.4994
+PASA  calculadora-tueste.html · con {"inv_meta":16000} · ROAS de break-even: pantalla «2,14×» · motor 2.1397
+PASA  calculadora-tueste.html · con {"inv_meta":16000} · Margen de contribución del pedido: pantalla «$15,89» · motor 15.8900
+PASA  calculadora-tueste.html · con {"inv_meta":16000} · Payback: pantalla «no recupera» · motor vacío
+PASA  calculadora-tueste.html · con {"inv_meta":16000} · CAC marginal: pantalla «$114,29» · motor 114.2857
+PASA  calculadora-tueste.html · con {"inv_meta":16000,"envio":5.5} · CAC real: pantalla «$72,34» · motor 72.3404
+PASA  calculadora-tueste.html · con {"inv_meta":16000,"envio":5.5} · LTV a 12 meses: pantalla «$51,12» · motor 51.1169
+PASA  calculadora-tueste.html · con {"inv_meta":16000,"envio":5.5} · LTV:CAC: pantalla «0,71×» · motor 0.7066
+PASA  calculadora-tueste.html · con {"inv_meta":16000,"envio":5.5} · ROAS real del primer pedido: pantalla «0,50×» · motor 0.4994
+PASA  calculadora-tueste.html · con {"inv_meta":16000,"envio":5.5} · ROAS de break-even: pantalla «2,28×» · motor 2.2834
+PASA  calculadora-tueste.html · con {"inv_meta":16000,"envio":5.5} · Margen de contribución del pedido: pantalla «$14,89» · motor 14.8900
+PASA  calculadora-tueste.html · con {"inv_meta":16000,"envio":5.5} · Payback: pantalla «no recupera» · motor vacío
+PASA  calculadora-tueste.html · con {"inv_meta":16000,"envio":5.5} · CAC marginal: pantalla «$114,29» · motor 114.2857
+PASA  calculadora-tueste.html · después de «Volver a los datos del caso» · CAC real: pantalla «$54,55» · motor 54.5455
+PASA  calculadora-tueste.html · después de «Volver a los datos del caso» · LTV a 12 meses: pantalla «$54,80» · motor 54.7961
+PASA  calculadora-tueste.html · después de «Volver a los datos del caso» · LTV:CAC: pantalla «1,00×» · motor 1.0046
+PASA  calculadora-tueste.html · después de «Volver a los datos del caso» · ROAS real del primer pedido: pantalla «0,70×» · motor 0.7013
+PASA  calculadora-tueste.html · después de «Volver a los datos del caso» · ROAS de break-even: pantalla «2,14×» · motor 2.1397
+PASA  calculadora-tueste.html · después de «Volver a los datos del caso» · Margen de contribución del pedido: pantalla «$15,89» · motor 15.8900
+PASA  calculadora-tueste.html · después de «Volver a los datos del caso» · Payback: pantalla «12 meses» · motor 12.0000
+PASA  calculadora-tueste.html · después de «Volver a los datos del caso» · CAC marginal: pantalla «—» · motor vacío
+PASA  calculadora-tueste.html · simulador · Plan 1 · $8.000 fijos (hoy) · caja mes 24: $79.596
+PASA  calculadora-tueste.html · simulador · Plan 2 · Agencia: $16.000 fijos · caja mes 24: −$26.217
+PASA  calculadora-tueste.html · simulador · Plan 3 · $4.000 fijos, sin otros cambios · caja mes 24: $95.566
+PASA  calculadora-tueste.html · simulador · Plan 4 · Pack desde el mes 1; $4.000 meses 1-3 y $ · caja mes 24: $147.770
+PASA  calculadora-tueste.html · simulador · Plan 5 · Pack desde el mes 1 y $8.000 fijos · caja mes 24: $154.362
+PASA  calculadora-tueste.html · revisión del mes 1 muestra la caja final del plan
+PASA  calculadora-tueste.html · «Buscar el mejor plan» da el mismo resultado que el motor: Evaluó 682 planes con el mismo modelo y las mismas reglas en 0.1 s. Mejor encontrado: meta: $8000 · cambios {"pack":1} →
+PASA  calculadora-tueste.html · sin errores de JavaScript y sin pedir nada a internet
+PASA  calculadora-agendo.html · datos del caso · CAC paid: pantalla «$180,00» · motor 180.0000
+PASA  calculadora-agendo.html · datos del caso · CAC blended: pantalla «$105,00» · motor 105.0000
+PASA  calculadora-agendo.html · datos del caso · LTV a 24 meses: pantalla «$251,39» · motor 251.3875
+PASA  calculadora-agendo.html · datos del caso · LTV:CAC paid: pantalla «1,40×» · motor 1.3966
+PASA  calculadora-agendo.html · datos del caso · LTV:CAC blended: pantalla «2,39×» · motor 2.3942
+PASA  calculadora-agendo.html · datos del caso · Payback: pantalla «14 meses» · motor 14.0000
+PASA  calculadora-agendo.html · datos del caso · Vendedoras necesarias: pantalla «1» · motor 1.0000
+PASA  calculadora-agendo.html · datos del caso · CAC marginal: pantalla «—» · motor vacío
+PASA  calculadora-agendo.html · tiene al menos 3 gráficos dibujados: 6 gráficos
+PASA  calculadora-agendo.html · con {"inv":30000} · CAC paid: pantalla «$277,14» · motor 277.1429
+PASA  calculadora-agendo.html · con {"inv":30000} · CAC blended: pantalla «$198,41» · motor 198.4091
+PASA  calculadora-agendo.html · con {"inv":30000} · LTV a 24 meses: pantalla «$251,39» · motor 251.3875
+PASA  calculadora-agendo.html · con {"inv":30000} · LTV:CAC paid: pantalla «0,91×» · motor 0.9071
+PASA  calculadora-agendo.html · con {"inv":30000} · LTV:CAC blended: pantalla «1,27×» · motor 1.2670
+PASA  calculadora-agendo.html · con {"inv":30000} · Payback: pantalla «no recupera» · motor vacío
+PASA  calculadora-agendo.html · con {"inv":30000} · Vendedoras necesarias: pantalla «2» · motor 2.0000
+PASA  calculadora-agendo.html · con {"inv":30000} · CAC marginal: pantalla «$398,57» · motor 398.5714
+PASA  calculadora-agendo.html · con {"inv":30000,"churn":0.08} · CAC paid: pantalla «$277,14» · motor 277.1429
+PASA  calculadora-agendo.html · con {"inv":30000,"churn":0.08} · CAC blended: pantalla «$198,41» · motor 198.4091
+PASA  calculadora-agendo.html · con {"inv":30000,"churn":0.08} · LTV a 24 meses: pantalla «$210,80» · motor 210.8002
+PASA  calculadora-agendo.html · con {"inv":30000,"churn":0.08} · LTV:CAC paid: pantalla «0,76×» · motor 0.7606
+PASA  calculadora-agendo.html · con {"inv":30000,"churn":0.08} · LTV:CAC blended: pantalla «1,06×» · motor 1.0625
+PASA  calculadora-agendo.html · con {"inv":30000,"churn":0.08} · Payback: pantalla «no recupera» · motor vacío
+PASA  calculadora-agendo.html · con {"inv":30000,"churn":0.08} · Vendedoras necesarias: pantalla «2» · motor 2.0000
+PASA  calculadora-agendo.html · con {"inv":30000,"churn":0.08} · CAC marginal: pantalla «$398,57» · motor 398.5714
+PASA  calculadora-agendo.html · después de «Volver a los datos del caso» · CAC paid: pantalla «$180,00» · motor 180.0000
+PASA  calculadora-agendo.html · después de «Volver a los datos del caso» · CAC blended: pantalla «$105,00» · motor 105.0000
+PASA  calculadora-agendo.html · después de «Volver a los datos del caso» · LTV a 24 meses: pantalla «$251,39» · motor 251.3875
+PASA  calculadora-agendo.html · después de «Volver a los datos del caso» · LTV:CAC paid: pantalla «1,40×» · motor 1.3966
+PASA  calculadora-agendo.html · después de «Volver a los datos del caso» · LTV:CAC blended: pantalla «2,39×» · motor 2.3942
+PASA  calculadora-agendo.html · después de «Volver a los datos del caso» · Payback: pantalla «14 meses» · motor 14.0000
+PASA  calculadora-agendo.html · después de «Volver a los datos del caso» · Vendedoras necesarias: pantalla «1» · motor 1.0000
+PASA  calculadora-agendo.html · después de «Volver a los datos del caso» · CAC marginal: pantalla «—» · motor vacío
+PASA  calculadora-agendo.html · simulador · Plan 1 · $10.000 fijos (hoy) · caja mes 24: $156.741
+PASA  calculadora-agendo.html · simulador · Plan 2 · Valeria: $30.000 fijos · caja mes 24: −$162.689
+PASA  calculadora-agendo.html · simulador · Plan 3 · $15.000 meses 1-18 y $27.000 después · caja mes 24: $14.262
+PASA  calculadora-agendo.html · simulador · Plan 4 · Plan anual 40 % desde el mes 1; $23.000 m · caja mes 24: $37.134
+PASA  calculadora-agendo.html · revisión del mes 1 muestra la caja final del plan
+PASA  calculadora-agendo.html · «Buscar el mejor plan» da el mismo resultado que el motor: Evaluó 1122 planes con el mismo modelo y las mismas reglas en 0.2 s. Mejor encontrado: ads: $23000 meses 1-12, $30000 de
+PASA  calculadora-agendo.html · sin errores de JavaScript y sin pedir nada a internet
+PASA  calculadora-sol-de-casa.html · datos del caso · CAC real: pantalla «$620,59» · motor 620.5904
+PASA  calculadora-sol-de-casa.html · datos del caso · CAC de anuncios: pantalla «$358,48» · motor 358.4832
+PASA  calculadora-sol-de-casa.html · datos del caso · LTV:CAC: pantalla «2,62×» · motor 2.6185
+PASA  calculadora-sol-de-casa.html · datos del caso · Ventas al mes: pantalla «22,3» · motor 22.3162
+PASA  calculadora-sol-de-casa.html · datos del caso · Contribución de una venta: pantalla «$1.625» · motor 1625.0000
+PASA  calculadora-sol-de-casa.html · datos del caso · Payback: pantalla «2 meses» · motor 2.0000
+PASA  calculadora-sol-de-casa.html · tiene al menos 3 gráficos dibujados: 7 gráficos
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000} · CAC real: pantalla «$790,57» · motor 790.5659
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000} · CAC de anuncios: pantalla «$527,04» · motor 527.0439
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000} · LTV:CAC: pantalla «2,06×» · motor 2.0555
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000} · Ventas al mes: pantalla «22,8» · motor 22.7685
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000} · Contribución de una venta: pantalla «$1.625» · motor 1625.0000
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000} · Payback: pantalla «2 meses» · motor 2.0000
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000,"m_contacto":0.65} · CAC real: pantalla «$790,57» · motor 790.5659
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000,"m_contacto":0.65} · CAC de anuncios: pantalla «$527,04» · motor 527.0439
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000,"m_contacto":0.65} · LTV:CAC: pantalla «2,06×» · motor 2.0555
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000,"m_contacto":0.65} · Ventas al mes: pantalla «22,8» · motor 22.7685
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000,"m_contacto":0.65} · Contribución de una venta: pantalla «$1.625» · motor 1625.0000
+PASA  calculadora-sol-de-casa.html · con {"inv_meta":8000,"m_contacto":0.65} · Payback: pantalla «2 meses» · motor 2.0000
+PASA  calculadora-sol-de-casa.html · después de «Volver a los datos del caso» · CAC real: pantalla «$620,59» · motor 620.5904
+PASA  calculadora-sol-de-casa.html · después de «Volver a los datos del caso» · CAC de anuncios: pantalla «$358,48» · motor 358.4832
+PASA  calculadora-sol-de-casa.html · después de «Volver a los datos del caso» · LTV:CAC: pantalla «2,62×» · motor 2.6185
+PASA  calculadora-sol-de-casa.html · después de «Volver a los datos del caso» · Ventas al mes: pantalla «22,3» · motor 22.3162
+PASA  calculadora-sol-de-casa.html · después de «Volver a los datos del caso» · Contribución de una venta: pantalla «$1.625» · motor 1625.0000
+PASA  calculadora-sol-de-casa.html · después de «Volver a los datos del caso» · Payback: pantalla «2 meses» · motor 2.0000
+PASA  calculadora-sol-de-casa.html · simulador · Plan 1 · Actual: $4.000 Meta + $4.000 Google · caja mes 24: $117.273
+PASA  calculadora-sol-de-casa.html · simulador · Plan 2 · Agencia: $8.000 Meta + $0 Google · caja mes 24: −$60.898
+PASA  calculadora-sol-de-casa.html · simulador · Plan 3 · $6.000 Meta + $8.000 Google, 1 técnico en · caja mes 24: $249.550
+PASA  calculadora-sol-de-casa.html · simulador · Plan 4 · Respuesta y filtro desde el mes 1, $7.000 · caja mes 24: $649.095
+PASA  calculadora-sol-de-casa.html · simulador · Plan 5 · Mejor encontrado: respuesta y filtro desd · caja mes 24: $681.010
+PASA  calculadora-sol-de-casa.html · revisión del mes 1 muestra la caja final del plan
+PASA  calculadora-sol-de-casa.html · «Buscar el mejor plan» da el mismo resultado que el motor: Evaluó 1584 planes con el mismo modelo y las mismas reglas en 0.6 s. Mejor encontrado: meta: $4000 meses 1-2, $7000 desd
+PASA  calculadora-sol-de-casa.html · sin errores de JavaScript y sin pedir nada a internet
+PASA  calculadora-universal.html · datos del caso · CAC paid: pantalla «$113,56» · motor 113.5601
+PASA  calculadora-universal.html · datos del caso · LTV a 12 meses: pantalla «$284,55» · motor 284.5501
+PASA  calculadora-universal.html · datos del caso · LTV:CAC paid: pantalla «2,51×» · motor 2.5057
+PASA  calculadora-universal.html · datos del caso · Payback: pantalla «4 meses» · motor 4.0000
+PASA  calculadora-universal.html · tiene al menos 3 gráficos dibujados: 7 gráficos
+PASA  calculadora-universal.html · con {"inv_meta":9000} · CAC paid: pantalla «$237,14» · motor 237.1429
+PASA  calculadora-universal.html · con {"inv_meta":9000} · LTV a 12 meses: pantalla «$284,55» · motor 284.5501
+PASA  calculadora-universal.html · con {"inv_meta":9000} · LTV:CAC paid: pantalla «1,20×» · motor 1.1999
+PASA  calculadora-universal.html · con {"inv_meta":9000} · Payback: pantalla «9 meses» · motor 9.0000
+PASA  calculadora-universal.html · con {"inv_meta":9000,"churn":0.1} · CAC paid: pantalla «$237,14» · motor 237.1429
+PASA  calculadora-universal.html · con {"inv_meta":9000,"churn":0.1} · LTV a 12 meses: pantalla «$258,33» · motor 258.3254
+PASA  calculadora-universal.html · con {"inv_meta":9000,"churn":0.1} · LTV:CAC paid: pantalla «1,09×» · motor 1.0893
+PASA  calculadora-universal.html · con {"inv_meta":9000,"churn":0.1} · Payback: pantalla «11 meses» · motor 11.0000
+PASA  calculadora-universal.html · después de «Volver a los datos del caso» · CAC paid: pantalla «$113,56» · motor 113.5601
+PASA  calculadora-universal.html · después de «Volver a los datos del caso» · LTV a 12 meses: pantalla «$284,55» · motor 284.5501
+PASA  calculadora-universal.html · después de «Volver a los datos del caso» · LTV:CAC paid: pantalla «2,51×» · motor 2.5057
+PASA  calculadora-universal.html · después de «Volver a los datos del caso» · Payback: pantalla «4 meses» · motor 4.0000
+PASA  calculadora-universal.html · simulador · Plan 1 · $3.000 fijos (hoy) · caja mes 24: $64.962
+PASA  calculadora-universal.html · simulador · Plan 2 · Triplicar: $9.000 fijos · caja mes 24: −$27.487
+PASA  calculadora-universal.html · simulador · Plan 3 · $4.500 y mejor cierre desde el mes 1 · caja mes 24: $118.460
+PASA  calculadora-universal.html · simulador · Plan 4 · $6.000, mejor cierre y un entrenador en e · caja mes 24: $112.364
+PASA  calculadora-universal.html · revisión del mes 1 muestra la caja final del plan
+PASA  calculadora-universal.html · «Buscar el mejor plan» da el mismo resultado que el motor: Evaluó 546 planes con el mismo modelo y las mismas reglas en 0.1 s. Mejor encontrado: meta: $4500 · cambios {"cierre":1}
+PASA  calculadora-universal.html · sin errores de JavaScript y sin pedir nada a internet
+
+RESULTADO: 138 pasan, 0 fallan.

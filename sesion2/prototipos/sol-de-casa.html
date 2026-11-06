@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sol de Casa Mi ahorro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Nunito+Sans:wght@400;600;700&display=swap">
+<style>
+/* Layout: teléfono con el recorrido de la familia y del vecino; en pantallas anchas, el guion de la demo. Paleta de techo al mediodía: cielo, amarillo de sol y pizarra. */
+:root{--bg:#eaf2f6;--sup:#ffffff;--sup2:#f2f7f9;--fg:#132430;--suave:#4f6370;--linea:#d3e0e6;--sombra:rgba(19,36,48,.45);
+--acento:#0f5c7a;--acento-tx:#ffffff;--acento-fuerte:#0d5470;--acento2:#b6cfd9;--foco:#e0a100;--sol:#f2b705;--sol-tx:#2b2100;
+--ok:#1f7a48;--ok-bg:#dcf1e3;--alerta:#b8432f;--alerta-bg:#f8e0da;--sim-bg:#fff0c2;--sim-tx:#7a5600;
+--notif-bg:rgba(255,255,255,.94);--notif-tx:#132430;--bloqueo:#16313f;--bloqueo-tx:#eef6f9;--chat-bg:#e6e1d8;--chat-yo:#d9fdd3;--wa:#1f8a4c;
+--f-titulo:'Archivo','Segoe UI',system-ui,sans-serif;--f-texto:'Nunito Sans','Segoe UI',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e171c;--sup:#152229;--sup2:#1b2b33;--fg:#e6f0f4;--suave:#9fb4bf;--linea:#2b3f49;--sombra:rgba(0,0,0,.7);
+--acento:#6ec3e2;--acento-tx:#06212c;--acento-fuerte:#8fd3ec;--acento2:#2c4b58;--foco:#ffd24a;--sol:#ffcf3d;--sol-tx:#2b2100;--ok:#6ccf98;--ok-bg:#16301f;--alerta:#ff8f78;--alerta-bg:#3b1f19;--sim-bg:#3a2f0f;--sim-tx:#ffd879;
+--notif-bg:rgba(30,45,53,.96);--notif-tx:#e6f0f4;--bloqueo:#09141a;--chat-bg:#232220;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e171c;--sup:#152229;--sup2:#1b2b33;--fg:#e6f0f4;--suave:#9fb4bf;--linea:#2b3f49;--sombra:rgba(0,0,0,.7);
+--acento:#6ec3e2;--acento-tx:#06212c;--acento-fuerte:#8fd3ec;--acento2:#2c4b58;--foco:#ffd24a;--sol:#ffcf3d;--sol-tx:#2b2100;--ok:#6ccf98;--ok-bg:#16301f;--alerta:#ff8f78;--alerta-bg:#3b1f19;--sim-bg:#3a2f0f;--sim-tx:#ffd879;
+--notif-bg:rgba(30,45,53,.96);--notif-tx:#e6f0f4;--bloqueo:#09141a;--chat-bg:#232220;color-scheme:dark}
+/* Base común de los prototipos. Cada caso define sus tokens (--bg, --fg, --suave, --linea, --sup, --acento, --acento-tx, --acento2, --ok, --alerta, fuentes). */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 var(--f-texto);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 28px}
+button,input,select{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-titulo);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+.escenario{display:flex;gap:24px;justify-content:center;align-items:flex-start;max-width:1100px;margin:0 auto}
+.telefono{width:100%;max-width:420px;min-width:0;background:var(--sup);border:1px solid var(--linea);border-radius:28px;overflow:hidden;box-shadow:0 18px 50px -24px var(--sombra)}
+.lado{flex:1;max-width:420px;min-width:0;display:flex;flex-direction:column;gap:14px;padding-top:6px}
+@media (max-width:860px){.lado{display:none}.telefono{border-radius:20px}}
+.barra-demo{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-bottom:1px solid var(--linea);background:var(--sup2);font-size:13px;color:var(--suave);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.barra-demo b{color:var(--fg);font-weight:600}
+.barra-demo button{white-space:nowrap;flex:none;border:1px solid var(--linea);background:var(--sup);border-radius:999px;padding:5px 11px;font-size:12.5px;cursor:pointer}
+.mapa{display:none;padding:10px 14px;border-bottom:1px solid var(--linea);background:var(--sup2)}
+.mapa.abierto{display:grid;gap:6px}
+.mapa button{display:flex;gap:10px;align-items:center;text-align:left;border:1px solid var(--linea);background:var(--sup);border-radius:10px;padding:8px 10px;cursor:pointer;font-size:14px}
+.mapa button i{font-style:normal;font-variant-numeric:tabular-nums;color:var(--suave);font-size:12px;min-width:22px}
+.mapa button[aria-current="true"]{border-color:var(--acento);box-shadow:inset 0 0 0 1px var(--acento)}
+.pantalla{display:none;padding:18px 18px 22px;flex-direction:column;gap:14px;min-height:560px}
+.pantalla.activa{display:flex;animation:entra .22s ease-out}
+@keyframes entra{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pantalla.activa{animation:none}}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);font-weight:600}
+.titulo{font-size:26px}
+.sub{color:var(--suave)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:14px;padding:14px 16px;font-weight:700;font-size:16px;cursor:pointer;background:var(--acento);color:var(--acento-tx);min-height:50px}
+.btn:focus-visible,.btn2:focus-visible,.mapa button:focus-visible,.barra-demo button:focus-visible,.chip:focus-visible{outline:3px solid var(--foco);outline-offset:2px}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:1px solid var(--linea);border-radius:14px;padding:12px 16px;font-weight:600;cursor:pointer;background:var(--sup);min-height:46px}
+.btn.wa{background:var(--wa);color:#fff}
+.enlace{background:none;border:0;color:var(--acento-fuerte);text-decoration:underline;cursor:pointer;padding:4px 0;font-size:14px}
+.card{border:1px solid var(--linea);border-radius:16px;padding:14px;background:var(--sup);display:flex;flex-direction:column;gap:8px}
+.card.marcada{background:var(--sup2)}
+.sim{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sim-tx);background:var(--sim-bg);border-radius:6px;padding:1px 6px;vertical-align:middle;margin-left:6px}
+.fila{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.num{font-variant-numeric:tabular-nums}
+.grande{font-family:var(--f-titulo);font-size:40px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.pasos{display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--suave)}
+.pasos span{flex:1;height:5px;border-radius:3px;background:var(--linea)}
+.pasos span.hecho{background:var(--acento)}
+.barra{height:12px;border-radius:999px;background:var(--linea);overflow:hidden}
+.barra i{display:block;height:100%;background:var(--acento);border-radius:999px;transition:width .5s}
+.notif{border-radius:18px;padding:12px 14px;background:var(--notif-bg);color:var(--notif-tx);display:flex;gap:10px;align-items:flex-start;box-shadow:0 8px 24px -14px var(--sombra);cursor:pointer;text-align:left;border:0;width:100%}
+.notif .ico{width:36px;height:36px;border-radius:9px;flex:none;display:grid;place-items:center;font-weight:800;font-family:var(--f-titulo);background:var(--acento);color:var(--acento-tx)}
+.notif small{opacity:.75;font-size:12px}
+.bloqueo{border-radius:20px;padding:22px 14px 16px;background:var(--bloqueo);color:var(--bloqueo-tx);display:flex;flex-direction:column;gap:14px}
+.bloqueo .hora{font-family:var(--f-titulo);font-size:54px;text-align:center;font-weight:600;line-height:1}
+.bloqueo .fecha{text-align:center;opacity:.8;font-size:14px;margin-top:-8px}
+.chat{background:var(--chat-bg);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.globo{max-width:88%;padding:8px 10px;border-radius:10px;font-size:14.5px;background:var(--chat-yo);color:#111;align-self:flex-end;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.globo.otro{background:#fff;align-self:flex-start}
+.globo a{color:#0b6aa8;word-break:break-all}
+.globo small{display:block;text-align:right;color:#667;font-size:11px}
+.campo{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.campo input,.campo select{border:1px solid var(--linea);border-radius:12px;padding:12px;background:var(--sup);font-size:16px;min-height:48px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--linea);background:var(--sup);border-radius:999px;padding:8px 13px;cursor:pointer;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--acento);color:var(--acento-tx);border-color:var(--acento)}
+.lista{display:flex;flex-direction:column;gap:0;border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+.lista>div{display:flex;justify-content:space-between;gap:10px;padding:11px 12px;border-bottom:1px solid var(--linea);align-items:center}
+.lista>div:last-child{border-bottom:0}
+.toast{pointer-events:none;position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:20;max-width:90vw}
+.embudo{display:flex;flex-direction:column;gap:9px}
+.embudo .e{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:13.5px}
+.embudo .e .b{grid-column:1/-1;height:10px;border-radius:5px;background:var(--linea);overflow:hidden;display:flex}
+.embudo .e .b i{display:block;height:100%;background:var(--acento2)}
+.embudo .e .b i.n{background:var(--acento)}
+.embudo .e.peor .b i{background:var(--alerta)}
+.tabla{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+.tabla th,.tabla td{padding:7px 6px;border-bottom:1px solid var(--linea);text-align:right;vertical-align:top}
+.tabla th:first-child,.tabla td:first-child{text-align:left}
+.tabla th{font-size:12px;color:var(--suave);font-weight:600}
+.tabla tr.total td{font-weight:700;border-top:2px solid var(--fg)}
+.ok{color:var(--ok)}.alerta{color:var(--alerta)}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.alerta{background:var(--alerta-bg);color:var(--alerta)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpi{border:1px solid var(--linea);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px}
+.kpi span{font-size:12px;color:var(--suave)}.kpi strong{font-size:22px;font-family:var(--f-titulo);font-variant-numeric:tabular-nums}
+.kpi small{font-size:11.5px;color:var(--suave)}
+.nota{font-size:12.5px;color:var(--suave)}
+.scroll{overflow-x:auto}
+.lado .card h3{font-size:16px}
+.lado ol{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+
+.ahorro{border-radius:20px;padding:18px;background:var(--sol);color:var(--sol-tx);display:flex;flex-direction:column;gap:6px}
+.ahorro .grande{font-size:52px}
+.meses{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;align-items:end;height:90px}
+.meses i{display:block;background:var(--acento);border-radius:4px 4px 0 0}
+.meses i.ult{background:var(--sol)}
+.ejes{display:grid;grid-template-columns:repeat(12,1fr);gap:4px;font-size:10.5px;color:var(--suave);text-align:center}
+.tarjeta-ahorro{border-radius:18px;overflow:hidden;border:1px solid var(--linea)}
+.tarjeta-ahorro .arriba{background:linear-gradient(160deg,var(--sol) 0 55%,#f7d35c 55% 100%);color:var(--sol-tx);padding:18px;display:flex;flex-direction:column;gap:4px}
+.tarjeta-ahorro .arriba .grande{font-size:44px}
+.tarjeta-ahorro .abajo{padding:12px 16px;background:var(--sup);display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:14px}
+.calc{display:flex;flex-direction:column;gap:10px}
+.calc input[type=range]{width:100%;accent-color:var(--acento)}
+.res3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.res3 div{border:1px solid var(--linea);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px}
+.res3 span{font-size:12px;color:var(--suave)}.res3 b{font:700 20px var(--f-titulo);font-variant-numeric:tabular-nums}
+.vecina{display:flex;gap:10px;align-items:center;border-radius:14px;padding:12px;background:var(--sup2)}
+.avatar{width:42px;height:42px;border-radius:50%;background:var(--acento);color:var(--acento-tx);display:grid;place-items:center;font:700 17px var(--f-titulo);flex:none}
+</style></head>
+<body>
+
+<div class="escenario">
+<div class="telefono">
+  <div class="barra-demo"><span id="paso-actual"></span><button type="button" id="abrir-mapa" aria-controls="mapa">Mapa de la demo</button></div>
+  <nav class="mapa" id="mapa" aria-label="Pantallas del prototipo"></nav>
+
+  <section class="pantalla" id="mensaje" data-nombre="El mensaje del mes">
+    <p class="eyebrow">La familia · 1 de noviembre</p>
+    <div class="bloqueo">
+      <div class="hora">6:30</div><div class="fecha">sábado <span class="sim">simulado</span></div>
+      <button class="notif" type="button" data-ir="ahorro"><span class="ico" style="background:var(--sol);color:var(--sol-tx)">S</span>
+        <span><b>Sol de Casa</b> <small>· WhatsApp</small><br>Doña Marta, en octubre su casa ahorró $77 de luz con sus paneles. Vea su resumen del mes.</span></button>
+    </div>
+    <p class="sub">Hoy la familia no recibe nada después de la instalación, y el 75 % no sabe cuánto ahorró. Sin saberlo, no lo puede contar.</p>
+    <button class="btn" type="button" data-ir="ahorro">Ver mi ahorro</button>
+  </section>
+
+  <section class="pantalla" id="ahorro" data-nombre="Mi ahorro">
+    <p class="eyebrow">Mi ahorro · casa Mora Solís <span class="sim">simulado</span></p>
+    <div class="ahorro"><span>En octubre su casa ahorró</span><span class="grande">$77</span><span>Su recibo bajó de $110 a $33.</span></div>
+    <div class="card">
+      <div class="fila"><b>Desde que instaló</b><b class="num" style="font:700 22px var(--f-titulo)">$1.078</b></div>
+      <div class="meses" aria-hidden="true" id="meses"></div>
+      <div class="ejes" aria-hidden="true"><span>N</span><span>D</span><span>E</span><span>F</span><span>M</span><span>A</span><span>M</span><span>J</span><span>J</span><span>A</span><span>S</span><span>O</span></div>
+      <p class="nota">14 meses con paneles. Lleva el 17 % de los $6.500 de la instalación; al ritmo de $924 por año la recupera en unos 7 años. Datos del inversor de su casa.</p>
+    </div>
+    <button class="btn" type="button" data-ir="tarjeta">Contarle a un vecino</button>
+  </section>
+
+  <section class="pantalla" id="tarjeta" data-nombre="La tarjeta para compartir">
+    <p class="eyebrow">Su tarjeta de octubre</p>
+    <div class="tarjeta-ahorro">
+      <div class="arriba"><span>La casa de Marta en Curridabat ahorró</span><span class="grande">$77 de luz</span><span>en octubre, con paneles de Sol de Casa</span></div>
+      <div class="abajo"><span>¿Cuánto ahorraría su casa?</span><b>soldecasa.cr/v/marta</b></div>
+    </div>
+    <button class="btn wa" type="button" id="enviar">Mandar por WhatsApp</button>
+    <button class="btn2" type="button" onclick="copiar('https://soldecasa.cr/v/marta')">Copiar el link para Facebook</button>
+    <div class="chat" id="chat" hidden><div class="globo otro">¿Y al final le pusieron los paneles? <small>Laura · ayer</small></div></div>
+    <button class="btn2" type="button" id="como-vecina" hidden data-ir="vecino">Abrir el link como Laura, la vecina</button>
+    <p class="nota">Link personal <span class="sim">simulado</span>: cada visita que agende desde ahí queda registrada a nombre de Marta.</p>
+  </section>
+
+  <section class="pantalla" id="vecino" data-nombre="La calculadora del vecino">
+    <p class="eyebrow">Laura abre soldecasa.cr/v/marta</p>
+    <div class="vecina"><span class="avatar">M</span><span>Su vecina <b>Marta</b> ahorró <b>$77</b> de luz en octubre con sus paneles.</span></div>
+    <h1 class="titulo">¿Cuánto ahorraría su casa?</h1>
+    <div class="calc">
+      <div class="fila"><label for="recibo">Lo que paga de luz al mes</label><b class="num" id="recibo-txt">$110</b></div>
+      <input type="range" id="recibo" min="40" max="300" step="5" value="110">
+      <div class="res3"><div><span>Al mes</span><b id="r-mes">$77</b></div><div><span>Al año</span><b id="r-anio">$924</b></div><div><span>Recupera en</span><b id="r-anos">7 años</b></div></div>
+      <p class="nota">Con el 70 % de ahorro promedio de los clientes de Sol de Casa y una instalación promedio de $6.500. La visita técnica mide su techo y le da el número exacto.</p>
+    </div>
+    <button class="btn" type="button" data-ir="agendar">Agendar la visita gratis</button>
+  </section>
+
+  <section class="pantalla" id="agendar" data-nombre="Agendar la visita">
+    <div class="pasos"><span class="hecho"></span><span class="hecho"></span><em style="font-style:normal">2 de 2</em></div>
+    <h1 class="titulo">¿Cuándo le medimos el techo?</h1>
+    <div class="campo"><label for="nom">Su nombre</label><input id="nom" value="Laura Jiménez" autocomplete="name"></div>
+    <div class="campo"><label for="tel">Teléfono</label><input id="tel" inputmode="tel" value="8777-6655"></div>
+    <div class="campo"><span>Día que le sirve</span>
+      <div class="chips" role="group" aria-label="Día de la visita"><button class="chip dia" type="button" aria-pressed="true">Martes</button><button class="chip dia" type="button" aria-pressed="false">Miércoles</button><button class="chip dia" type="button" aria-pressed="false">Sábado</button></div></div>
+    <div class="card marcada"><p class="nota">Viene de parte de <b>Marta Mora</b>. Su visita va primero en la agenda de los técnicos.</p></div>
+    <button class="btn" type="button" data-ir="agendado">Agendar visita</button>
+  </section>
+
+  <section class="pantalla" id="agendado" data-nombre="Visita agendada">
+    <p class="eyebrow">Laura · listo</p>
+    <h1 class="titulo">Su visita quedó para el <span id="dia-txt">martes</span></h1>
+    <p>Paola, su asesora, le escribe hoy antes de las 5 p. m. para confirmar la hora <span class="sim">simulado</span>. Hoy una asesora tarda 31 horas en llamar.</p>
+    <div class="card"><b>Para la visita</b><p class="sub">Tenga a mano un recibo de luz. La visita es gratis y dura unos 40 minutos.</p></div>
+    <button class="btn" type="button" data-ir="familia">Ver qué le llega a Marta</button>
+  </section>
+
+  <section class="pantalla" id="familia" data-nombre="El avance de la familia">
+    <div class="bloqueo">
+      <div class="hora">2:15</div><div class="fecha">sábado <span class="sim">simulado</span></div>
+      <div class="notif"><span class="ico" style="background:var(--sol);color:var(--sol-tx)">S</span><span><b>Sol de Casa</b> <small>· ahora</small><br>Laura agendó su visita gracias a usted. Ganó $10 de descuento en su plan de mantenimiento.</span></div>
+    </div>
+    <div class="card">
+      <b>Lo que gana por cada vecino</b>
+      <div class="lista">
+        <div><span>Cuando agenda su visita</span><b class="num">$10 en su plan</b></div>
+        <div><span>Cuando firma la instalación</span><b class="num">limpieza gratis + $80 en su plan</b></div>
+      </div>
+      <div class="fila"><span>Laura</span><span class="pill ok">agendó</span></div>
+      <div class="barra" aria-hidden="true"><i style="width:50%"></i></div>
+      <p class="nota">Falta que firme para ganar la limpieza de paneles y los $80.</p>
+    </div>
+    <button class="btn wa" type="button" data-ir="tarjeta">Mandarle la tarjeta a otro vecino</button>
+    <button class="btn2" type="button" data-ir="panel">Ver el panel de Andrés</button>
+  </section>
+
+  <section class="pantalla" id="panel" data-nombre="Panel de Andrés">
+    <p class="eyebrow">Panel de Andrés · referidos del mes</p>
+    <div class="kpis">
+      <div class="kpi"><span>Ventas de clientes actuales</span><strong>0,9 → 8,2</strong><small>al mes · hoy (dato) → meta <span class="sim">simulado</span></small></div>
+      <div class="kpi"><span>Costo de una venta referida</span><strong>$298</strong><small>con visitas · regla: $300</small></div>
+      <div class="kpi"><span>Familias que saben su ahorro</span><strong>25 % → 100 %</strong><small>reciben el mensaje del mes</small></div>
+      <div class="kpi"><span>Cliente de Meta / Google</span><strong>$718 / $536</strong><small>CAC real de la Parte 1</small></div>
+    </div>
+    <div class="card">
+      <div class="fila"><b>Embudo del mes</b><span class="nota">meta <span class="sim">simulado</span></span></div>
+      <div class="embudo" id="embudo-c"></div>
+      <p class="nota">Hoy entran 2,8 referidos al mes y salen 0,9 ventas. Las tarjetas y las visitas de la calculadora son simuladas; las tasas de contacto, agenda, visita y cierre son del caso.</p>
+    </div>
+    <div class="card">
+      <b>Una venta referida (regla de Andrés: máximo $300)</b>
+      <div class="scroll"><table class="tabla"><thead><tr><th>Concepto</th><th>Por venta</th></tr></thead><tbody>
+        <tr><td>Visitas: 2,22 visitas × $60</td><td>$133,33</td></tr>
+        <tr><td>$10 por vecino que agenda (2,47 agendas por venta)</td><td>$24,69</td></tr>
+        <tr><td>Limpieza gratis al firmar</td><td>$60,00</td></tr>
+        <tr><td>$80 de descuento en el plan al firmar</td><td>$80,00</td></tr>
+        <tr class="total"><td>Total</td><td>$298,02 <span class="pill ok">≤ $300</span></td></tr></tbody></table></div>
+    </div>
+    <div class="card">
+      <b>Las visitas ya están casi llenas (97,5 de 100)</b>
+      <div class="lista"><div><span>Valor de una visita referida</span><b class="num">$671</b></div><div><span>De Google</span><b class="num">$428</b></div><div><span>De Meta</span><b class="num">$233</b></div></div>
+      <p class="nota">Las visitas de referidos van primero. Para llenar las 50 visitas de un técnico nuevo harían falta 69 leads referidos al mes: 459 familias rindiendo como un letrero, más que las 420 que hay.</p>
+    </div>
+    <div class="card marcada">
+      <b>El número de la semana</b><p>Tarjetas de ahorro compartidas. North Star: ventas que vienen de clientes actuales por mes.</p>
+      <b>Prueba con 50 familias</b><p>Si 25 familias reciben su ahorro del mes con el botón para compartir y 25 no, las que lo reciben traen de 0,3 a 7,5 leads referidos en 2 meses, y vigilamos que no baje del 45 % el cierre de las visitas referidas.</p>
+    </div>
+    <button class="btn2" type="button" data-ir="mensaje">Volver al inicio</button>
+  </section>
+</div>
+
+<aside class="lado" aria-label="Guion de la demo">
+  <div class="card"><p class="eyebrow">Qué ataca</p><h3>El 75 % no sabe cuánto ahorró</h3><p>Retener aquí es mantener la relación: una familia que ve su ahorro cada mes lo cuenta. Hoy 40 % ya enseña su recibo a un vecino, sin ayuda.</p></div>
+  <div class="card"><p class="eyebrow">La meta</p><h3>De 0,9 a 8 ventas referidas al mes</h3><p>Si comparte el 40 % de las familias y cada una rinde como un letrero (0,15 leads al mes), entran 25 leads, se hacen 18 visitas y firman 8. Cada una cuesta $298 con visitas, contra $718 de Meta.</p></div>
+  <div class="card"><p class="eyebrow">Recorrido</p><ol><li>Mensaje del mes por WhatsApp</li><li>Mi ahorro</li><li>Tarjeta con link personal</li><li>Calculadora del vecino</li><li>Agendar en 3 datos</li><li>Avance y recompensa de la familia</li><li>Panel de Andrés</li></ol></div>
+  <p class="nota">Familias, ahorros del mes, nombres, links y fechas son simulados (con el 70 % de ahorro del caso). Las tasas del embudo de referidos son del caso.</p>
+</aside>
+</div>
+
+<script>/* Navegación común: pantallas <section class="pantalla" id="..." data-nombre="...">, mapa de la demo y hash (#id). */
+(function () {
+  'use strict';
+  const $ = (s, el) => (el || document).querySelector(s), $$ = (s, el) => [...(el || document).querySelectorAll(s)];
+  const pantallas = $$('.pantalla');
+  const historia = [];
+  const mapa = $('#mapa'), etiqueta = $('#paso-actual');
+  pantallas.forEach((p, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.dataset.ir = p.id;
+    b.innerHTML = `<i>${String(i + 1).padStart(2, '0')}</i><span>${p.dataset.nombre}</span>`;
+    mapa.appendChild(b);
+  });
+  function ir(id, sinHistoria) {
+    const p = document.getElementById(id); if (!p) return;
+    const actual = $('.pantalla.activa');
+    if (actual && actual !== p && !sinHistoria) historia.push(actual.id);
+    pantallas.forEach((x) => x.classList.toggle('activa', x === p));
+    $$('button', mapa).forEach((b) => b.setAttribute('aria-current', b.dataset.ir === id ? 'true' : 'false'));
+    etiqueta.innerHTML = `<b>${pantallas.indexOf(p) + 1} de ${pantallas.length}</b> · ${p.dataset.nombre}`;
+    mapa.classList.remove('abierto');
+    if (location.hash.slice(1) !== id) { try { history.replaceState(null, '', '#' + id); } catch (e) { /* sin historial */ } }
+    p.scrollIntoView ? window.scrollTo({ top: 0 }) : 0;
+    document.dispatchEvent(new CustomEvent('pantalla', { detail: id }));
+  }
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-ir]'); if (b) { e.preventDefault(); ir(b.dataset.ir); }
+    if (e.target.closest('[data-atras]')) { const id = historia.pop(); if (id) ir(id, true); }
+  });
+  $('#abrir-mapa').addEventListener('click', () => mapa.classList.toggle('abierto'));
+  window.addEventListener('hashchange', () => { const id = location.hash.slice(1); if (id && document.getElementById(id)) ir(id, true); });
+  window.toast = (t) => { const d = document.createElement('div'); d.className = 'toast'; d.setAttribute('role', 'status'); d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
+  window.copiar = (texto, el) => {
+    const ok = () => toast('Copiado');
+    try { navigator.clipboard.writeText(texto).then(ok, () => { if (el) { el.select && el.select(); } toast('Seleccioná el texto y copialo'); }); }
+    catch (e) { toast('Seleccioná el texto y copialo'); }
+  };
+  window.ir = ir;
+  window.dinero = (v, d) => (v < 0 ? '−$' : '$') + Math.abs(v).toLocaleString('es-CR', { minimumFractionDigits: d === undefined ? 0 : d, maximumFractionDigits: d === undefined ? 0 : d }).replace(/ | | /g, '.');
+  const inicio = location.hash.slice(1);
+  ir(inicio && document.getElementById(inicio) ? inicio : pantallas[0].id, true);
+})();
+</script>
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  const meses = [71, 74, 80, 83, 85, 82, 76, 72, 70, 73, 75, 77]; // simulado: alrededor de $77
+  const max = Math.max(...meses);
+  $('#meses').innerHTML = meses.map((v, i) => `<i class="${i === 11 ? 'ult' : ''}" style="height:${(v / max) * 100}%" title="$${v}"></i>`).join('');
+  const calc = () => {
+    const r = +$('#recibo').value, mes = r * 0.7, anio = mes * 12, anos = 6500 / anio;
+    $('#recibo-txt').textContent = dinero(r); $('#r-mes').textContent = dinero(mes); $('#r-anio').textContent = dinero(anio);
+    $('#r-anos').textContent = (Math.round(anos * 10) / 10).toString().replace('.', ',') + ' años';
+  };
+  $('#recibo').addEventListener('input', calc); calc();
+  document.querySelectorAll('.dia').forEach((c) => c.addEventListener('click', () => { document.querySelectorAll('.dia').forEach((x) => x.setAttribute('aria-pressed', x === c ? 'true' : 'false')); $('#dia-txt').textContent = c.textContent.toLowerCase(); }));
+  $('#enviar').addEventListener('click', () => {
+    $('#chat').hidden = false;
+    const g = document.createElement('div'); g.className = 'globo';
+    g.innerHTML = 'Laura, mire lo que ahorramos de luz en octubre con los paneles. Calcule el suyo aquí: <a href="#vecino">soldecasa.cr/v/marta</a> <small>2:01 ✓✓</small>';
+    $('#chat').appendChild(g); $('#enviar').hidden = true; $('#como-vecina').hidden = false; toast('Tarjeta enviada (simulado)');
+  });
+  document.addEventListener('pantalla', (e) => { if (e.detail === 'tarjeta') { $('#enviar').hidden = false; $('#como-vecina').hidden = true; } });
+  const pasos = [['Familias que reciben su ahorro', 420, 'dato'], ['Comparten la tarjeta (40 %)', 168, 'meta'], ['Leads referidos (0,15 por familia)', 25.2, 'meta'], ['Contactados (95 %)', 23.9, 'caso'], ['Agendan (85 %)', 20.3, 'caso'], ['Visitas hechas (90 %)', 18.3, 'caso'], ['Firman (45 %)', 8.2, 'caso']];
+  $('#embudo-c').innerHTML = pasos.map(([n, v]) => `<div class="e"><span>${n}</span><span class="num"><b>${String(v).replace('.', ',')}</b></span><div class="b"><i class="n" style="width:${Math.max(1.5, (v / 420) * 100)}%"></i></div></div>`).join('');
+})();
+</script>
+</body></html>

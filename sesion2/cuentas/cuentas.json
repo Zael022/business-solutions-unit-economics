@@ -1,0 +1,553 @@
+{
+ "A": {
+  "embudo": {
+   "filas": [
+    {
+     "nombre": "Correo recibido",
+     "n": 1000,
+     "tasa": null,
+     "perdidos": 0
+    },
+    {
+     "nombre": "Correo abierto",
+     "n": 350,
+     "tasa": 0.35,
+     "perdidos": 650
+    },
+    {
+     "nombre": "Página del programa",
+     "n": 120,
+     "tasa": 0.3429,
+     "perdidos": 230
+    },
+    {
+     "nombre": "Clientes que invitan",
+     "n": 100,
+     "tasa": 0.8333,
+     "perdidos": 20
+    },
+    {
+     "nombre": "Invitaciones enviadas",
+     "n": 300,
+     "tasa": 3,
+     "perdidos": -200
+    },
+    {
+     "nombre": "Amigos que abren la tienda",
+     "n": 150,
+     "tasa": 0.5,
+     "perdidos": 150
+    },
+    {
+     "nombre": "Amigos que compran",
+     "n": 60,
+     "tasa": 0.4,
+     "perdidos": 90
+    }
+   ],
+   "total": 0.06,
+   "peorTasa": {
+    "nombre": "Página del programa",
+    "n": 120,
+    "tasa": 0.3429,
+    "perdidos": 230
+   },
+   "masPerdidos": {
+    "nombre": "Correo abierto",
+    "n": 350,
+    "tasa": 0.35,
+    "perdidos": 650
+   }
+  },
+  "invitaciones": 300,
+  "cacMeta": 50,
+  "tope": 25,
+  "mesGratis": 16.58,
+  "costoHoy": 16,
+  "kHoy": 0.06,
+  "recompensas": [
+   {
+    "nombre": "Amigo: $8 de descuento en su primer pedido (ya aplicado)",
+    "costo": 8,
+    "repartidoEntre": 1,
+    "cuando": "siempre"
+   },
+   {
+    "nombre": "Quien invita: $5 de crédito por cada amigo que compra",
+    "costo": 5,
+    "repartidoEntre": 1,
+    "cuando": "siempre"
+   },
+   {
+    "nombre": "Quien invita, nivel 3 amigos: una bolsa de 340 g de regalo",
+    "costo": 5.44,
+    "repartidoEntre": 3,
+    "cuando": "al tercer amigo"
+   },
+   {
+    "nombre": "Quien invita, 2 amigos suscritos: un mes gratis de suscripción",
+    "costo": 16.58,
+    "repartidoEntre": 2,
+    "cuando": "si el amigo se suscribe"
+   }
+  ],
+  "combos": {
+   "combinaciones": [
+    {
+     "combo": [
+      "Amigo: $8 de descuento en su primer pedido (ya aplicado)",
+      "Quien invita: $5 de crédito por cada amigo que compra"
+     ],
+     "costo": 13
+    },
+    {
+     "combo": [
+      "Amigo: $8 de descuento en su primer pedido (ya aplicado)",
+      "Quien invita: $5 de crédito por cada amigo que compra",
+      "Quien invita, nivel 3 amigos: una bolsa de 340 g de regalo"
+     ],
+     "costo": 14.8133
+    },
+    {
+     "combo": [
+      "Amigo: $8 de descuento en su primer pedido (ya aplicado)",
+      "Quien invita: $5 de crédito por cada amigo que compra",
+      "Quien invita, 2 amigos suscritos: un mes gratis de suscripción"
+     ],
+     "costo": 21.29
+    },
+    {
+     "combo": [
+      "Amigo: $8 de descuento en su primer pedido (ya aplicado)",
+      "Quien invita: $5 de crédito por cada amigo que compra",
+      "Quien invita, nivel 3 amigos: una bolsa de 340 g de regalo",
+      "Quien invita, 2 amigos suscritos: un mes gratis de suscripción"
+     ],
+     "costo": 23.1033
+    }
+   ],
+   "peor": {
+    "combo": [
+     "Amigo: $8 de descuento en su primer pedido (ya aplicado)",
+     "Quien invita: $5 de crédito por cada amigo que compra",
+     "Quien invita, nivel 3 amigos: una bolsa de 340 g de regalo",
+     "Quien invita, 2 amigos suscritos: un mes gratis de suscripción"
+    ],
+    "costo": 23.1033
+   },
+   "cumple": true
+  },
+  "meta": {
+   "ven": 0.35,
+   "abren": 0.5,
+   "compran": 0.5,
+   "kSoloMomento": 0.175,
+   "kMeta": 0.2188,
+   "porCada100Hoy": 6,
+   "porCada100Meta": 21.875,
+   "base": 147,
+   "refHoy": 9.383,
+   "refMeta": 41.16,
+   "parteMetaHoy": 0.6803,
+   "parteMetaMeta": 0.5315,
+   "costoReferidoPromedio": 14.8133
+  },
+  "vistosHoy": 0.12,
+  "pierdenAntesDeVer": 0.88
+ },
+ "B": {
+  "embudo": {
+   "filas": [
+    {
+     "nombre": "Empiezan la prueba",
+     "n": 100,
+     "tasa": null,
+     "perdidos": 0
+    },
+    {
+     "nombre": "Datos fiscales",
+     "n": 74,
+     "tasa": 0.74,
+     "perdidos": 26
+    },
+    {
+     "nombre": "Datos del negocio",
+     "n": 70,
+     "tasa": 0.9459,
+     "perdidos": 4
+    },
+    {
+     "nombre": "Servicios",
+     "n": 65,
+     "tasa": 0.9286,
+     "perdidos": 5
+    },
+    {
+     "nombre": "Horarios («¡Listo!»)",
+     "n": 62,
+     "tasa": 0.9538,
+     "perdidos": 3
+    },
+    {
+     "nombre": "Comparten el link el primer día",
+     "n": 30,
+     "tasa": 0.4839,
+     "perdidos": 32
+    }
+   ],
+   "total": 0.3,
+   "peorTasa": {
+    "nombre": "Comparten el link el primer día",
+    "n": 30,
+    "tasa": 0.4839,
+    "perdidos": 32
+   },
+   "masPerdidos": {
+    "nombre": "Comparten el link el primer día",
+    "n": 30,
+    "tasa": 0.4839,
+    "perdidos": 32
+   }
+  },
+  "tiempos": [
+   {
+    "pantalla": "Datos fiscales",
+    "min": 4
+   },
+   {
+    "pantalla": "Datos del negocio",
+    "min": 3
+   },
+   {
+    "pantalla": "Servicios",
+    "min": 12
+   },
+   {
+    "pantalla": "Horarios",
+    "min": 9
+   }
+  ],
+  "tiempoTotal": 28,
+  "tasaRes": {
+   "comparten": 0.9,
+   "noComparten": 0.3438
+  },
+  "habitoDeReservan": 0.5789,
+  "tasasPago": {
+   "noConfiguran": 0.01,
+   "sinReserva": 0.05,
+   "reserva": 0.15,
+   "habito": 0.45
+  },
+  "hoy": {
+   "configuran": 62,
+   "comparten": 30,
+   "reservan": 38,
+   "habito": 22,
+   "conv": 0.1388,
+   "clientes": 69.4,
+   "cac": 181.3833
+  },
+  "meta": {
+   "configuran": 90,
+   "comparten": 63,
+   "reservan": 65.9813,
+   "habito": 38.1997,
+   "conv": 0.2266,
+   "clientes": 113.2901,
+   "cac": 118.8612,
+   "ltvCac": 2.115
+  },
+  "prudente": {
+   "reservanDe": 0.38,
+   "reservanA": 0.55
+  },
+  "insignia": {
+   "visitasPorPagina": 250,
+   "barberiasHoy": 8,
+   "paginasActivas": 1150,
+   "tasaHoy": 0
+  },
+  "cacParte1": 180,
+  "ltv24": 251.3875
+ },
+ "C": {
+  "tasas": {
+   "contacto": 0.95,
+   "agenda": 0.85,
+   "visita": 0.9,
+   "cierre": 0.45
+  },
+  "ventaPorLead": 0.327,
+  "visitasPorVenta": 2.2222,
+  "agendadasPorVenta": 2.4691,
+  "costoVisitas": 133.3333,
+  "tope": 300,
+  "paraRecompensas": 166.6667,
+  "contrib": 1625,
+  "recompensas": [
+   {
+    "nombre": "Familia: $10 de descuento en el plan de mantenimiento por cada vecino que agenda",
+    "costo": 24.6914,
+    "repartidoEntre": 1,
+    "cuando": "por agendar (×2,47 agendas por venta)"
+   },
+   {
+    "nombre": "Familia: una limpieza de paneles gratis cuando el vecino firma",
+    "costo": 60,
+    "repartidoEntre": 1,
+    "cuando": "al firmar"
+   },
+   {
+    "nombre": "Familia: $80 de descuento en el plan de mantenimiento cuando el vecino firma",
+    "costo": 80,
+    "repartidoEntre": 1,
+    "cuando": "al firmar"
+   }
+  ],
+  "combos": {
+   "combinaciones": [
+    {
+     "combo": [
+      "Familia: $10 de descuento en el plan de mantenimiento por cada vecino que agenda"
+     ],
+     "costo": 158.0247
+    },
+    {
+     "combo": [
+      "Familia: $10 de descuento en el plan de mantenimiento por cada vecino que agenda",
+      "Familia: una limpieza de paneles gratis cuando el vecino firma",
+      "Familia: $80 de descuento en el plan de mantenimiento cuando el vecino firma"
+     ],
+     "costo": 298.0247
+    }
+   ],
+   "peor": {
+    "combo": [
+     "Familia: $10 de descuento en el plan de mantenimiento por cada vecino que agenda",
+     "Familia: una limpieza de paneles gratis cuando el vecino firma",
+     "Familia: $80 de descuento en el plan de mantenimiento cuando el vecino firma"
+    ],
+    "costo": 298.0247
+   },
+   "cumple": true
+  },
+  "leadsHoy": 2.8,
+  "ventasHoy": 0.9157,
+  "visitasPorLead": 0.7268,
+  "leadsParaTecnico": 68.7994,
+  "letreroPorCasaMes": 0.15,
+  "familiasParaTecnico": 458.663,
+  "valorVisita": {
+   "referido": 671.25,
+   "google": 427.5,
+   "meta": 232.5
+  },
+  "meta": {
+   "comparten": 168,
+   "leads": 25.2,
+   "visitas": 18.3141,
+   "ventas": 8.2413,
+   "costoPorVenta": 298.0247
+  },
+  "cacMeta": 718.1337,
+  "cacGoogle": 535.5353,
+  "web": {
+   "filas": [
+    {
+     "nombre": "Visitas a la página",
+     "n": 100,
+     "tasa": null,
+     "perdidos": 0
+    },
+    {
+     "nombre": "Abren el formulario",
+     "n": 14,
+     "tasa": 0.14,
+     "perdidos": 86
+    },
+    {
+     "nombre": "Dejan sus datos",
+     "n": 6,
+     "tasa": 0.4286,
+     "perdidos": 8
+    }
+   ],
+   "total": 0.06,
+   "peorTasa": {
+    "nombre": "Abren el formulario",
+    "n": 14,
+    "tasa": 0.14,
+    "perdidos": 86
+   },
+   "masPerdidos": {
+    "nombre": "Abren el formulario",
+    "n": 14,
+    "tasa": 0.14,
+    "perdidos": 86
+   }
+  },
+  "familias": {
+   "filas": [
+    {
+     "nombre": "Familias con paneles",
+     "n": 420,
+     "tasa": null,
+     "perdidos": 0
+    },
+    {
+     "nombre": "Saben cuánto ahorraron",
+     "n": 105,
+     "tasa": 0.25,
+     "perdidos": 315
+    }
+   ],
+   "total": 0.25,
+   "peorTasa": {
+    "nombre": "Saben cuánto ahorraron",
+    "n": 105,
+    "tasa": 0.25,
+    "perdidos": 315
+   },
+   "masPerdidos": {
+    "nombre": "Saben cuánto ahorraron",
+    "n": 105,
+    "tasa": 0.25,
+    "perdidos": 315
+   }
+  },
+  "ahorro": {
+   "recibo": 110,
+   "pct": 0.7,
+   "mes": 77,
+   "anio": 924,
+   "anosRecupera": 7.0346
+  },
+  "experimento": {
+   "familias": 25,
+   "meses": 2,
+   "controlLeads": 0.3333,
+   "metaLeads": 7.5
+  }
+ },
+ "matriz": {
+  "A": [
+   {
+    "canal": "Referidos de hoy ($8 + $8): ya traen 6 de cada 100",
+    "paybackMeses": 1,
+    "seguro": true,
+    "porque": "la recompensa se paga cuando el amigo compra y su primer pedido ya deja $15,89",
+    "cuadrante": "Siempre activo"
+   },
+   {
+    "canal": "Referidos nuevos: aviso al llegar el café, link y niveles",
+    "paybackMeses": 1,
+    "seguro": false,
+    "porque": "misma lógica de pago, pero la meta de 17,5 a 22 por cada 100 hay que probarla",
+    "cuadrante": "Probar"
+   },
+   {
+    "canal": "Tarjeta con el link dentro del paquete (el 6 % ya publica fotos)",
+    "paybackMeses": 1,
+    "seguro": false,
+    "porque": "cuesta centavos por paquete; no hay datos de cuántos la usan",
+    "cuadrante": "Probar"
+   },
+   {
+    "canal": "Meta con $4.000 y el pack",
+    "paybackMeses": 7,
+    "puedeDarMucho": true,
+    "porque": "trae 2 de cada 3 clientes nuevos, pero cada uno tarda 7 meses en devolver su CAC de $50",
+    "cuadrante": "Largo plazo"
+   },
+   {
+    "canal": "Volver a $16.000 en Meta con 30 % de descuento",
+    "paybackMeses": null,
+    "puedeDarMucho": false,
+    "porque": "no recupera el CAC en 12 meses (LTV:CAC 0,64)",
+    "cuadrante": "Descartar por ahora"
+   }
+  ],
+  "B": [
+   {
+    "canal": "Insignia de hoy (8 barberías nuevas al mes, $0)",
+    "paybackMeses": 1,
+    "seguro": true,
+    "porque": "no cuesta nada y ya funciona",
+    "cuadrante": "Siempre activo"
+   },
+   {
+    "canal": "Insignia nueva «¿Tenés barbería? Probá gratis» con link",
+    "paybackMeses": 1,
+    "seguro": false,
+    "porque": "cuesta $0; cuántas barberías trae hay que medirlo",
+    "cuadrante": "Probar"
+   },
+   {
+    "canal": "Puesta en marcha nueva (sube la conversión de todos los trials)",
+    "paybackMeses": 1,
+    "seguro": false,
+    "porque": "no es un canal: baja el CAC paid de $180 a unos $119 si se cumple la meta",
+    "cuadrante": "Probar"
+   },
+   {
+    "canal": "Anuncios con $10.000 (sin triplicar)",
+    "paybackMeses": 14,
+    "puedeDarMucho": true,
+    "porque": "cada cliente devuelve su CAC de $180 en 14 meses; con la puesta en marcha nueva, en unos 8",
+    "cuadrante": "Largo plazo"
+   },
+   {
+    "canal": "Triplicar los anuncios a $30.000",
+    "paybackMeses": null,
+    "puedeDarMucho": false,
+    "porque": "cada cliente extra cuesta $399 y deja $251",
+    "cuadrante": "Descartar por ahora"
+   }
+  ],
+  "C": [
+   {
+    "canal": "Google con $4.000",
+    "paybackMeses": 2,
+    "seguro": true,
+    "porque": "CAC real $536, la venta deja $1.625 y se cobra en dos meses",
+    "cuadrante": "Siempre activo"
+   },
+   {
+    "canal": "Meta con $4.000 (después de Google y de los referidos en la agenda)",
+    "paybackMeses": 2,
+    "seguro": true,
+    "porque": "CAC real $718; recupera en dos meses, pero sus visitas valen menos",
+    "cuadrante": "Siempre activo"
+   },
+   {
+    "canal": "Ahorro compartido: tarjeta por WhatsApp y calculadora del vecino",
+    "paybackMeses": 2,
+    "seguro": false,
+    "porque": "venta referida ≤ $300 con visitas; cuánto comparten hay que probarlo con 50 familias",
+    "cuadrante": "Probar"
+   },
+   {
+    "canal": "Letreros «Esta casa ahorra con Sol de Casa»",
+    "paybackMeses": 2,
+    "seguro": false,
+    "porque": "6 leads de 20 casas en 2 meses: una muestra chica",
+    "cuadrante": "Probar"
+   },
+   {
+    "canal": "Videos y testimonios con el ahorro real de las familias",
+    "paybackMeses": 6,
+    "puedeDarMucho": true,
+    "porque": "hoy no hay ninguno; tardan en producir clientes",
+    "cuadrante": "Largo plazo"
+   },
+   {
+    "canal": "Pasar todo el presupuesto a Meta (Leadly)",
+    "paybackMeses": null,
+    "puedeDarMucho": false,
+    "porque": "bajan las ventas de 22,3 a 17,5 al mes",
+    "cuadrante": "Descartar por ahora"
+   }
+  ]
+ }
+}

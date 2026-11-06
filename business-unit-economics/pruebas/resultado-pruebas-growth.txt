@@ -1,0 +1,66 @@
+## Módulo growth
+PASA  Embudo: el paso con menor tasa es b (40 %)
+PASA  Encuesta del Club: 100 × 20 % × 2 × 25 % = 10 socios: calculado=10 esperado=10
+PASA  Encuesta A contra B: A tiene 718 socios al año: calculado=717.570463519 esperado=717.57
+PASA  Encuesta A contra B: B tiene 657 socios al año: calculado=657.4391418659999 esperado=657
+PASA  B va adelante hasta el mes 9 y A lo pasa en el mes 10
+PASA  Techo del balde A = 100 ÷ 10 %: calculado=1000 esperado=1000
+PASA  Ciclo con K ≥ 1 no tiene techo (vacío, no infinito)
+PASA  Duplicar los anuncios de Migas: $2.000 extra ÷ 50 clientes extra = $40: calculado=40 esperado=40
+
+## A · Tueste
+PASA  Correo abierto 350 ÷ 1.000: calculado=0.35 esperado=0.35
+PASA  Página del programa 120 ÷ 350: calculado=0.3429 esperado=0.3429
+PASA  Invitan 100 ÷ 120: calculado=0.8333 esperado=0.8333
+PASA  Abren la tienda 150 ÷ 300 invitaciones: calculado=0.5 esperado=0.5
+PASA  Compran 60 ÷ 150: calculado=0.4 esperado=0.4
+PASA  El paso con menor tasa es del correo a la página (34 %)
+PASA  Se pierden antes de ver el programa: 880 de 1.000: calculado=0.88 esperado=0.88
+PASA  CAC de Meta (4.000 + 1.000) ÷ 100: calculado=50 esperado=50
+PASA  Tope por cliente referido: la mitad: calculado=25 esperado=25
+PASA  Mes gratis de suscripción: 10,88 + 4,50 + 1,20: calculado=16.58 esperado=16.58
+PASA  K de hoy = 10 % × 3 × 20 %: calculado=0.06 esperado=0.06
+PASA  Peor combinación de recompensas: 8 + 5 + 5,44 ÷ 3 + 16,58 ÷ 2: calculado=23.1033 esperado=23.1033
+PASA  Ninguna combinación pasa los $25
+PASA  Meta: K = 35 % × 83,3 % × 3 × 50 % × 50 %: calculado=0.2188 esperado=0.2188
+PASA  Solo con el momento correcto: K = 0,175 (17,5 por cada 100): calculado=0.175 esperado=0.175
+PASA  Referidos al mes con K meta: 147 × K ÷ (1 − K): calculado=41.16 esperado=41.16
+PASA  Parte de Meta en los clientes nuevos baja de 68 % a 53 %: calculado=0.5315 esperado=0.5315
+
+## B · Agendo
+PASA  Datos fiscales 74 ÷ 100: calculado=0.74 esperado=0.74
+PASA  Compartir el link 30 ÷ 62: calculado=0.4839 esperado=0.4839
+PASA  Donde más gente se pierde (en cantidad): compartir el link (32)
+PASA  Donde más tiempo se va: servicios (12 de 28 minutos)
+PASA  Conversión a pago de hoy: 38 × 1 % + 24 × 5 % + 16 × 15 % + 22 × 45 %: calculado=0.1388 esperado=0.1388
+PASA  CAC paid de hoy con 13,9 %: calculado=181.3833 esperado=181.3833
+PASA  Meta: reciben su primera reserva 63 × 90 % + 27 × 11/32: calculado=65.9813 esperado=65.9813
+PASA  Meta: llegan a uso habitual (reservan × 22/38): calculado=38.1997 esperado=38.1997
+PASA  Meta: conversión a pago 22,7 %: calculado=0.2266 esperado=0.2266
+PASA  Meta: CAC paid baja a $119: calculado=118.8612 esperado=118.86
+
+## C · Sol de Casa
+PASA  Ventas por lead referido: 95 % × 85 % × 90 % × 45 %: calculado=0.327 esperado=0.327
+PASA  Visitas por venta 1 ÷ 45 %: calculado=2.2222 esperado=2.2222
+PASA  Costo de visitas por venta referida: calculado=133.3333 esperado=133.33
+PASA  Para recompensas: $300 − $133,33: calculado=166.6667 esperado=166.67
+PASA  Peor combinación con visitas: 133,33 + 10 × 2,47 + 60 + 80: calculado=298.0247 esperado=298.0244
+PASA  La venta referida no pasa los $300
+PASA  Referidos de hoy: 420 × 8 % ÷ 12 leads al mes: calculado=2.8 esperado=2.8
+PASA  Leads para llenar 50 visitas: 50 ÷ (95 % × 85 % × 90 %): calculado=68.7994 esperado=68.7994
+PASA  Familias que harían falta si cada una rinde como un letrero: calculado=458.663 esperado=458.663
+PASA  Más familias que las 420 que hay
+PASA  Valor de una visita referida 45 % × 1.625 − 60: calculado=671.25 esperado=671.25
+PASA  Ahorro de la familia promedio 110 × 70 %: calculado=77 esperado=77
+PASA  Años para recuperar la instalación 6.500 ÷ 924: calculado=7.0346 esperado=7.03
+PASA  Página web: 14 de 100 abren el formulario: calculado=0.14 esperado=0.14
+
+## Matriz de 90 días
+PASA  A: los anuncios siguen en la matriz
+PASA  A: la propuesta que se rechazó en la Sesión 1 queda descartada
+PASA  B: los anuncios siguen en la matriz
+PASA  B: la propuesta que se rechazó en la Sesión 1 queda descartada
+PASA  C: los anuncios siguen en la matriz
+PASA  C: la propuesta que se rechazó en la Sesión 1 queda descartada
+
+RESULTADO: 55 pasan, 0 fallan.

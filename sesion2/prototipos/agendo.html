@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Agendo Puesta en marcha</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Figtree:wght@400;600;700&display=swap">
+<style>
+/* Layout: teléfono con la puesta en marcha (3 pasos y la página lista) y, en pantallas anchas, el guion de la demo. Paleta de barbería: tinta azul, rojo del poste y papel frío. */
+:root{--bg:#eef1f5;--sup:#ffffff;--sup2:#f4f6f9;--fg:#141a26;--suave:#566074;--linea:#d9dee7;--sombra:rgba(20,26,38,.45);
+--acento:#1d3a6e;--acento-tx:#ffffff;--acento-fuerte:#1d3a6e;--acento2:#b9c4d8;--foco:#d23a2f;--rojo:#d23a2f;
+--ok:#227a4c;--ok-bg:#dcf1e4;--alerta:#c0392b;--alerta-bg:#f9e0dd;--sim-bg:#fde7cf;--sim-tx:#8a4a0c;
+--notif-bg:rgba(255,255,255,.94);--notif-tx:#141a26;--bloqueo:#1b2333;--bloqueo-tx:#eef1f5;--chat-bg:#e6e1d8;--chat-yo:#d9fdd3;--wa:#1f8a4c;
+--f-titulo:'Sora','Segoe UI',system-ui,sans-serif;--f-texto:'Figtree','Segoe UI',system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f131b;--sup:#171c27;--sup2:#1d2331;--fg:#e9edf4;--suave:#a1abbd;--linea:#2e3647;--sombra:rgba(0,0,0,.7);
+--acento:#8fb0ec;--acento-tx:#0f1a30;--acento-fuerte:#a9c3f2;--acento2:#34405a;--foco:#ff7b70;--rojo:#ff7b70;--ok:#6fd09a;--ok-bg:#17301f;--alerta:#ff8a7d;--alerta-bg:#3a1d1a;--sim-bg:#3d2a14;--sim-tx:#f5c48b;
+--notif-bg:rgba(35,41,56,.96);--notif-tx:#e9edf4;--bloqueo:#0b0f17;--chat-bg:#232220;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f131b;--sup:#171c27;--sup2:#1d2331;--fg:#e9edf4;--suave:#a1abbd;--linea:#2e3647;--sombra:rgba(0,0,0,.7);
+--acento:#8fb0ec;--acento-tx:#0f1a30;--acento-fuerte:#a9c3f2;--acento2:#34405a;--foco:#ff7b70;--rojo:#ff7b70;--ok:#6fd09a;--ok-bg:#17301f;--alerta:#ff8a7d;--alerta-bg:#3a1d1a;--sim-bg:#3d2a14;--sim-tx:#f5c48b;
+--notif-bg:rgba(35,41,56,.96);--notif-tx:#e9edf4;--bloqueo:#0b0f17;--chat-bg:#232220;color-scheme:dark}
+/* Base común de los prototipos. Cada caso define sus tokens (--bg, --fg, --suave, --linea, --sup, --acento, --acento-tx, --acento2, --ok, --alerta, fuentes). */
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 var(--f-texto);-webkit-font-smoothing:antialiased;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:12px 28px}
+button,input,select{font:inherit;color:inherit}
+h1,h2,h3{font-family:var(--f-titulo);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+.escenario{display:flex;gap:24px;justify-content:center;align-items:flex-start;max-width:1100px;margin:0 auto}
+.telefono{width:100%;max-width:420px;min-width:0;background:var(--sup);border:1px solid var(--linea);border-radius:28px;overflow:hidden;box-shadow:0 18px 50px -24px var(--sombra)}
+.lado{flex:1;max-width:420px;min-width:0;display:flex;flex-direction:column;gap:14px;padding-top:6px}
+@media (max-width:860px){.lado{display:none}.telefono{border-radius:20px}}
+.barra-demo{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-bottom:1px solid var(--linea);background:var(--sup2);font-size:13px;color:var(--suave);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.barra-demo b{color:var(--fg);font-weight:600}
+.barra-demo button{white-space:nowrap;flex:none;border:1px solid var(--linea);background:var(--sup);border-radius:999px;padding:5px 11px;font-size:12.5px;cursor:pointer}
+.mapa{display:none;padding:10px 14px;border-bottom:1px solid var(--linea);background:var(--sup2)}
+.mapa.abierto{display:grid;gap:6px}
+.mapa button{display:flex;gap:10px;align-items:center;text-align:left;border:1px solid var(--linea);background:var(--sup);border-radius:10px;padding:8px 10px;cursor:pointer;font-size:14px}
+.mapa button i{font-style:normal;font-variant-numeric:tabular-nums;color:var(--suave);font-size:12px;min-width:22px}
+.mapa button[aria-current="true"]{border-color:var(--acento);box-shadow:inset 0 0 0 1px var(--acento)}
+.pantalla{display:none;padding:18px 18px 22px;flex-direction:column;gap:14px;min-height:560px}
+.pantalla.activa{display:flex;animation:entra .22s ease-out}
+@keyframes entra{from{opacity:.4;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.pantalla.activa{animation:none}}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--suave);font-weight:600}
+.titulo{font-size:26px}
+.sub{color:var(--suave)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:14px;padding:14px 16px;font-weight:700;font-size:16px;cursor:pointer;background:var(--acento);color:var(--acento-tx);min-height:50px}
+.btn:focus-visible,.btn2:focus-visible,.mapa button:focus-visible,.barra-demo button:focus-visible,.chip:focus-visible{outline:3px solid var(--foco);outline-offset:2px}
+.btn2{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:1px solid var(--linea);border-radius:14px;padding:12px 16px;font-weight:600;cursor:pointer;background:var(--sup);min-height:46px}
+.btn.wa{background:var(--wa);color:#fff}
+.enlace{background:none;border:0;color:var(--acento-fuerte);text-decoration:underline;cursor:pointer;padding:4px 0;font-size:14px}
+.card{border:1px solid var(--linea);border-radius:16px;padding:14px;background:var(--sup);display:flex;flex-direction:column;gap:8px}
+.card.marcada{background:var(--sup2)}
+.sim{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sim-tx);background:var(--sim-bg);border-radius:6px;padding:1px 6px;vertical-align:middle;margin-left:6px}
+.fila{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.num{font-variant-numeric:tabular-nums}
+.grande{font-family:var(--f-titulo);font-size:40px;font-weight:700;line-height:1;font-variant-numeric:tabular-nums}
+.pasos{display:flex;gap:6px;align-items:center;font-size:12.5px;color:var(--suave)}
+.pasos span{flex:1;height:5px;border-radius:3px;background:var(--linea)}
+.pasos span.hecho{background:var(--acento)}
+.barra{height:12px;border-radius:999px;background:var(--linea);overflow:hidden}
+.barra i{display:block;height:100%;background:var(--acento);border-radius:999px;transition:width .5s}
+.notif{border-radius:18px;padding:12px 14px;background:var(--notif-bg);color:var(--notif-tx);display:flex;gap:10px;align-items:flex-start;box-shadow:0 8px 24px -14px var(--sombra);cursor:pointer;text-align:left;border:0;width:100%}
+.notif .ico{width:36px;height:36px;border-radius:9px;flex:none;display:grid;place-items:center;font-weight:800;font-family:var(--f-titulo);background:var(--acento);color:var(--acento-tx)}
+.notif small{opacity:.75;font-size:12px}
+.bloqueo{border-radius:20px;padding:22px 14px 16px;background:var(--bloqueo);color:var(--bloqueo-tx);display:flex;flex-direction:column;gap:14px}
+.bloqueo .hora{font-family:var(--f-titulo);font-size:54px;text-align:center;font-weight:600;line-height:1}
+.bloqueo .fecha{text-align:center;opacity:.8;font-size:14px;margin-top:-8px}
+.chat{background:var(--chat-bg);border-radius:16px;padding:12px;display:flex;flex-direction:column;gap:8px}
+.globo{max-width:88%;padding:8px 10px;border-radius:10px;font-size:14.5px;background:var(--chat-yo);color:#111;align-self:flex-end;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.globo.otro{background:#fff;align-self:flex-start}
+.globo a{color:#0b6aa8;word-break:break-all}
+.globo small{display:block;text-align:right;color:#667;font-size:11px}
+.campo{display:flex;flex-direction:column;gap:6px;font-size:14px}
+.campo input,.campo select{border:1px solid var(--linea);border-radius:12px;padding:12px;background:var(--sup);font-size:16px;min-height:48px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--linea);background:var(--sup);border-radius:999px;padding:8px 13px;cursor:pointer;font-size:14px}
+.chip[aria-pressed="true"]{background:var(--acento);color:var(--acento-tx);border-color:var(--acento)}
+.lista{display:flex;flex-direction:column;gap:0;border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+.lista>div{display:flex;justify-content:space-between;gap:10px;padding:11px 12px;border-bottom:1px solid var(--linea);align-items:center}
+.lista>div:last-child{border-bottom:0}
+.toast{pointer-events:none;position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:12px;font-size:14px;z-index:20;max-width:90vw}
+.embudo{display:flex;flex-direction:column;gap:9px}
+.embudo .e{display:grid;grid-template-columns:1fr auto;gap:2px 10px;font-size:13.5px}
+.embudo .e .b{grid-column:1/-1;height:10px;border-radius:5px;background:var(--linea);overflow:hidden;display:flex}
+.embudo .e .b i{display:block;height:100%;background:var(--acento2)}
+.embudo .e .b i.n{background:var(--acento)}
+.embudo .e.peor .b i{background:var(--alerta)}
+.tabla{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+.tabla th,.tabla td{padding:7px 6px;border-bottom:1px solid var(--linea);text-align:right;vertical-align:top}
+.tabla th:first-child,.tabla td:first-child{text-align:left}
+.tabla th{font-size:12px;color:var(--suave);font-weight:600}
+.tabla tr.total td{font-weight:700;border-top:2px solid var(--fg)}
+.ok{color:var(--ok)}.alerta{color:var(--alerta)}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.pill.ok{background:var(--ok-bg);color:var(--ok)}.pill.alerta{background:var(--alerta-bg);color:var(--alerta)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.kpi{border:1px solid var(--linea);border-radius:12px;padding:10px;display:flex;flex-direction:column;gap:2px}
+.kpi span{font-size:12px;color:var(--suave)}.kpi strong{font-size:22px;font-family:var(--f-titulo);font-variant-numeric:tabular-nums}
+.kpi small{font-size:11.5px;color:var(--suave)}
+.nota{font-size:12.5px;color:var(--suave)}
+.scroll{overflow-x:auto}
+.lado .card h3{font-size:16px}
+.lado ol{margin:0;padding-left:18px;display:grid;gap:4px;font-size:14px}
+
+.anuncio{border:1px solid var(--linea);border-radius:16px;overflow:hidden;background:var(--sup)}
+.anuncio .foto{aspect-ratio:4/3;max-width:100%;background:repeating-linear-gradient(135deg,var(--rojo) 0 18px,#f4f6f9 18px 36px,var(--acento) 36px 54px,#f4f6f9 54px 72px);display:grid;place-items:center}
+.anuncio .foto span{background:var(--sup);color:var(--fg);font:700 22px/1.2 var(--f-titulo);padding:12px 16px;border-radius:12px;text-align:center;max-width:80%}
+.anuncio .pie{padding:12px;display:flex;flex-direction:column;gap:8px}
+.serv{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding:10px 12px;border-bottom:1px solid var(--linea)}
+.serv:last-child{border-bottom:0}
+.serv input[type=number]{width:74px;border:1px solid var(--linea);border-radius:10px;padding:8px;text-align:right;background:var(--sup);font-size:16px}
+.serv input[type=checkbox]{width:20px;height:20px;accent-color:var(--acento)}
+.reloj{font-variant-numeric:tabular-nums;font-weight:700;color:var(--ok)}
+.celebra{border-radius:18px;padding:20px 16px;background:var(--acento);color:var(--acento-tx);display:flex;flex-direction:column;gap:8px;text-align:center}
+.celebra .grande{font-size:30px}
+.celebra .card{background:var(--sup);color:var(--fg);text-align:left}
+.pagina{border:1px solid var(--linea);border-radius:16px;overflow:hidden}
+.pagina .cab{background:var(--bloqueo);color:var(--bloqueo-tx);padding:16px;display:flex;flex-direction:column;gap:4px}
+.pagina .cuerpo{padding:14px;display:flex;flex-direction:column;gap:10px}
+.horas{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.horas .chip{text-align:center;padding:8px 0}
+.insignia{display:flex;gap:10px;align-items:center;border-top:1px solid var(--linea);padding:12px 14px;background:var(--sup2);text-align:left;cursor:pointer;border-left:0;border-right:0;border-bottom:0;width:100%}
+.insignia .logo{width:30px;height:30px;border-radius:8px;background:var(--acento);color:var(--acento-tx);display:grid;place-items:center;font:700 15px var(--f-titulo);flex:none}
+</style></head>
+<body>
+
+<div class="escenario">
+<div class="telefono">
+  <div class="barra-demo"><span id="paso-actual"></span><button type="button" id="abrir-mapa" aria-controls="mapa">Mapa de la demo</button></div>
+  <nav class="mapa" id="mapa" aria-label="Pantallas del prototipo"></nav>
+
+  <section class="pantalla" id="anuncio" data-nombre="El anuncio">
+    <p class="eyebrow">Instagram · patrocinado <span class="sim">simulado</span></p>
+    <div class="anuncio">
+      <div class="foto"><span>Más clientes para tu barbería</span></div>
+      <div class="pie"><b>Agendo</b><p>Tus clientes reservan solos, a cualquier hora, desde un link. Probalo gratis 14 días.</p>
+        <button class="btn" type="button" data-ir="cuenta" id="empezar">Probar gratis</button></div>
+    </div>
+  </section>
+
+  <section class="pantalla" id="cuenta" data-nombre="Paso 1: su barbería">
+    <div class="pasos"><span class="hecho"></span><span></span><span></span><em style="font-style:normal">1 de 3</em></div>
+    <p class="eyebrow" id="origen">Más clientes empiezan con una página para reservar</p>
+    <h1 class="titulo">En 3 pasos sus clientes pueden reservar solos</h1>
+    <div class="campo"><label for="negocio">¿Cómo se llama su barbería?</label><input id="negocio" value="Barbería Leo" autocomplete="organization"></div>
+    <div class="campo"><label for="wa">Su WhatsApp (ahí le avisamos cada reserva)</label><input id="wa" inputmode="tel" value="8888-1234"></div>
+    <button class="btn" type="button" data-ir="servicios">Seguir</button>
+    <p class="nota">Los datos para facturar se piden al final de la prueba, no ahora.</p>
+  </section>
+
+  <section class="pantalla" id="servicios" data-nombre="Paso 2: servicios con plantilla">
+    <div class="pasos"><span class="hecho"></span><span class="hecho"></span><span></span><em style="font-style:normal">2 de 3</em></div>
+    <h1 class="titulo">Sus servicios ya están cargados</h1>
+    <p class="sub">Así los tiene el 90 % de las barberías. Ajuste el precio o quite lo que no ofrece.</p>
+    <div class="card" style="padding:0">
+      <label class="serv"><input type="checkbox" checked><span><b>Corte</b><br><span class="nota">30 min</span></span><span>$<input type="number" value="10" min="0" aria-label="Precio del corte"></span></label>
+      <label class="serv"><input type="checkbox" checked><span><b>Barba</b><br><span class="nota">20 min</span></span><span>$<input type="number" value="8" min="0" aria-label="Precio de la barba"></span></label>
+      <label class="serv"><input type="checkbox" checked><span><b>Corte con barba</b><br><span class="nota">45 min</span></span><span>$<input type="number" value="15" min="0" aria-label="Precio del corte con barba"></span></label>
+    </div>
+    <button class="enlace" type="button" onclick="toast('Puede agregar más servicios después, desde Configuración')">Agregar otro servicio</button>
+    <button class="btn" type="button" data-ir="horario">Seguir</button>
+  </section>
+
+  <section class="pantalla" id="horario" data-nombre="Paso 3: horario por defecto">
+    <div class="pasos"><span class="hecho"></span><span class="hecho"></span><span class="hecho"></span><em style="font-style:normal">3 de 3</em></div>
+    <h1 class="titulo">¿Qué días atiende?</h1>
+    <div class="chips" role="group" aria-label="Días">
+      <button class="chip" type="button" aria-pressed="true">Lun</button><button class="chip" type="button" aria-pressed="true">Mar</button><button class="chip" type="button" aria-pressed="true">Mié</button>
+      <button class="chip" type="button" aria-pressed="true">Jue</button><button class="chip" type="button" aria-pressed="true">Vie</button><button class="chip" type="button" aria-pressed="true">Sáb</button><button class="chip" type="button" aria-pressed="false">Dom</button>
+    </div>
+    <div class="fila" style="gap:12px">
+      <div class="campo" style="flex:1"><label for="abre">Abre</label><select id="abre"><option>8:00</option><option selected>9:00</option><option>10:00</option></select></div>
+      <div class="campo" style="flex:1"><label for="cierra">Cierra</label><select id="cierra"><option>18:00</option><option selected>19:00</option><option>20:00</option></select></div>
+    </div>
+    <p class="nota">El mismo horario para todos los barberos. Cada uno lo cambia después si hace falta.</p>
+    <button class="btn" type="button" data-ir="lista">Crear mi página</button>
+  </section>
+
+  <section class="pantalla" id="lista" data-nombre="Su página está lista">
+    <p class="eyebrow">Listo en <span class="reloj" id="reloj">0 min</span></p>
+    <h1 class="titulo">Su página para reservar está lista</h1>
+    <div class="card marcada"><div class="fila"><b id="url">agendo.cr/barberia-leo</b><span class="sim">simulado</span></div>
+      <p class="sub">Mándela hoy: de los barberos que comparten su link el primer día, 9 de cada 10 reciben una reserva en la prueba. De los que no, 1 de cada 3.</p></div>
+    <button class="btn wa" type="button" data-ir="compartir">Mandar por WhatsApp a mis clientes</button>
+    <button class="btn2" type="button" id="insta">Copiar el link para la bio de Instagram</button>
+    <button class="enlace" type="button" data-ir="cliente">Ver mi página como la ve un cliente</button>
+  </section>
+
+  <section class="pantalla" id="compartir" data-nombre="Compartir el link">
+    <p class="eyebrow">WhatsApp · lista de clientes <span class="sim">simulado</span></p>
+    <div class="chat" id="chat"><div class="globo otro">Mae, ¿tiene campo el sábado? <small>ayer</small></div></div>
+    <div class="card marcada"><p class="nota">Mensaje listo (se puede editar):</p>
+      <p id="mensaje">¡Hola! Ya pueden reservar su corte en Barbería Leo a cualquier hora, desde aquí: agendo.cr/barberia-leo</p></div>
+    <button class="btn wa" type="button" id="enviar">Enviar a 48 clientes</button>
+    <div class="card" id="esperando" hidden><b>Esperando su primera reserva…</b><p class="sub">Le avisamos por WhatsApp en cuanto alguien reserve.</p>
+      <button class="btn" type="button" data-ir="reserva">Simular que un cliente reserva</button></div>
+  </section>
+
+  <section class="pantalla" id="reserva" data-nombre="La primera reserva">
+    <div class="celebra">
+      <span class="eyebrow" style="color:inherit;opacity:.8">Ahora mismo <span class="sim">simulado</span></span>
+      <span class="grande">¡Su primera reserva!</span>
+      <span>Un cliente reservó solo, sin llamarlo.</span>
+      <div class="card"><div class="fila"><b>Juan Pérez</b><span class="num">$15</span></div><p>Corte con barba · mañana 10:00</p></div>
+    </div>
+    <p class="sub">Con 20 citas en 14 días, Agendo ya trabaja por usted: es lo que hacen las barberías que se quedan.</p>
+    <div class="card"><div class="fila"><b>Camino a 20 citas</b><span class="num">1 de 20</span></div><div class="barra"><i style="width:5%"></i></div></div>
+    <button class="btn" type="button" data-ir="cliente">Ver lo que vio Juan</button>
+  </section>
+
+  <section class="pantalla" id="cliente" data-nombre="La página del cliente (con la insignia)">
+    <p class="eyebrow">Lo que ve el cliente · agendo.cr/barberia-leo</p>
+    <div class="pagina">
+      <div class="cab"><b style="font:700 20px var(--f-titulo)" id="nombre-pag">Barbería Leo</b><span style="opacity:.8">San Pedro · lunes a sábado, 9:00 a 19:00</span></div>
+      <div class="cuerpo">
+        <div class="lista"><div><span>Corte</span><b class="num">$10</b></div><div><span>Barba</span><b class="num">$8</b></div><div><span>Corte con barba</span><b class="num">$15</b></div></div>
+        <b>Mañana</b>
+        <div class="horas"><button class="chip" type="button">9:00</button><button class="chip" type="button" aria-pressed="true">10:00</button><button class="chip" type="button">11:30</button><button class="chip" type="button">14:00</button></div>
+        <button class="btn" type="button" onclick="toast('Reserva de ejemplo (simulado)')">Reservar</button>
+      </div>
+      <button class="insignia" type="button" id="insignia" data-ir="cuenta"><span class="logo">A</span><span><b>Reservado con Agendo</b><br><span class="nota">¿Tiene una barbería? Pruebe gratis 14 días</span></span></button>
+    </div>
+    <p class="nota">La insignia nueva lleva a otro barbero al paso 1, con el nombre de la barbería que la mostró. Hoy solo dice el nombre y no lleva a ningún lado.</p>
+    <button class="btn2" type="button" data-ir="fiscales">Día 12 de la prueba: datos para facturar</button>
+  </section>
+
+  <section class="pantalla" id="fiscales" data-nombre="Datos fiscales, al final">
+    <p class="eyebrow">Día 12 de 14 · antes de cobrar</p>
+    <h1 class="titulo">Para seguir recibiendo reservas después de la prueba</h1>
+    <p class="sub">Lleva 23 citas por Agendo <span class="sim">simulado</span>. Para emitir su factura necesitamos estos datos. Toma 4 minutos.</p>
+    <div class="campo"><label for="cedula">Cédula jurídica</label><input id="cedula" placeholder="3-101-000000"></div>
+    <div class="campo"><label for="razon">Razón social</label><input id="razon" placeholder="Barbería Leo S.A."></div>
+    <div class="campo"><label for="regimen">Régimen fiscal</label><select id="regimen"><option>Régimen simplificado</option><option>Régimen general</option></select></div>
+    <button class="btn" type="button" data-ir="panel">Guardar y seguir</button>
+    <button class="enlace" type="button" data-ir="panel">Recordármelo mañana</button>
+  </section>
+
+  <section class="pantalla" id="panel" data-nombre="Panel de Valeria">
+    <p class="eyebrow">Panel de Valeria · trials del mes</p>
+    <div class="kpis">
+      <div class="kpi"><span>Trials con su primera reserva</span><strong>38 % → 55 %</strong><small>hoy (dato) → meta de la prueba <span class="sim">simulado</span></small></div>
+      <div class="kpi"><span>Llegan a uso habitual</span><strong>22 → 38</strong><small>de cada 100 trials (20 citas en 14 días)</small></div>
+      <div class="kpi"><span>Conversión a pago</span><strong>13,9 % → 22,7 %</strong><small>si se cumple la meta completa</small></div>
+      <div class="kpi"><span>CAC paid</span><strong>$181 → $119</strong><small>los mismos $10.000 y 500 trials</small></div>
+    </div>
+    <div class="card">
+      <div class="fila"><b>Embudo por cada 100 trials</b><span class="nota">gris: hoy · azul: meta <span class="sim">simulado</span></span></div>
+      <div class="embudo" id="embudo-b"></div>
+      <p class="nota">Donde más se pierde hoy: compartir el link (32 de 62 no lo comparten). Donde más tiempo se va: servicios, 12 de 28 minutos.</p>
+    </div>
+    <div class="card">
+      <b>Minutos por pantalla</b>
+      <div class="scroll"><table class="tabla"><thead><tr><th>Pantalla</th><th>Hoy</th><th>Nueva <span class="sim">simulado</span></th></tr></thead>
+        <tbody><tr><td>Datos fiscales</td><td>4</td><td>al final</td></tr><tr><td>Negocio / paso 1</td><td>3</td><td>1</td></tr><tr><td>Servicios / paso 2</td><td>12</td><td>1,5</td></tr><tr><td>Horarios / paso 3</td><td>9</td><td>1</td></tr>
+        <tr class="total"><td>Hasta tener la página</td><td>28</td><td>3,5</td></tr></tbody></table></div>
+    </div>
+    <div class="card marcada">
+      <b>El número de la semana</b><p>Trials que reciben su primera reserva por el link. North Star: barberías con 20 citas o más en los últimos 14 días.</p>
+      <b>Prueba A/B</b><p>Si la mitad de los trials empieza con plantillas y deja los datos fiscales para el final, los trials con su primera reserva pasan de 38 % a 55 %, y vigilamos que no suban los negocios que llegan al día 14 sin datos para facturar.</p>
+    </div>
+    <button class="btn2" type="button" data-ir="anuncio">Volver al inicio</button>
+  </section>
+</div>
+
+<aside class="lado" aria-label="Guion de la demo">
+  <div class="card"><p class="eyebrow">Qué ataca</p><h3>El primer paso y el último</h3><p>Hoy 26 de cada 100 se van en la primera pantalla, que pide datos fiscales a alguien que vino por «más clientes». Y de los 62 que terminan, 32 no comparten su link el primer día.</p></div>
+  <div class="card"><p class="eyebrow">El aha</p><h3>La primera reserva por el link</h3><p>Hábito: 20 citas en 14 días. Aha: un cliente reserva solo. Setup: servicios, horario y el link compartido. Todo lo demás va después.</p></div>
+  <div class="card"><p class="eyebrow">La meta</p><h3>CAC paid de $181 a $119</h3><p>Si configuran 90 de cada 100 y el 70 % comparte el link el primer día, reciben reserva 66 y llegan a uso habitual 38. La conversión pasa de 13,9 % a 22,7 % con los mismos anuncios.</p></div>
+  <p class="nota">Barbería, clientes, reservas, tiempos nuevos y links son simulados. Las tasas de hoy salen del caso; las de la meta son supuestos del equipo.</p>
+</aside>
+</div>
+
+<script>/* Navegación común: pantallas <section class="pantalla" id="..." data-nombre="...">, mapa de la demo y hash (#id). */
+(function () {
+  'use strict';
+  const $ = (s, el) => (el || document).querySelector(s), $$ = (s, el) => [...(el || document).querySelectorAll(s)];
+  const pantallas = $$('.pantalla');
+  const historia = [];
+  const mapa = $('#mapa'), etiqueta = $('#paso-actual');
+  pantallas.forEach((p, i) => {
+    const b = document.createElement('button'); b.type = 'button'; b.dataset.ir = p.id;
+    b.innerHTML = `<i>${String(i + 1).padStart(2, '0')}</i><span>${p.dataset.nombre}</span>`;
+    mapa.appendChild(b);
+  });
+  function ir(id, sinHistoria) {
+    const p = document.getElementById(id); if (!p) return;
+    const actual = $('.pantalla.activa');
+    if (actual && actual !== p && !sinHistoria) historia.push(actual.id);
+    pantallas.forEach((x) => x.classList.toggle('activa', x === p));
+    $$('button', mapa).forEach((b) => b.setAttribute('aria-current', b.dataset.ir === id ? 'true' : 'false'));
+    etiqueta.innerHTML = `<b>${pantallas.indexOf(p) + 1} de ${pantallas.length}</b> · ${p.dataset.nombre}`;
+    mapa.classList.remove('abierto');
+    if (location.hash.slice(1) !== id) { try { history.replaceState(null, '', '#' + id); } catch (e) { /* sin historial */ } }
+    p.scrollIntoView ? window.scrollTo({ top: 0 }) : 0;
+    document.dispatchEvent(new CustomEvent('pantalla', { detail: id }));
+  }
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest('[data-ir]'); if (b) { e.preventDefault(); ir(b.dataset.ir); }
+    if (e.target.closest('[data-atras]')) { const id = historia.pop(); if (id) ir(id, true); }
+  });
+  $('#abrir-mapa').addEventListener('click', () => mapa.classList.toggle('abierto'));
+  window.addEventListener('hashchange', () => { const id = location.hash.slice(1); if (id && document.getElementById(id)) ir(id, true); });
+  window.toast = (t) => { const d = document.createElement('div'); d.className = 'toast'; d.setAttribute('role', 'status'); d.textContent = t; document.body.appendChild(d); setTimeout(() => d.remove(), 2600); };
+  window.copiar = (texto, el) => {
+    const ok = () => toast('Copiado');
+    try { navigator.clipboard.writeText(texto).then(ok, () => { if (el) { el.select && el.select(); } toast('Seleccioná el texto y copialo'); }); }
+    catch (e) { toast('Seleccioná el texto y copialo'); }
+  };
+  window.ir = ir;
+  window.dinero = (v, d) => (v < 0 ? '−$' : '$') + Math.abs(v).toLocaleString('es-CR', { minimumFractionDigits: d === undefined ? 0 : d, maximumFractionDigits: d === undefined ? 0 : d }).replace(/ | | /g, '.');
+  const inicio = location.hash.slice(1);
+  ir(inicio && document.getElementById(inicio) ? inicio : pantallas[0].id, true);
+})();
+</script>
+<script>
+(function () {
+  const $ = (s) => document.querySelector(s);
+  let inicio = null;
+  document.querySelectorAll('.chips .chip').forEach((c) => c.addEventListener('click', () => c.setAttribute('aria-pressed', c.getAttribute('aria-pressed') === 'true' ? 'false' : 'true')));
+  document.querySelectorAll('.horas .chip').forEach((c) => c.addEventListener('click', () => document.querySelectorAll('.horas .chip').forEach((x) => x.setAttribute('aria-pressed', x === c ? 'true' : 'false'))));
+  const slug = () => 'agendo.cr/' + ($('#negocio').value || 'mi-barberia').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  document.addEventListener('pantalla', (e) => {
+    const id = e.detail;
+    if (id === 'cuenta' && !inicio) inicio = Date.now();
+    if (id === 'lista') {
+      const s = inicio ? Math.max(1, Math.round((Date.now() - inicio) / 1000)) : 0;
+      $('#reloj').textContent = s ? (s < 60 ? s + (s === 1 ? ' segundo' : ' segundos') : Math.floor(s / 60) + ' min ' + (s % 60) + ' s') : 'menos de 5 minutos';
+      $('#url').textContent = slug();
+    }
+    if (id === 'compartir') { $('#mensaje').textContent = `¡Hola! Ya pueden reservar su corte en ${$('#negocio').value} a cualquier hora, desde aquí: ${slug()}`; $('#enviar').hidden = false; $('#esperando').hidden = true; }
+    if (id === 'cliente') $('#nombre-pag').textContent = $('#negocio').value;
+  });
+  $('#insignia').addEventListener('click', () => { $('#origen').textContent = 'Vio la página de ' + $('#negocio').value + ' · más clientes empiezan con una página para reservar'; inicio = null; });
+  $('#insta').addEventListener('click', () => copiar('https://' + slug()));
+  $('#enviar').addEventListener('click', () => {
+    const g = document.createElement('div'); g.className = 'globo'; g.innerHTML = $('#mensaje').textContent + ' <small>9:42 ✓✓</small>';
+    $('#chat').appendChild(g); $('#enviar').hidden = true; $('#esperando').hidden = false; toast('Enviado a 48 clientes (simulado)');
+  });
+  const pasos = [['Empiezan la prueba', 100, 100], ['Primer paso (hoy: datos fiscales)', 74, 97], ['Datos del negocio / servicios', 65, 94], ['Horarios: página lista', 62, 90], ['Comparten el link el primer día', 30, 63], ['Reciben su primera reserva', 38, 66], ['Uso habitual (20 citas)', 22, 38]];
+  $('#embudo-b').innerHTML = pasos.map(([n, h, m], i) => `<div class="e ${i === 4 ? 'peor' : ''}"><span>${n}</span><span class="num">${h} → <b>${m}</b></span><div class="b"><i style="width:${h}%"></i></div><div class="b"><i class="n" style="width:${m}%"></i></div></div>`).join('');
+})();
+</script>
+</body></html>

@@ -1,0 +1,475 @@
+{
+ "id": "agendo",
+ "nombre": "Agendo",
+ "subtitulo": "Caso B · SaaS por suscripción con trial · ¿Triplicar los anuncios de $10.000 a $30.000?",
+ "fuente": "Caso B - Agendo.pdf (FC Studio)",
+ "modelo": "suscripción (plan mensual y plan anual prepagado) con trial y vendedora",
+ "especializaciones": [
+  "suscripcion"
+ ],
+ "decision": "¿Valeria tiene razón al triplicar los anuncios? Si no, ¿qué tendría que pasar para que la tenga?",
+ "parametros": [
+  {
+   "id": "precio",
+   "etiqueta": "Precio del plan mensual",
+   "unidad": "$",
+   "valor": 25,
+   "origen": "dato",
+   "fuente": "Sección 1",
+   "grupo": "Precios",
+   "control": true,
+   "min": 10,
+   "max": 50,
+   "paso": 1
+  },
+  {
+   "id": "precio_anual",
+   "etiqueta": "Precio del plan anual (por adelantado)",
+   "unidad": "$",
+   "valor": 240,
+   "origen": "dato",
+   "fuente": "Sección 1",
+   "grupo": "Precios"
+  },
+  {
+   "id": "mb",
+   "etiqueta": "Margen bruto",
+   "unidad": "%",
+   "valor": 0.78,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Precios",
+   "control": true,
+   "min": 0.3,
+   "max": 0.95,
+   "paso": 0.01
+  },
+  {
+   "id": "churn",
+   "etiqueta": "Cancelación mensual del plan mensual",
+   "unidad": "%",
+   "valor": 0.06,
+   "origen": "dato",
+   "fuente": "Sección 4",
+   "grupo": "Retención",
+   "control": true,
+   "min": 0.01,
+   "max": 0.2,
+   "paso": 0.005
+  },
+  {
+   "id": "renovacion",
+   "etiqueta": "Clientes del plan anual que renuevan al año",
+   "unidad": "%",
+   "valor": 0.7,
+   "origen": "dato",
+   "fuente": "Sección 4",
+   "grupo": "Retención"
+  },
+  {
+   "id": "pct_anual",
+   "etiqueta": "Clientes nuevos en plan anual",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "supuesto",
+   "fuente": "Supuesto 1: la base se calcula todo mensual (hoy lo elige el 10 %)",
+   "grupo": "Retención",
+   "control": true,
+   "min": 0,
+   "max": 0.8,
+   "paso": 0.05
+  },
+  {
+   "id": "inv",
+   "etiqueta": "Inversión en anuncios al mes",
+   "unidad": "$",
+   "valor": 10000,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 30000,
+   "paso": 500
+  },
+  {
+   "id": "hist",
+   "etiqueta": "Historial: inversión → trials por anuncios",
+   "unidad": "historial",
+   "valor": [
+    [
+     5000,
+     290
+    ],
+    [
+     10000,
+     500
+    ],
+    [
+     15000,
+     650
+    ],
+    [
+     20000,
+     760
+    ],
+    [
+     30000,
+     900
+    ]
+   ],
+   "origen": "dato",
+   "fuente": "Sección 5 · supuesto 4: interpolación con ($0, 0)",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "modo",
+   "etiqueta": "Cómo se calculan los trials",
+   "unidad": "texto",
+   "valor": "historial",
+   "origen": "dato",
+   "fuente": "«constante» = supuesto 6 (como lo ve Valeria)",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "costo_registro",
+   "etiqueta": "Costo por registro que reporta el freelancer",
+   "unidad": "$",
+   "valor": 20,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "conv",
+   "etiqueta": "Trials que pasan a pagar",
+   "unidad": "%",
+   "valor": 0.14,
+   "origen": "dato",
+   "fuente": "Sección 3 · supuesto 3: fija (optimista)",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0.02,
+   "max": 0.4,
+   "paso": 0.005
+  },
+  {
+   "id": "comision",
+   "etiqueta": "Comisión por cliente de anuncios",
+   "unidad": "$",
+   "valor": 20,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 100,
+   "paso": 1
+  },
+  {
+   "id": "sueldo",
+   "etiqueta": "Sueldo de una vendedora",
+   "unidad": "$",
+   "valor": 1200,
+   "origen": "dato",
+   "fuente": "Sección 3 y 7",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 4000,
+   "paso": 50
+  },
+  {
+   "id": "cap_vendedora",
+   "etiqueta": "Trials que atiende una vendedora",
+   "unidad": "n",
+   "valor": 500,
+   "origen": "dato",
+   "fuente": "Sección 3 y 7",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 100,
+   "max": 1500,
+   "paso": 50
+  },
+  {
+   "id": "organicos",
+   "etiqueta": "Clientes orgánicos al mes",
+   "unidad": "n",
+   "valor": 50,
+   "origen": "dato",
+   "fuente": "Sección 3 · supuesto 5",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 200,
+   "paso": 1
+  },
+  {
+   "id": "lamina",
+   "etiqueta": "LTV:CAC de la lámina de Valeria",
+   "unidad": "x",
+   "valor": 2.4,
+   "origen": "dato",
+   "fuente": "Historia",
+   "grupo": "Reporte"
+  },
+  {
+   "id": "clientes_hoy",
+   "etiqueta": "Clientes que pagan hoy",
+   "unidad": "n",
+   "valor": 1150,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "caja0",
+   "etiqueta": "Plata en el banco hoy",
+   "unidad": "$",
+   "valor": 60000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "piso",
+   "etiqueta": "Piso de seguridad",
+   "unidad": "$",
+   "valor": 10000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "fijos",
+   "etiqueta": "Costos fijos mensuales",
+   "unidad": "$",
+   "valor": 14000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  }
+ ],
+ "unidad": {
+  "horizonte": 24,
+  "segmentos": [
+   {
+    "id": "mensual",
+    "nombre": "Cliente del plan mensual",
+    "tipo": "suscripcion",
+    "peso": "1-$pct_anual",
+    "precio": "$precio",
+    "contribMes": "$precio*$mb",
+    "churn": "$churn"
+   },
+   {
+    "id": "anual",
+    "nombre": "Cliente del plan anual",
+    "tipo": "prepago",
+    "peso": "$pct_anual",
+    "contribPeriodo": "$precio_anual*$mb",
+    "meses": 12,
+    "renovacion": "$renovacion"
+   }
+  ]
+ },
+ "adquisicion": {
+  "canales": [
+   {
+    "id": "ads",
+    "nombre": "Anuncios (Meta + Google)",
+    "inversion": "$inv",
+    "historial": "$hist",
+    "modo": "$modo",
+    "costoUnitario": "$costo_registro",
+    "unidadTope": "Trials",
+    "etapas": [
+     {
+      "nombre": "Clientes de anuncios",
+      "tasa": "$conv"
+     }
+    ]
+   }
+  ],
+  "escalones": [
+   {
+    "nombre": "Vendedoras",
+    "cada": "$cap_vendedora",
+    "costo": "$sueldo"
+   }
+  ],
+  "costoPorCliente": "$comision",
+  "organicos": "$organicos",
+  "referencia": {
+   "inv": 10000
+  }
+ },
+ "suscripcion": {
+  "ltvCacReportado": "$lamina"
+ },
+ "escenarios": [
+  {
+   "id": "hoy",
+   "nombre": "Hoy ($10.000)",
+   "rol": "hoy",
+   "cambios": {
+    "inv": 10000
+   }
+  },
+  {
+   "id": "valeria",
+   "nombre": "Valeria con el historial ($30.000)",
+   "rol": "propuesta",
+   "cambios": {
+    "inv": 30000
+   }
+  },
+  {
+   "id": "valeria_cte",
+   "nombre": "Valeria con CAC constante (supuesto 6)",
+   "rol": "extra",
+   "cambios": {
+    "inv": 30000,
+    "modo": "constante"
+   }
+  },
+  {
+   "id": "propuesta",
+   "nombre": "Propuesta: plan anual 40 % + $29",
+   "rol": "alternativa",
+   "cambios": {
+    "inv": 10000,
+    "pct_anual": 0.4,
+    "precio": 29
+   }
+  }
+ ],
+ "cambios": [
+  {
+   "id": "anual",
+   "nombre": "Ofrecer el plan anual durante el trial (40 % de los clientes nuevos, supuesto propio)",
+   "valores": {
+    "pct_anual": 0.4
+   }
+  }
+ ],
+ "simulacion": {
+  "meses": 24,
+  "cajaInicial": "$caja0",
+  "piso": "$piso",
+  "costosFijos": "$fijos",
+  "cohortesIniciales": [
+   {
+    "n": "$clientes_hoy",
+    "cambios": {
+     "pct_anual": 0
+    }
+   }
+  ],
+  "rangos": {
+   "ads": [
+    0,
+    30000
+   ]
+  },
+  "reglas": [],
+  "objetivo": {
+   "principal": "activosFinal",
+   "desempate": "cajaFinal"
+  },
+  "etiquetaActivos": "Clientes activos",
+  "etiquetaTotal": "Clientes nuevos de anuncios (24 meses)"
+ },
+ "planes": [
+  {
+   "nombre": "Plan 1 · $10.000 fijos (hoy)",
+   "rol": "hoy",
+   "inversiones": {
+    "ads": 10000
+   }
+  },
+  {
+   "nombre": "Plan 2 · Valeria: $30.000 fijos",
+   "rol": "propuesta",
+   "inversiones": {
+    "ads": 30000
+   }
+  },
+  {
+   "nombre": "Plan 3 · $15.000 meses 1-18 y $27.000 después",
+   "inversiones": {
+    "ads": {
+     "tramos": [
+      [
+       1,
+       15000
+      ],
+      [
+       19,
+       27000
+      ]
+     ]
+    }
+   }
+  },
+  {
+   "nombre": "Plan 4 · Plan anual 40 % desde el mes 1; $23.000 meses 1-12 y $30.000 después",
+   "inversiones": {
+    "ads": {
+     "tramos": [
+      [
+       1,
+       23000
+      ],
+      [
+       13,
+       30000
+      ]
+     ]
+    }
+   },
+   "cambios": {
+    "anual": 1
+   }
+  }
+ ],
+ "busqueda": {
+  "canales": {
+   "ads": {
+    "valores": [
+     0,
+     5000,
+     10000,
+     13000,
+     15000,
+     18000,
+     20000,
+     23000,
+     25000,
+     27000,
+     30000
+    ],
+    "cambioEn": [
+     7,
+     10,
+     13,
+     16,
+     19
+    ]
+   }
+  },
+  "cambios": [
+   {},
+   {
+    "anual": 1
+   }
+  ]
+ },
+ "riesgos": [
+  "La conversión del 14 % podría bajar al invertir más (supuesto 3, optimista).",
+  "El 40 % de plan anual y el precio de $29 son supuestos propios; hay que medirlos antes de escalar.",
+  "Planes que pasan cerca del piso de $10.000 no dejan margen de error."
+ ],
+ "trampa": "LTV:CAC de 2,4 de la lámina: usa el CAC blended de $105, que mezcla 50 clientes orgánicos gratis; con el CAC paid de $180 el LTV:CAC es 1,40. El costo por registro de $20 es el de un trial, no el de un cliente."
+}

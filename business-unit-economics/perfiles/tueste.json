@@ -1,0 +1,586 @@
+{
+ "id": "tueste",
+ "nombre": "Tueste",
+ "subtitulo": "Caso A · E-commerce directo al cliente con suscripción · ¿Firmo la propuesta de Black Friday?",
+ "fuente": "Caso A - Tueste.pdf (FC Studio)",
+ "modelo": "mixto: ecommerce (pedidos sueltos con recompra) + suscripción mensual",
+ "especializaciones": [
+  "ecommerce"
+ ],
+ "decision": "¿Diego firma la propuesta de la agencia (duplicar a $16.000 con 30 % de descuento en el primer pedido) o qué hace en su lugar?",
+ "parametros": [
+  {
+   "id": "precio_bolsa",
+   "etiqueta": "Precio de una bolsa de 340 g",
+   "unidad": "$",
+   "valor": 17,
+   "origen": "dato",
+   "fuente": "Sección 1",
+   "grupo": "Producto",
+   "control": true,
+   "min": 10,
+   "max": 30,
+   "paso": 0.5
+  },
+  {
+   "id": "bolsas",
+   "etiqueta": "Bolsas en el pedido típico",
+   "unidad": "n",
+   "valor": 2,
+   "origen": "dato",
+   "fuente": "Sección 1",
+   "grupo": "Producto"
+  },
+  {
+   "id": "cafe",
+   "etiqueta": "Costo del café por bolsa (no cambia con descuento)",
+   "unidad": "$",
+   "valor": 5.44,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Producto",
+   "control": true,
+   "min": 2,
+   "max": 12,
+   "paso": 0.01
+  },
+  {
+   "id": "envio",
+   "etiqueta": "Envío por pedido (lo paga Tueste)",
+   "unidad": "$",
+   "valor": 4.5,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Producto",
+   "control": true,
+   "min": 0,
+   "max": 12,
+   "paso": 0.1
+  },
+  {
+   "id": "pasarela",
+   "etiqueta": "Comisión de la pasarela (sobre lo que paga el cliente)",
+   "unidad": "%",
+   "valor": 0.045,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Producto"
+  },
+  {
+   "id": "caja",
+   "etiqueta": "Caja y empaque por pedido",
+   "unidad": "$",
+   "valor": 1.2,
+   "origen": "dato",
+   "fuente": "Sección 2",
+   "grupo": "Producto"
+  },
+  {
+   "id": "desc_sub",
+   "etiqueta": "Descuento de la suscripción",
+   "unidad": "%",
+   "valor": 0.1,
+   "origen": "dato",
+   "fuente": "Sección 1",
+   "grupo": "Suscripción"
+  },
+  {
+   "id": "pct_sub",
+   "etiqueta": "Clientes nuevos que se suscriben",
+   "unidad": "%",
+   "valor": 0.15,
+   "origen": "dato",
+   "fuente": "Sección 4 · supuesto 2: no cambia con la inversión",
+   "grupo": "Suscripción",
+   "control": true,
+   "min": 0,
+   "max": 0.6,
+   "paso": 0.01
+  },
+  {
+   "id": "churn",
+   "etiqueta": "Cancelación mensual de suscriptores",
+   "unidad": "%",
+   "valor": 0.09,
+   "origen": "dato",
+   "fuente": "Sección 4",
+   "grupo": "Suscripción",
+   "control": true,
+   "min": 0.01,
+   "max": 0.3,
+   "paso": 0.005
+  },
+  {
+   "id": "pedidos_mes",
+   "etiqueta": "Pedidos por cliente suelto según su mes de vida (1 a 12)",
+   "unidad": "lista",
+   "valor": [
+    1.0,
+    0.15,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.2,
+    0.15,
+    0.15,
+    0.15,
+    0.2,
+    0.2
+   ],
+   "origen": "dato",
+   "fuente": "Sección 4",
+   "grupo": "Recompra"
+  },
+  {
+   "id": "pedidos12",
+   "etiqueta": "Pedidos en 12 meses del cliente suelto (contando el primero)",
+   "unidad": "n",
+   "valor": 3,
+   "origen": "dato",
+   "fuente": "Sección 4 · el control reparte las recompras en la misma forma de la tabla",
+   "grupo": "Recompra",
+   "control": true,
+   "min": 1,
+   "max": 6,
+   "paso": 0.05
+  },
+  {
+   "id": "pedidos_despues",
+   "etiqueta": "Pedidos al mes del cliente suelto, meses 13 a 24",
+   "unidad": "n",
+   "valor": 0.1,
+   "origen": "dato",
+   "fuente": "Sección 4 (solo nivel 3)",
+   "grupo": "Recompra"
+  },
+  {
+   "id": "inv_meta",
+   "etiqueta": "Inversión en Meta al mes",
+   "unidad": "$",
+   "valor": 8000,
+   "origen": "dato",
+   "fuente": "Sección 3 (septiembre)",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 20000,
+   "paso": 250
+  },
+  {
+   "id": "hist_meta",
+   "etiqueta": "Historial: inversión en Meta → clientes nuevos de Meta",
+   "unidad": "historial",
+   "valor": [
+    [
+     4000,
+     100
+    ],
+    [
+     8000,
+     165
+    ],
+    [
+     12000,
+     210
+    ],
+    [
+     16000,
+     235
+    ],
+    [
+     20000,
+     250
+    ]
+   ],
+   "origen": "dato",
+   "fuente": "Sección 5 · supuesto 4: interpolación lineal con ($0, 0)",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "fee",
+   "etiqueta": "Fee de la agencia (si hay inversión)",
+   "unidad": "$",
+   "valor": 1000,
+   "origen": "dato",
+   "fuente": "Sección 3 y 7",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 3000,
+   "paso": 50
+  },
+  {
+   "id": "descuento",
+   "etiqueta": "Descuento en el primer pedido (pedidos sueltos)",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Historia · supuesto 3: no cambia los clientes que llegan (optimista)",
+   "grupo": "Adquisición",
+   "control": true,
+   "min": 0,
+   "max": 0.5,
+   "paso": 0.01
+  },
+  {
+   "id": "organicos",
+   "etiqueta": "Clientes nuevos al mes que no vienen de Meta",
+   "unidad": "n",
+   "valor": 47,
+   "origen": "dato",
+   "fuente": "Sección 3 y 7 (22 + 15 + 10)",
+   "grupo": "Adquisición"
+  },
+  {
+   "id": "pack",
+   "etiqueta": "Pedidos sueltos que pasan al pack de 3 bolsas",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "supuesto propio",
+   "fuente": "Idea de Diego (sección 6); el 50 % de la propuesta es supuesto propio",
+   "grupo": "Pack",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.05
+  },
+  {
+   "id": "pack_precio",
+   "etiqueta": "Precio del pack de 3 bolsas",
+   "unidad": "$",
+   "valor": 48,
+   "origen": "dato",
+   "fuente": "Sección 6",
+   "grupo": "Pack"
+  },
+  {
+   "id": "pack_caja",
+   "etiqueta": "Caja del pack",
+   "unidad": "$",
+   "valor": 1.4,
+   "origen": "dato",
+   "fuente": "Sección 6",
+   "grupo": "Pack"
+  },
+  {
+   "id": "roas_meta",
+   "etiqueta": "ROAS que reporta Ads Manager",
+   "unidad": "x",
+   "valor": 3.0,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Reporte de Meta"
+  },
+  {
+   "id": "ventas_atribuidas",
+   "etiqueta": "Ventas que Meta se atribuye",
+   "unidad": "$",
+   "valor": 24000,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Reporte de Meta"
+  },
+  {
+   "id": "ventas_tienda",
+   "etiqueta": "Ventas totales de la tienda (Shopify)",
+   "unidad": "$",
+   "valor": 28000,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Reporte de Meta"
+  },
+  {
+   "id": "inv_rtg",
+   "etiqueta": "Inversión en retargeting (visitantes + compradores)",
+   "unidad": "$",
+   "valor": 2400,
+   "origen": "dato",
+   "fuente": "Sección 3: $1.400 + $1.000",
+   "grupo": "Reporte de Meta"
+  },
+  {
+   "id": "inv_reporte",
+   "etiqueta": "Inversión del reporte de septiembre",
+   "unidad": "$",
+   "valor": 8000,
+   "origen": "dato",
+   "fuente": "Sección 3",
+   "grupo": "Reporte de Meta"
+  },
+  {
+   "id": "caja0",
+   "etiqueta": "Plata en el banco hoy",
+   "unidad": "$",
+   "valor": 35000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "piso",
+   "etiqueta": "Piso de seguridad de caja",
+   "unidad": "$",
+   "valor": 5000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "fijos",
+   "etiqueta": "Costos fijos mensuales",
+   "unidad": "$",
+   "valor": 6500,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "base_contrib",
+   "etiqueta": "Contribución de los clientes actuales el mes 1",
+   "unidad": "$",
+   "valor": 9000,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  },
+  {
+   "id": "base_caida",
+   "etiqueta": "Caída mensual de esa contribución",
+   "unidad": "%",
+   "valor": 0.03,
+   "origen": "dato",
+   "fuente": "Sección 7",
+   "grupo": "Caja"
+  }
+ ],
+ "unidad": {
+  "horizonte": 12,
+  "segmentos": [
+   {
+    "id": "suelto",
+    "nombre": "Cliente de pedidos sueltos",
+    "tipo": "pedidos",
+    "peso": "1-$pct_sub",
+    "frecuencia": "$pedidos_mes",
+    "frecuenciaDespues": "$pedidos_despues",
+    "pedidosEn12": "$pedidos12",
+    "pedidos": [
+     {
+      "nombre": "Pedido de 2 bolsas",
+      "peso": "1-$pack",
+      "precio": "$precio_bolsa*$bolsas",
+      "unidades": "$bolsas",
+      "costoUnidad": "$cafe",
+      "costosPorPedido": "($pack>0?0:$envio)+$caja",
+      "comisionPct": "$pasarela",
+      "descuentoPrimer": "$descuento"
+     },
+     {
+      "nombre": "Pack de 3 bolsas",
+      "peso": "$pack",
+      "precio": "$pack_precio",
+      "unidades": 3,
+      "costoUnidad": "$cafe",
+      "costosPorPedido": "$envio+$pack_caja",
+      "comisionPct": "$pasarela",
+      "descuentoPrimer": "$descuento"
+     }
+    ]
+   },
+   {
+    "id": "sub",
+    "nombre": "Suscriptor",
+    "tipo": "suscripcion",
+    "peso": "$pct_sub",
+    "precio": "$precio_bolsa*$bolsas*(1-$desc_sub)",
+    "contribMes": "$precio_bolsa*$bolsas*(1-$desc_sub)*(1-$pasarela)-$bolsas*$cafe-$envio-$caja",
+    "churn": "$churn"
+   }
+  ]
+ },
+ "adquisicion": {
+  "canales": [
+   {
+    "id": "meta",
+    "nombre": "Meta",
+    "inversion": "$inv_meta",
+    "historial": "$hist_meta",
+    "unidadTope": "Clientes nuevos de Meta"
+   }
+  ],
+  "fee": {
+   "monto": "$fee",
+   "siHayInversion": true
+  },
+  "organicos": "$organicos",
+  "referencia": {
+   "inv_meta": 8000
+  }
+ },
+ "ecommerce": {
+  "valorPrimerPedido": "$precio_bolsa*$bolsas*(1-$descuento*(1-$pct_sub))",
+  "roasAtribuido": "$roas_meta",
+  "ventasAtribuidas": "$ventas_atribuidas",
+  "ventasTienda": "$ventas_tienda",
+  "invRetargeting": "$inv_rtg",
+  "invReporte": "$inv_reporte"
+ },
+ "escenarios": [
+  {
+   "id": "hoy",
+   "nombre": "Hoy ($8.000)",
+   "rol": "hoy",
+   "cambios": {
+    "inv_meta": 8000
+   }
+  },
+  {
+   "id": "agencia",
+   "nombre": "Agencia ($16.000 y −30 %)",
+   "rol": "propuesta",
+   "cambios": {
+    "inv_meta": 16000,
+    "descuento": 0.3
+   }
+  },
+  {
+   "id": "propuesta",
+   "nombre": "Propuesta: $4.000 + pack",
+   "rol": "alternativa",
+   "cambios": {
+    "inv_meta": 4000,
+    "pack": 0.5
+   }
+  }
+ ],
+ "cambios": [
+  {
+   "id": "pack",
+   "nombre": "Pack de 3 bolsas a $48 (50 % de los pedidos sueltos) y envío pagado en pedidos de 2 bolsas",
+   "valores": {
+    "pack": 0.5
+   }
+  }
+ ],
+ "simulacion": {
+  "meses": 24,
+  "cajaInicial": "$caja0",
+  "piso": "$piso",
+  "costosFijos": "$fijos",
+  "base": {
+   "monto": "$base_contrib",
+   "caida": "$base_caida"
+  },
+  "rangos": {
+   "meta": [
+    0,
+    20000
+   ]
+  },
+  "reglas": [
+   {
+    "tipo": "minimoPromedio",
+    "desde": 13,
+    "ventana": [
+     1,
+     12
+    ],
+    "texto": "Desde el mes 13 la inversión no puede bajar del promedio de los meses 1 a 12"
+   }
+  ],
+  "objetivo": {
+   "principal": "cajaFinal",
+   "desempate": "activosFinal"
+  },
+  "etiquetaActivos": "Suscriptores activos",
+  "etiquetaTotal": "Clientes nuevos de Meta (24 meses)"
+ },
+ "planes": [
+  {
+   "nombre": "Plan 1 · $8.000 fijos (hoy)",
+   "rol": "hoy",
+   "inversiones": {
+    "meta": 8000
+   }
+  },
+  {
+   "nombre": "Plan 2 · Agencia: $16.000 fijos",
+   "rol": "propuesta",
+   "inversiones": {
+    "meta": 16000
+   }
+  },
+  {
+   "nombre": "Plan 3 · $4.000 fijos, sin otros cambios",
+   "inversiones": {
+    "meta": 4000
+   }
+  },
+  {
+   "nombre": "Plan 4 · Pack desde el mes 1; $4.000 meses 1-3 y $8.000 después",
+   "inversiones": {
+    "meta": {
+     "tramos": [
+      [
+       1,
+       4000
+      ],
+      [
+       4,
+       8000
+      ]
+     ]
+    }
+   },
+   "cambios": {
+    "pack": 1
+   }
+  },
+  {
+   "nombre": "Plan 5 · Pack desde el mes 1 y $8.000 fijos",
+   "inversiones": {
+    "meta": 8000
+   },
+   "cambios": {
+    "pack": 1
+   }
+  }
+ ],
+ "busqueda": {
+  "canales": {
+   "meta": {
+    "valores": [
+     0,
+     2000,
+     4000,
+     6000,
+     8000,
+     10000,
+     12000,
+     14000,
+     16000,
+     18000,
+     20000
+    ],
+    "cambioEn": [
+     4,
+     7,
+     13
+    ]
+   }
+  },
+  "cambios": [
+   {},
+   {
+    "pack": 1
+   }
+  ]
+ },
+ "riesgos": [
+  "El historial es de meses sin promociones; el descuento podría no traer más clientes (supuesto 3, optimista).",
+  "Que menos de la mitad elija el pack, o que los clientes de 2 bolsas compren menos al pagar el envío (supuesto propio).",
+  "Los clientes que llegan antes de activar el pack se modelan sin pack (criterio conservador)."
+ ],
+ "trampa": "ROAS de 3,0 de Ads Manager: Meta se atribuye el 86 % de las ventas de la tienda (incluye recompras y retargeting); contando solo el primer pedido de los clientes nuevos el ROAS real es 0,70, debajo del break-even de 2,14."
+}

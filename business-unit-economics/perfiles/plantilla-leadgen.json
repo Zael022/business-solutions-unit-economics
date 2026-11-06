@@ -1,0 +1,445 @@
+{
+ "id": "plantilla-leadgen",
+ "nombre": "Plantilla · Generación de leads con visitas y capacidad",
+ "subtitulo": "Completá los datos marcados en «Datos y supuestos»",
+ "modelo": "leadgen",
+ "especializaciones": [
+  "leadgen"
+ ],
+ "decision": "Escribí la decisión que tiene que tomar el dueño",
+ "parametros": [
+  {
+   "id": "precio",
+   "etiqueta": "Precio de la venta",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Venta",
+   "control": true,
+   "min": 100,
+   "max": 50000,
+   "paso": 100
+  },
+  {
+   "id": "mb",
+   "etiqueta": "Margen bruto",
+   "unidad": "%",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Venta",
+   "control": true,
+   "min": 0.05,
+   "max": 0.9,
+   "paso": 0.01
+  },
+  {
+   "id": "costo_firma",
+   "etiqueta": "Costos que se pagan el mes de la venta (fracción del precio)",
+   "unidad": "%",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Venta"
+  },
+  {
+   "id": "comision",
+   "etiqueta": "Comisión de venta",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Venta",
+   "control": true,
+   "min": 0,
+   "max": 0.2,
+   "paso": 0.005
+  },
+  {
+   "id": "cobro_firma",
+   "etiqueta": "Parte del precio que se cobra al vender",
+   "unidad": "%",
+   "valor": 1,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Venta"
+  },
+  {
+   "id": "inv_a",
+   "etiqueta": "Inversión canal A",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal A",
+   "control": true,
+   "min": 0,
+   "max": 30000,
+   "paso": 250
+  },
+  {
+   "id": "hist_a",
+   "etiqueta": "Historial canal A: inversión → leads",
+   "unidad": "historial",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal A"
+  },
+  {
+   "id": "a_contacto",
+   "etiqueta": "Canal A · contactados",
+   "unidad": "%",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal A",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "a_agenda",
+   "etiqueta": "Canal A · agendan",
+   "unidad": "%",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal A",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "a_visita",
+   "etiqueta": "Canal A · visitas que se hacen",
+   "unidad": "%",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal A",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "a_cierre",
+   "etiqueta": "Canal A · cierre",
+   "unidad": "%",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal A",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "inv_b",
+   "etiqueta": "Inversión canal B",
+   "unidad": "$",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal B",
+   "control": true,
+   "min": 0,
+   "max": 30000,
+   "paso": 250
+  },
+  {
+   "id": "hist_b",
+   "etiqueta": "Historial canal B: inversión → leads",
+   "unidad": "historial",
+   "valor": [],
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal B"
+  },
+  {
+   "id": "b_contacto",
+   "etiqueta": "Canal B · contactados",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal B",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "b_agenda",
+   "etiqueta": "Canal B · agendan",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal B",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "b_visita",
+   "etiqueta": "Canal B · visitas que se hacen",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal B",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "b_cierre",
+   "etiqueta": "Canal B · cierre",
+   "unidad": "%",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Canal B",
+   "control": true,
+   "min": 0,
+   "max": 1,
+   "paso": 0.01
+  },
+  {
+   "id": "capacidad",
+   "etiqueta": "Visitas que caben al mes",
+   "unidad": "n",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Visitas",
+   "control": true,
+   "min": 0,
+   "max": 1000,
+   "paso": 5
+  },
+  {
+   "id": "costo_visita",
+   "etiqueta": "Costo por visita hecha",
+   "unidad": "$",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Visitas",
+   "control": true,
+   "min": 0,
+   "max": 500,
+   "paso": 5
+  },
+  {
+   "id": "cap_contratacion",
+   "etiqueta": "Visitas que suma una contratación",
+   "unidad": "n",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Visitas"
+  },
+  {
+   "id": "costo_contratacion",
+   "etiqueta": "Costo mensual de una contratación",
+   "unidad": "$",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Visitas"
+  },
+  {
+   "id": "ventas_mes0",
+   "etiqueta": "Ventas del mes anterior (cobros pendientes)",
+   "unidad": "n",
+   "valor": 0,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  },
+  {
+   "id": "caja0",
+   "etiqueta": "Plata en el banco hoy",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  },
+  {
+   "id": "piso",
+   "etiqueta": "Piso de caja",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  },
+  {
+   "id": "fijos",
+   "etiqueta": "Costos fijos mensuales",
+   "unidad": "$",
+   "valor": null,
+   "origen": "dato",
+   "fuente": "Completar con la fuente del caso",
+   "grupo": "Caja"
+  }
+ ],
+ "unidad": {
+  "horizonte": 2,
+  "segmentos": [
+   {
+    "id": "venta",
+    "nombre": "Venta única",
+    "tipo": "venta",
+    "peso": 1,
+    "precio": "$precio",
+    "cobros": [
+     "$precio*$cobro_firma",
+     "$precio*(1-$cobro_firma)"
+    ],
+    "pagos": [
+     "($costo_firma+$comision)*$precio",
+     "(1-$mb-$costo_firma)*$precio"
+    ]
+   }
+  ]
+ },
+ "adquisicion": {
+  "canales": [
+   {
+    "id": "a",
+    "nombre": "Canal A",
+    "inversion": "$inv_a",
+    "historial": "$hist_a",
+    "unidadTope": "Leads",
+    "etapas": [
+     {
+      "nombre": "Contactados",
+      "tasa": "$a_contacto"
+     },
+     {
+      "nombre": "Agendan visita",
+      "tasa": "$a_agenda"
+     },
+     {
+      "nombre": "Visitas pedidas",
+      "tasa": "$a_visita"
+     },
+     {
+      "nombre": "Visitas pedidas",
+      "capacidad": true
+     },
+     {
+      "nombre": "Ventas",
+      "tasa": "$a_cierre"
+     }
+    ]
+   },
+   {
+    "id": "b",
+    "nombre": "Canal B",
+    "inversion": "$inv_b",
+    "historial": "$hist_b",
+    "unidadTope": "Leads",
+    "etapas": [
+     {
+      "nombre": "Contactados",
+      "tasa": "$b_contacto"
+     },
+     {
+      "nombre": "Agendan visita",
+      "tasa": "$b_agenda"
+     },
+     {
+      "nombre": "Visitas pedidas",
+      "tasa": "$b_visita"
+     },
+     {
+      "nombre": "Visitas pedidas",
+      "capacidad": true
+     },
+     {
+      "nombre": "Ventas",
+      "tasa": "$b_cierre"
+     }
+    ]
+   }
+  ],
+  "capacidad": {
+   "base": "$capacidad",
+   "costoUnidad": "$costo_visita",
+   "prioridad": [
+    "b",
+    "a"
+   ]
+  },
+  "organicos": 0
+ },
+ "leadgen": {
+  "trampa": {
+   "barato": "a",
+   "caro": "b"
+  }
+ },
+ "escenarios": [
+  {
+   "id": "hoy",
+   "nombre": "Hoy",
+   "rol": "hoy",
+   "cambios": {}
+  },
+  {
+   "id": "prop",
+   "nombre": "Propuesta recibida",
+   "rol": "propuesta",
+   "cambios": {}
+  },
+  {
+   "id": "alt",
+   "nombre": "Alternativa propia",
+   "rol": "alternativa",
+   "cambios": {}
+  }
+ ],
+ "cambios": [],
+ "simulacion": {
+  "meses": 24,
+  "cajaInicial": "$caja0",
+  "piso": "$piso",
+  "costosFijos": "$fijos",
+  "rangos": {},
+  "reglas": [],
+  "objetivo": {
+   "principal": "cajaFinal",
+   "desempate": "clientesTotal"
+  },
+  "cohortesIniciales": [
+   {
+    "n": "$ventas_mes0"
+   }
+  ],
+  "capacidadPorContratacion": "$cap_contratacion",
+  "costoContratacion": "$costo_contratacion"
+ },
+ "planes": [
+  {
+   "nombre": "Plan 1 · inversión de hoy",
+   "rol": "hoy",
+   "inversiones": {
+    "a": "$inv_a",
+    "b": "$inv_b"
+   }
+  }
+ ],
+ "riesgos": []
+}

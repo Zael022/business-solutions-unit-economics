@@ -1,0 +1,563 @@
+## 1. Motor frente a las hojas de Excel (datos del caso)
+PASA  A · Contribución promedio de un pedido suelto · hoy: hoja/ref=15.89 motor=15.889999999999997
+PASA  A · Contribución promedio de un pedido suelto · agencia: hoja/ref=15.89 motor=15.889999999999997
+PASA  A · Contribución promedio de un pedido suelto · propuesta: hoja/ref=22.005 motor=22.005000000000003
+PASA  A · Contribución promedio del primer pedido · hoy: hoja/ref=15.89 motor=15.889999999999997
+PASA  A · Contribución promedio del primer pedido · agencia: hoja/ref=6.149 motor=6.148999999999994
+PASA  A · Contribución promedio del primer pedido · propuesta: hoja/ref=22.005 motor=22.005000000000003
+PASA  A · Clientes nuevos de Meta (historial) · hoy: hoja/ref=165 motor=165
+PASA  A · Clientes nuevos de Meta (historial) · agencia: hoja/ref=235 motor=235
+PASA  A · Clientes nuevos de Meta (historial) · propuesta: hoja/ref=100 motor=100
+PASA  A · CAC de anuncios · hoy: hoja/ref=48.4848484848485 motor=48.484848484848484
+PASA  A · CAC de anuncios · agencia: hoja/ref=68.0851063829787 motor=68.08510638297872
+PASA  A · CAC de anuncios · propuesta: hoja/ref=40 motor=40
+PASA  A · CAC real · hoy: hoja/ref=54.5454545454546 motor=54.54545454545455
+PASA  A · CAC real · agencia: hoja/ref=72.3404255319149 motor=72.34042553191489
+PASA  A · CAC real · propuesta: hoja/ref=50 motor=50
+PASA  A · ROAS real del primer pedido de los clientes nuevos · hoy: hoja/ref=0.70125 motor=0.70125
+PASA  A · ROAS real del primer pedido de los clientes nuevos · agencia: hoja/ref=0.372034375 motor=0.372034375
+PASA  A · ROAS real del primer pedido de los clientes nuevos · propuesta: hoja/ref=0.85 motor=0.85
+PASA  A · LTV del cliente de pedidos sueltos · hoy: hoja/ref=47.67 motor=47.66999999999999
+PASA  A · LTV del cliente de pedidos sueltos · agencia: hoja/ref=37.929 motor=37.92899999999999
+PASA  A · LTV del cliente de pedidos sueltos · propuesta: hoja/ref=66.015 motor=66.01500000000003
+PASA  A · LTV del suscriptor · hoy: hoja/ref=95.1771379181088 motor=95.17713791810881
+PASA  A · LTV del suscriptor · agencia: hoja/ref=95.1771379181088 motor=95.17713791810881
+PASA  A · LTV del suscriptor · propuesta: hoja/ref=95.1771379181088 motor=95.17713791810881
+PASA  A · LTV promedio · hoy: hoja/ref=54.7960706877163 motor=54.79607068771633
+PASA  A · LTV promedio · agencia: hoja/ref=46.5162206877163 motor=46.51622068771632
+PASA  A · LTV promedio · propuesta: hoja/ref=70.3893206877163 motor=70.38932068771634
+PASA  A · LTV:CAC · hoy: hoja/ref=1.0045946292748 motor=1.0045946292747994
+PASA  A · LTV:CAC · agencia: hoja/ref=0.643018344800784 motor=0.6430183448007845
+PASA  A · LTV:CAC · propuesta: hoja/ref=1.40778641375433 motor=1.4077864137543268
+PASA  A · Payback (meses para recuperar el CAC) · hoy: hoja/ref=12 motor=12
+PASA  A · Payback (meses para recuperar el CAC) · agencia: hoja/ref=None motor=None
+PASA  A · Payback (meses para recuperar el CAC) · propuesta: hoja/ref=7 motor=7
+PASA  A · CAC marginal frente a hoy · agencia: hoja/ref=114.285714285714 motor=114.28571428571429
+PASA  A · CAC marginal frente a hoy · propuesta: hoja/ref=61.5384615384615 motor=61.53846153846154
+PASA  A · Plan 1 · $8.000 fijos (hoy) · caja mínima: hoja/ref=24447.5098798131 motor=24447.509879813097
+PASA  A · Plan 1 · $8.000 fijos (hoy) · caja mes 24: hoja/ref=79596.4527361234 motor=79596.45273612338
+PASA  A · Plan 1 · $8.000 fijos (hoy) · activos mes 24: hoja/ref=316.590044539467 motor=316.5900445394666
+PASA  A · Plan 1 · $8.000 fijos (hoy) · máxima diferencia de caja en los 24 meses: hoja/ref=5.820766091346741e-11 motor=0.0
+PASA  A · Plan 2 · Agencia: $16.000 fijos · caja mínima: hoja/ref=-35879.3628753264 motor=-35879.36287532637
+PASA  A · Plan 2 · Agencia: $16.000 fijos · caja mes 24: hoja/ref=-26217.1635295614 motor=-26217.163529561385
+PASA  A · Plan 2 · Agencia: $16.000 fijos · activos mes 24: hoja/ref=421.124493208158 motor=421.1244932081584
+PASA  A · Plan 2 · Agencia: $16.000 fijos · máxima diferencia de caja en los 24 meses: hoja/ref=5.093170329928398e-11 motor=0.0
+PASA  A · Plan 3 · $4.000 fijos, sin otros cambios · caja mínima: hoja/ref=34764.23365 motor=34764.23365
+PASA  A · Plan 3 · $4.000 fijos, sin otros cambios · caja mes 24: hoja/ref=95566.2392685449 motor=95566.23926854489
+PASA  A · Plan 3 · $4.000 fijos, sin otros cambios · activos mes 24: hoja/ref=219.522342204253 motor=219.52234220425282
+PASA  A · Plan 3 · $4.000 fijos, sin otros cambios · máxima diferencia de caja en los 24 meses: hoja/ref=8.003553375601768e-11 motor=0.0
+PASA  A · Plan 4 · Pack desde el mes 1; $4.000 mes · caja mínima: hoja/ref=35528.3029 motor=35528.3029
+PASA  A · Plan 4 · Pack desde el mes 1; $4.000 mes · caja mes 24: hoja/ref=147769.852569214 motor=147769.85256921436
+PASA  A · Plan 4 · Pack desde el mes 1; $4.000 mes · activos mes 24: hoja/ref=312.906014526056 motor=312.9060145260563
+PASA  A · Plan 4 · Pack desde el mes 1; $4.000 mes · máxima diferencia de caja en los 24 meses: hoja/ref=4.0745362639427185e-10 motor=0.0
+PASA  A · Plan 5 · Pack desde el mes 1 y $8.000 fi · caja mínima: hoja/ref=30847.45741994 motor=30847.45741994
+PASA  A · Plan 5 · Pack desde el mes 1 y $8.000 fi · caja mes 24: hoja/ref=154361.928286123 motor=154361.92828612344
+PASA  A · Plan 5 · Pack desde el mes 1 y $8.000 fi · activos mes 24: hoja/ref=316.590044539467 motor=316.5900445394666
+PASA  A · Plan 5 · Pack desde el mes 1 y $8.000 fi · máxima diferencia de caja en los 24 meses: hoja/ref=4.511093720793724e-10 motor=0.0
+PASA  A · mes 1 del plan 1 · nuevos (D6): hoja/ref=212 motor=212
+PASA  A · mes 1 del plan 1 · baseDecae (E6): hoja/ref=9000 motor=9000
+PASA  A · mes 1 del plan 1 · contribNuevos (F6): hoja/ref=3265.4254 motor=3265.425399999999
+PASA  A · mes 1 del plan 1 · salidas (G6): hoja/ref=15500 motor=15500
+PASA  A · mes 1 del plan 1 · caja (H6): hoja/ref=31765.4254 motor=31765.4254
+PASA  A · hoja Verificación · Nivel 1 · CAC real (hoy): hoja/ref=1.0 motor=1.0
+PASA  A · hoja Verificación · Nivel 1 · Contribución de un pedido suelto: hoja/ref=1.0 motor=1.0
+PASA  A · hoja Verificación · Nivel 1 · LTV del suscriptor: hoja/ref=1.0 motor=1.0
+PASA  A · hoja Verificación · Nivel 3 · Mes 1, clientes nuevos: hoja/ref=1.0 motor=1.0
+PASA  A · hoja Verificación · Nivel 3 · Mes 1, contribución de los clientes actuales: hoja/ref=1.0 motor=1.0
+PASA  A · hoja Verificación · Nivel 3 · Mes 1, contribución del grupo nuevo: hoja/ref=1.0 motor=1.0
+PASA  A · hoja Verificación · Nivel 3 · Mes 1, salidas: hoja/ref=1.0 motor=1.0
+PASA  A · hoja Verificación · Nivel 3 · Mes 1, caja final: hoja/ref=1.0 motor=1.0
+PASA  B · Trials por anuncios · hoy: hoja/ref=500 motor=500
+PASA  B · Trials por anuncios · valeria: hoja/ref=900 motor=900
+PASA  B · Trials por anuncios · valeria_cte: hoja/ref=1500 motor=1500
+PASA  B · Trials por anuncios · propuesta: hoja/ref=500 motor=500
+PASA  B · Vendedoras necesarias · hoy: hoja/ref=1 motor=1
+PASA  B · Vendedoras necesarias · valeria: hoja/ref=2 motor=2
+PASA  B · Vendedoras necesarias · valeria_cte: hoja/ref=3 motor=3
+PASA  B · Vendedoras necesarias · propuesta: hoja/ref=1 motor=1
+PASA  B · Clientes nuevos de anuncios · hoy: hoja/ref=70 motor=70
+PASA  B · Clientes nuevos de anuncios · valeria: hoja/ref=126 motor=126.00000000000001
+PASA  B · Clientes nuevos de anuncios · valeria_cte: hoja/ref=210 motor=210.00000000000003
+PASA  B · Clientes nuevos de anuncios · propuesta: hoja/ref=70 motor=70
+PASA  B · Costo total de adquisición · hoy: hoja/ref=12600 motor=12600
+PASA  B · Costo total de adquisición · valeria: hoja/ref=34920 motor=34920
+PASA  B · Costo total de adquisición · valeria_cte: hoja/ref=37800 motor=37800
+PASA  B · Costo total de adquisición · propuesta: hoja/ref=12600 motor=12600
+PASA  B · CAC paid (solo clientes de anuncios) · hoy: hoja/ref=180 motor=180
+PASA  B · CAC paid (solo clientes de anuncios) · valeria: hoja/ref=277.142857142857 motor=277.1428571428571
+PASA  B · CAC paid (solo clientes de anuncios) · valeria_cte: hoja/ref=180 motor=179.99999999999997
+PASA  B · CAC paid (solo clientes de anuncios) · propuesta: hoja/ref=180 motor=180
+PASA  B · CAC blended (mezcla con orgánicos) · hoy: hoja/ref=105 motor=105
+PASA  B · CAC blended (mezcla con orgánicos) · valeria: hoja/ref=198.409090909091 motor=198.4090909090909
+PASA  B · CAC blended (mezcla con orgánicos) · valeria_cte: hoja/ref=145.384615384615 motor=145.3846153846154
+PASA  B · CAC blended (mezcla con orgánicos) · propuesta: hoja/ref=105 motor=105
+PASA  B · LTV a 24 meses del cliente mensual · hoy: hoja/ref=251.387452532808 motor=251.38745253280797
+PASA  B · LTV a 24 meses del cliente mensual · valeria: hoja/ref=251.387452532808 motor=251.38745253280797
+PASA  B · LTV a 24 meses del cliente mensual · valeria_cte: hoja/ref=251.387452532808 motor=251.38745253280797
+PASA  B · LTV a 24 meses del cliente mensual · propuesta: hoja/ref=291.609444938058 motor=291.6094449380573
+PASA  B · LTV sin tope de meses (solo para comparar) · hoy: hoja/ref=325 motor=325
+PASA  B · LTV sin tope de meses (solo para comparar) · valeria: hoja/ref=325 motor=325
+PASA  B · LTV sin tope de meses (solo para comparar) · valeria_cte: hoja/ref=325 motor=325
+PASA  B · LTV sin tope de meses (solo para comparar) · propuesta: hoja/ref=377 motor=377.00000000000006
+PASA  B · LTV a 24 meses del cliente anual · hoy: hoja/ref=318.24 motor=318.24
+PASA  B · LTV a 24 meses del cliente anual · valeria: hoja/ref=318.24 motor=318.24
+PASA  B · LTV a 24 meses del cliente anual · valeria_cte: hoja/ref=318.24 motor=318.24
+PASA  B · LTV a 24 meses del cliente anual · propuesta: hoja/ref=318.24 motor=318.24
+PASA  B · LTV promedio del escenario · hoy: hoja/ref=251.387452532808 motor=251.38745253280797
+PASA  B · LTV promedio del escenario · valeria: hoja/ref=251.387452532808 motor=251.38745253280797
+PASA  B · LTV promedio del escenario · valeria_cte: hoja/ref=251.387452532808 motor=251.38745253280797
+PASA  B · LTV promedio del escenario · propuesta: hoja/ref=302.261666962835 motor=302.2616669628342
+PASA  B · LTV:CAC blended · hoy: hoja/ref=2.39416621459817 motor=2.394166214598171
+PASA  B · LTV:CAC blended · valeria: hoja/ref=1.26701579741622 motor=1.2670157974162144
+PASA  B · LTV:CAC blended · valeria_cte: hoja/ref=1.72912004387646 motor=1.729120043876457
+PASA  B · LTV:CAC blended · propuesta: hoja/ref=2.87868254250319 motor=2.8786825425031832
+PASA  B · LTV:CAC paid (el que sirve para decidir sobre anuncios) · hoy: hoja/ref=1.3965969585156 motor=1.3965969585155997
+PASA  B · LTV:CAC paid (el que sirve para decidir sobre anuncios) · valeria: hoja/ref=0.9070681276957 motor=0.907068127695699
+PASA  B · LTV:CAC paid (el que sirve para decidir sobre anuncios) · valeria_cte: hoja/ref=1.3965969585156 motor=1.3965969585156
+PASA  B · LTV:CAC paid (el que sirve para decidir sobre anuncios) · propuesta: hoja/ref=1.67923148312686 motor=1.6792314831268569
+PASA  B · Payback del cliente del escenario (meses) · hoy: hoja/ref=14 motor=14
+PASA  B · Payback del cliente del escenario (meses) · valeria: hoja/ref=None motor=None
+PASA  B · Payback del cliente del escenario (meses) · valeria_cte: hoja/ref=14 motor=14
+PASA  B · Payback del cliente del escenario (meses) · propuesta: hoja/ref=11 motor=11
+PASA  B · CAC marginal frente a hoy · valeria: hoja/ref=398.571428571429 motor=398.5714285714285
+PASA  B · CAC marginal frente a hoy · valeria_cte: hoja/ref=180 motor=179.99999999999997
+PASA  B · CAC marginal frente a hoy · propuesta: hoja/ref=None motor=None
+PASA  B · Caja que queda atrapada cada mes (sale y no vuelve ese mes) · hoy: hoja/ref=0 motor=0
+PASA  B · Caja que queda atrapada cada mes (sale y no vuelve ese mes) · valeria: hoja/ref=21228 motor=21228
+PASA  B · Caja que queda atrapada cada mes (sale y no vuelve ese mes) · valeria_cte: hoja/ref=22470 motor=22470
+PASA  B · Caja que queda atrapada cada mes (sale y no vuelve ese mes) · propuesta: hoja/ref=0 motor=0
+PASA  B · Plan 1 · $10.000 fijos (hoy) · caja mínima: hoja/ref=52665.986188 motor=52665.986187999995
+PASA  B · Plan 1 · $10.000 fijos (hoy) · caja mes 24: hoja/ref=156741.425426286 motor=156741.425426286
+PASA  B · Plan 1 · $10.000 fijos (hoy) · activos mes 24: hoja/ref=1807.47487585504 motor=1807.4748758550354
+PASA  B · Plan 1 · $10.000 fijos (hoy) · máxima diferencia de caja en los 24 meses: hoja/ref=4.656612873077393e-10 motor=0.0
+PASA  B · Plan 2 · Valeria: $30.000 fijos · caja mínima: hoja/ref=-163092.623683508 motor=-163092.62368350805
+PASA  B · Plan 2 · Valeria: $30.000 fijos · caja mes 24: hoja/ref=-162689.166262498 motor=-162689.1662624976
+PASA  B · Plan 2 · Valeria: $30.000 fijos · activos mes 24: hoja/ref=2529.40807287233 motor=2529.4080728723306
+PASA  B · Plan 2 · Valeria: $30.000 fijos · máxima diferencia de caja en los 24 meses: hoja/ref=5.529727786779404e-10 motor=0.0
+PASA  B · Plan 3 · $15.000 meses 1-18 y $27.000 de · caja mínima: hoja/ref=14261.7527336446 motor=14261.75273364444
+PASA  B · Plan 3 · $15.000 meses 1-18 y $27.000 de · caja mes 24: hoja/ref=14261.7527336446 motor=14261.75273364444
+PASA  B · Plan 3 · $15.000 meses 1-18 y $27.000 de · activos mes 24: hoja/ref=2228.71635766401 motor=2228.7163576640087
+PASA  B · Plan 3 · $15.000 meses 1-18 y $27.000 de · máxima diferencia de caja en los 24 meses: hoja/ref=1.6007106751203537e-10 motor=0.0
+PASA  B · Plan 4 · Plan anual 40 % desde el mes 1; · caja mínima: hoja/ref=10108.0374398966 motor=10108.037439896681
+PASA  B · Plan 4 · Plan anual 40 % desde el mes 1; · caja mes 24: hoja/ref=37134.4798832521 motor=37134.47988325238
+PASA  B · Plan 4 · Plan anual 40 % desde el mes 1; · activos mes 24: hoja/ref=2977.67526375367 motor=2977.675263753674
+PASA  B · Plan 4 · Plan anual 40 % desde el mes 1; · máxima diferencia de caja en los 24 meses: hoja/ref=2.837623469531536e-10 motor=0.0
+PASA  B · mes 1 del plan 1 · tope (C6): hoja/ref=500 motor=500
+PASA  B · mes 1 del plan 1 · nuevos (F6): hoja/ref=120 motor=120
+PASA  B · mes 1 del plan 1 · activos (K6): hoja/ref=1201 motor=1201
+PASA  B · mes 1 del plan 1 · entradas (L6): hoja/ref=23419.5 motor=23419.499999999996
+PASA  B · mes 1 del plan 1 · salidas (M6): hoja/ref=26600 motor=26600
+PASA  B · mes 1 del plan 1 · caja (N6): hoja/ref=56819.5 motor=56819.5
+PASA  B · hoja Verificación · Nivel 1 · CAC paid (hoy): hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 1 · CAC blended (hoy): hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 1 · LTV a 24 meses: hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 3 · Mes 1, trials: hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 3 · Mes 1, vendedoras: hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 3 · Mes 1, clientes nuevos: hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 3 · Mes 1, clientes activos: hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 3 · Mes 1, entradas: hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 3 · Mes 1, salidas: hoja/ref=1.0 motor=1.0
+PASA  B · hoja Verificación · Nivel 3 · Mes 1, caja final: hoja/ref=1.0 motor=1.0
+PASA  C · Leads de Meta · hoy: hoja/ref=500 motor=500
+PASA  C · Leads de Meta · agencia: hoja/ref=840 motor=840
+PASA  C · Leads de Meta · agencia_cpl: hoja/ref=1000 motor=1000
+PASA  C · Leads de Meta · propuesta: hoja/ref=400 motor=400
+PASA  C · Visitas pedidas en total · hoy: hoja/ref=97.4875 motor=97.4875
+PASA  C · Visitas pedidas en total · agencia: hoja/ref=97.02 motor=97.02000000000001
+PASA  C · Visitas pedidas en total · agencia_cpl: hoja/ref=115.5 motor=115.49999999999999
+PASA  C · Visitas pedidas en total · propuesta: hoja/ref=135.7375 motor=135.7375
+PASA  C · Visitas hechas de Google · hoy: hoja/ref=39.7375 motor=39.737500000000004
+PASA  C · Visitas hechas de Google · agencia: hoja/ref=0 motor=0
+PASA  C · Visitas hechas de Google · agencia_cpl: hoja/ref=0 motor=0
+PASA  C · Visitas hechas de Google · propuesta: hoja/ref=39.7375 motor=39.737500000000004
+PASA  C · Visitas hechas de Meta · hoy: hoja/ref=57.75 motor=57.74999999999999
+PASA  C · Visitas hechas de Meta · agencia: hoja/ref=97.02 motor=97.02000000000001
+PASA  C · Visitas hechas de Meta · agencia_cpl: hoja/ref=100 motor=100
+PASA  C · Visitas hechas de Meta · propuesta: hoja/ref=96 motor=96
+PASA  C · Ventas de Meta · hoy: hoja/ref=10.395 motor=10.394999999999998
+PASA  C · Ventas de Meta · agencia: hoja/ref=17.4636 motor=17.4636
+PASA  C · Ventas de Meta · agencia_cpl: hoja/ref=18 motor=18
+PASA  C · Ventas de Meta · propuesta: hoja/ref=21.12 motor=21.12
+PASA  C · Ventas de Google · hoy: hoja/ref=11.92125 motor=11.92125
+PASA  C · Ventas de Google · agencia: hoja/ref=0 motor=0
+PASA  C · Ventas de Google · agencia_cpl: hoja/ref=0 motor=0
+PASA  C · Ventas de Google · propuesta: hoja/ref=11.92125 motor=11.92125
+PASA  C · Ventas totales · hoy: hoja/ref=22.31625 motor=22.316249999999997
+PASA  C · Ventas totales · agencia: hoja/ref=17.4636 motor=17.4636
+PASA  C · Ventas totales · agencia_cpl: hoja/ref=18 motor=18
+PASA  C · Ventas totales · propuesta: hoja/ref=33.04125 motor=33.041250000000005
+PASA  C · Meta · CPL · hoy: hoja/ref=8 motor=8
+PASA  C · Meta · CPL · agencia: hoja/ref=9.52380952380952 motor=9.523809523809524
+PASA  C · Meta · CPL · agencia_cpl: hoja/ref=8 motor=8
+PASA  C · Meta · CPL · propuesta: hoja/ref=10 motor=10
+PASA  C · Meta · CAC de anuncios · hoy: hoja/ref=384.800384800385 motor=384.8003848003849
+PASA  C · Meta · CAC de anuncios · agencia: hoja/ref=458.095696190934 motor=458.0956961909343
+PASA  C · Meta · CAC de anuncios · agencia_cpl: hoja/ref=444.444444444444 motor=444.44444444444446
+PASA  C · Meta · CAC de anuncios · propuesta: hoja/ref=189.393939393939 motor=189.39393939393938
+PASA  C · Meta · CAC real · hoy: hoja/ref=718.133718133718 motor=718.1337181337183
+PASA  C · Meta · CAC real · agencia: hoja/ref=791.429029524268 motor=791.4290295242677
+PASA  C · Meta · CAC real · agencia_cpl: hoja/ref=777.777777777778 motor=777.7777777777778
+PASA  C · Meta · CAC real · propuesta: hoja/ref=462.121212121212 motor=462.1212121212121
+PASA  C · Google · CAC real · hoy: hoja/ref=535.53528363217 motor=535.5352836321695
+PASA  C · Google · CAC real · agencia: hoja/ref=None motor=None
+PASA  C · Google · CAC real · agencia_cpl: hoja/ref=None motor=None
+PASA  C · Google · CAC real · propuesta: hoja/ref=535.53528363217 motor=535.5352836321695
+PASA  C · CAC real total · hoy: hoja/ref=620.590376967457 motor=620.5903769674566
+PASA  C · CAC real total · agencia: hoja/ref=791.429029524268 motor=791.4290295242677
+PASA  C · CAC real total · agencia_cpl: hoja/ref=777.777777777778 motor=777.7777777777778
+PASA  C · CAC real total · propuesta: hoja/ref=488.608935799947 motor=488.60893579994695
+PASA  C · Meta · LTV:CAC · hoy: hoja/ref=2.26280977896852 motor=2.2628097789685193
+PASA  C · Meta · LTV:CAC · agencia: hoja/ref=2.05324790900935 motor=2.053247909009348
+PASA  C · Meta · LTV:CAC · agencia_cpl: hoja/ref=2.08928571428571 motor=2.089285714285714
+PASA  C · Meta · LTV:CAC · propuesta: hoja/ref=3.51639344262295 motor=3.5163934426229506
+PASA  C · Google · LTV:CAC · hoy: hoja/ref=3.03434722167835 motor=3.034347221678349
+PASA  C · Google · LTV:CAC · agencia: hoja/ref=None motor=None
+PASA  C · Google · LTV:CAC · agencia_cpl: hoja/ref=None motor=None
+PASA  C · Google · LTV:CAC · propuesta: hoja/ref=3.03434722167835 motor=3.034347221678349
+PASA  C · Meta · valor de una visita · hoy: hoja/ref=232.5 motor=232.5
+PASA  C · Meta · valor de una visita · agencia: hoja/ref=232.5 motor=232.5
+PASA  C · Meta · valor de una visita · agencia_cpl: hoja/ref=232.5 motor=232.5
+PASA  C · Meta · valor de una visita · propuesta: hoja/ref=297.5 motor=297.5
+PASA  C · Google · valor de una visita · hoy: hoja/ref=427.5 motor=427.5
+PASA  C · Google · valor de una visita · agencia: hoja/ref=427.5 motor=427.5
+PASA  C · Google · valor de una visita · agencia_cpl: hoja/ref=427.5 motor=427.5
+PASA  C · Google · valor de una visita · propuesta: hoja/ref=427.5 motor=427.5
+PASA  C · …pero el cliente de Meta cuesta este % más · hoy: hoja/ref=0.34096433994621 motor=0.34096433994620967
+PASA  C · Contribución del mes después de marketing, visitas y técnicos · hoy: hoja/ref=22414.65625 motor=22414.656249999993
+PASA  C · Contribución del mes después de marketing, visitas y técnicos · agencia: hoja/ref=14557.15 motor=14557.149999999998
+PASA  C · Contribución del mes después de marketing, visitas y técnicos · agencia_cpl: hoja/ref=15250 motor=15250
+PASA  C · Contribución del mes después de marketing, visitas y técnicos · propuesta: hoja/ref=35747.78125 motor=35747.78125000001
+PASA  C · Mes en que se recupera el cliente (payback en caja) · hoy: hoja/ref=2 motor=2
+PASA  C · Mes en que se recupera el cliente (payback en caja) · agencia: hoja/ref=2 motor=2
+PASA  C · Mes en que se recupera el cliente (payback en caja) · agencia_cpl: hoja/ref=2 motor=2
+PASA  C · Mes en que se recupera el cliente (payback en caja) · propuesta: hoja/ref=2 motor=2
+PASA  C · Plan 1 · Actual: $4.000 Meta + $4.000 Go · caja mínima: hoja/ref=15736.3 motor=15736.300000000017
+PASA  C · Plan 1 · Actual: $4.000 Meta + $4.000 Go · caja mes 24: hoja/ref=117273.393749999 motor=117273.39374999935
+PASA  C · Plan 1 · Actual: $4.000 Meta + $4.000 Go · instalaciones: hoja/ref=535.59 motor=535.5899999999996
+PASA  C · Plan 1 · Actual: $4.000 Meta + $4.000 Go · máxima diferencia de caja en los 24 meses: hoja/ref=4.3655745685100555e-10 motor=0.0
+PASA  C · Plan 2 · Agencia: $8.000 Meta + $0 Googl · caja mínima: hoja/ref=-60897.8220000005 motor=-60897.82200000013
+PASA  C · Plan 2 · Agencia: $8.000 Meta + $0 Googl · caja mes 24: hoja/ref=-60897.8220000005 motor=-60897.82200000013
+PASA  C · Plan 2 · Agencia: $8.000 Meta + $0 Googl · instalaciones: hoja/ref=419.1264 motor=419.12639999999976
+PASA  C · Plan 2 · Agencia: $8.000 Meta + $0 Googl · máxima diferencia de caja en los 24 meses: hoja/ref=3.710738383233547e-10 motor=0.0
+PASA  C · Plan 3 · $6.000 Meta + $8.000 Google, 1  · caja mínima: hoja/ref=5089.17600000001 motor=5089.176000000007
+PASA  C · Plan 3 · $6.000 Meta + $8.000 Google, 1  · caja mes 24: hoja/ref=249550.176 motor=249550.176
+PASA  C · Plan 3 · $6.000 Meta + $8.000 Google, 1  · instalaciones: hoja/ref=781.9056 motor=781.9055999999999
+PASA  C · Plan 3 · $6.000 Meta + $8.000 Google, 1  · máxima diferencia de caja en los 24 meses: hoja/ref=7.275957614183426e-12 motor=0.0
+PASA  C · Plan 4 · Respuesta y filtro desde el mes · caja mínima: hoja/ref=5846.20449999996 motor=5846.204499999993
+PASA  C · Plan 4 · Respuesta y filtro desde el mes · caja mes 24: hoja/ref=649094.984499999 motor=649094.9845000004
+PASA  C · Plan 4 · Respuesta y filtro desde el mes · instalaciones: hoja/ref=1101.9927875 motor=1101.9927874999996
+PASA  C · Plan 4 · Respuesta y filtro desde el mes · máxima diferencia de caja en los 24 meses: hoja/ref=1.3969838619232178e-09 motor=0.0
+PASA  C · Plan 5 · Mejor encontrado: respuesta y f · caja mínima: hoja/ref=6184.07624999996 motor=6184.076249999984
+PASA  C · Plan 5 · Mejor encontrado: respuesta y f · caja mes 24: hoja/ref=681010.331374999 motor=681010.3313750005
+PASA  C · Plan 5 · Mejor encontrado: respuesta y f · instalaciones: hoja/ref=1123.8192625 motor=1123.8192624999997
+PASA  C · Plan 5 · Mejor encontrado: respuesta y f · máxima diferencia de caja en los 24 meses: hoja/ref=1.5133991837501526e-09 motor=0.0
+PASA  C · mes 1 del plan 1 · pedidas (J6): hoja/ref=97.4875 motor=97.4875
+PASA  C · mes 1 del plan 1 · clientesPagados (N6): hoja/ref=22.31625 motor=22.316249999999997
+PASA  C · mes 1 del plan 1 · entradas (O6): hoja/ref=144027.8125 motor=144027.8125
+PASA  C · mes 1 del plan 1 · salidas (P6): hoja/ref=140291.5125 motor=140291.51249999998
+PASA  C · mes 1 del plan 1 · caja (Q6): hoja/ref=15736.3 motor=15736.300000000017
+PASA  C · hoja Verificación · Nivel 1 · Contribución de una venta: hoja/ref=1.0 motor=1.0
+PASA  C · hoja Verificación · Nivel 1 · CAC real de Meta (hoy): hoja/ref=1.0 motor=1.0
+PASA  C · hoja Verificación · Nivel 1 · CAC real de Google (hoy): hoja/ref=1.0 motor=1.0
+PASA  C · hoja Verificación · Nivel 3 · Mes 1, visitas pedidas: hoja/ref=1.0 motor=1.0
+PASA  C · hoja Verificación · Nivel 3 · Mes 1, ventas: hoja/ref=1.0 motor=1.0
+PASA  C · hoja Verificación · Nivel 3 · Mes 1, entradas: hoja/ref=1.0 motor=1.0
+PASA  C · hoja Verificación · Nivel 3 · Mes 1, salidas: hoja/ref=1.0 motor=1.0
+PASA  C · hoja Verificación · Nivel 3 · Mes 1, caja final: hoja/ref=1.0 motor=1.0
+
+## 2. Las hojas recalculan solas al cambiar un supuesto (y el motor se mueve igual)
+PASA  A (con {'envio': 5.5}) · Contribución promedio de un pedido suelto · hoy: hoja/ref=14.89 motor=14.889999999999997
+PASA  A (con {'envio': 5.5}) · Contribución promedio de un pedido suelto · agencia: hoja/ref=14.89 motor=14.889999999999997
+PASA  A (con {'envio': 5.5}) · Contribución promedio de un pedido suelto · propuesta: hoja/ref=21.505 motor=21.505000000000003
+PASA  A (con {'envio': 5.5}) · Contribución promedio del primer pedido · hoy: hoja/ref=14.89 motor=14.889999999999997
+PASA  A (con {'envio': 5.5}) · Contribución promedio del primer pedido · agencia: hoja/ref=5.149 motor=5.148999999999994
+PASA  A (con {'envio': 5.5}) · Contribución promedio del primer pedido · propuesta: hoja/ref=21.505 motor=21.505000000000003
+PASA  A (con {'envio': 5.5}) · Clientes nuevos de Meta (historial) · hoy: hoja/ref=165 motor=165
+PASA  A (con {'envio': 5.5}) · Clientes nuevos de Meta (historial) · agencia: hoja/ref=235 motor=235
+PASA  A (con {'envio': 5.5}) · Clientes nuevos de Meta (historial) · propuesta: hoja/ref=100 motor=100
+PASA  A (con {'envio': 5.5}) · CAC de anuncios · hoy: hoja/ref=48.4848484848485 motor=48.484848484848484
+PASA  A (con {'envio': 5.5}) · CAC de anuncios · agencia: hoja/ref=68.0851063829787 motor=68.08510638297872
+PASA  A (con {'envio': 5.5}) · CAC de anuncios · propuesta: hoja/ref=40 motor=40
+PASA  A (con {'envio': 5.5}) · CAC real · hoy: hoja/ref=54.5454545454546 motor=54.54545454545455
+PASA  A (con {'envio': 5.5}) · CAC real · agencia: hoja/ref=72.3404255319149 motor=72.34042553191489
+PASA  A (con {'envio': 5.5}) · CAC real · propuesta: hoja/ref=50 motor=50
+PASA  A (con {'envio': 5.5}) · ROAS real del primer pedido de los clientes nuevos · hoy: hoja/ref=0.70125 motor=0.70125
+PASA  A (con {'envio': 5.5}) · ROAS real del primer pedido de los clientes nuevos · agencia: hoja/ref=0.372034375 motor=0.372034375
+PASA  A (con {'envio': 5.5}) · ROAS real del primer pedido de los clientes nuevos · propuesta: hoja/ref=0.85 motor=0.85
+PASA  A (con {'envio': 5.5}) · LTV del cliente de pedidos sueltos · hoy: hoja/ref=44.67 motor=44.67
+PASA  A (con {'envio': 5.5}) · LTV del cliente de pedidos sueltos · agencia: hoja/ref=34.929 motor=34.928999999999995
+PASA  A (con {'envio': 5.5}) · LTV del cliente de pedidos sueltos · propuesta: hoja/ref=64.515 motor=64.51500000000001
+PASA  A (con {'envio': 5.5}) · LTV del suscriptor · hoy: hoja/ref=87.64908777826 motor=87.64908777825998
+PASA  A (con {'envio': 5.5}) · LTV del suscriptor · agencia: hoja/ref=87.64908777826 motor=87.64908777825998
+PASA  A (con {'envio': 5.5}) · LTV del suscriptor · propuesta: hoja/ref=87.64908777826 motor=87.64908777825998
+PASA  A (con {'envio': 5.5}) · LTV promedio · hoy: hoja/ref=51.116863166739 motor=51.116863166738995
+PASA  A (con {'envio': 5.5}) · LTV promedio · agencia: hoja/ref=42.837013166739 motor=42.83701316673899
+PASA  A (con {'envio': 5.5}) · LTV promedio · propuesta: hoja/ref=67.985113166739 motor=67.98511316673901
+PASA  A (con {'envio': 5.5}) · LTV:CAC · hoy: hoja/ref=0.937142491390215 motor=0.9371424913902149
+PASA  A (con {'envio': 5.5}) · LTV:CAC · agencia: hoja/ref=0.592158711422568 motor=0.5921587114225685
+PASA  A (con {'envio': 5.5}) · LTV:CAC · propuesta: hoja/ref=1.35970226333478 motor=1.3597022633347802
+PASA  A (con {'envio': 5.5}) · Payback (meses para recuperar el CAC) · hoy: hoja/ref=None motor=None
+PASA  A (con {'envio': 5.5}) · Payback (meses para recuperar el CAC) · agencia: hoja/ref=None motor=None
+PASA  A (con {'envio': 5.5}) · Payback (meses para recuperar el CAC) · propuesta: hoja/ref=8 motor=8
+PASA  A (con {'envio': 5.5}) · CAC marginal frente a hoy · agencia: hoja/ref=114.285714285714 motor=114.28571428571429
+PASA  A (con {'envio': 5.5}) · CAC marginal frente a hoy · propuesta: hoja/ref=61.5384615384615 motor=61.53846153846154
+PASA  A (con {'envio': 5.5}) · Plan 1 · $8.000 fijos (hoy) · caja mínima: hoja/ref=22048.1452462706 motor=22048.145246270647
+PASA  A (con {'envio': 5.5}) · Plan 1 · $8.000 fijos (hoy) · caja mes 24: hoja/ref=62090.9598531335 motor=62090.95985313352
+PASA  A (con {'envio': 5.5}) · Plan 1 · $8.000 fijos (hoy) · activos mes 24: hoja/ref=316.590044539467 motor=316.5900445394666
+PASA  A (con {'envio': 5.5}) · Plan 1 · $8.000 fijos (hoy) · máxima diferencia de caja en los 24 meses: hoja/ref=6.548361852765083e-11 motor=0.0
+PASA  A (con {'envio': 5.5}) · Plan 2 · Agencia: $16.000 fijos · caja mínima: hoja/ref=-51287.9750194187 motor=-51287.97501941873
+PASA  A (con {'envio': 5.5}) · Plan 2 · Agencia: $16.000 fijos · caja mes 24: hoja/ref=-49502.7719871233 motor=-49502.771987123335
+PASA  A (con {'envio': 5.5}) · Plan 2 · Agencia: $16.000 fijos · activos mes 24: hoja/ref=421.124493208158 motor=421.1244932081584
+PASA  A (con {'envio': 5.5}) · Plan 2 · Agencia: $16.000 fijos · máxima diferencia de caja en los 24 meses: hoja/ref=6.184563972055912e-11 motor=0.0
+PASA  A (con {'envio': 5.5}) · Plan 3 · $4.000 fijos, sin otros cambios · caja mínima: hoja/ref=34477.1657415 motor=34477.1657415
+PASA  A (con {'envio': 5.5}) · Plan 3 · $4.000 fijos, sin otros cambios · caja mes 24: hoja/ref=83427.9965619434 motor=83427.99656194348
+PASA  A (con {'envio': 5.5}) · Plan 3 · $4.000 fijos, sin otros cambios · activos mes 24: hoja/ref=219.522342204253 motor=219.52234220425282
+PASA  A (con {'envio': 5.5}) · Plan 3 · $4.000 fijos, sin otros cambios · máxima diferencia de caja en los 24 meses: hoja/ref=8.731149137020111e-11 motor=0.0
+PASA  A (con {'envio': 5.5}) · Plan 4 · Pack desde el mes 1; $4.000 mes · caja mínima: hoja/ref=35443.7779 motor=35443.7779
+PASA  A (con {'envio': 5.5}) · Plan 4 · Pack desde el mes 1; $4.000 mes · caja mes 24: hoja/ref=137005.182549422 motor=137005.18254942232
+PASA  A (con {'envio': 5.5}) · Plan 4 · Pack desde el mes 1; $4.000 mes · activos mes 24: hoja/ref=312.906014526056 motor=312.9060145260563
+PASA  A (con {'envio': 5.5}) · Plan 4 · Pack desde el mes 1; $4.000 mes · máxima diferencia de caja en los 24 meses: hoja/ref=4.220055416226387e-10 motor=0.0
+PASA  A (con {'envio': 5.5}) · Plan 5 · Pack desde el mes 1 y $8.000 fi · caja mínima: hoja/ref=30352.49783994 motor=30352.497839940002
+PASA  A (con {'envio': 5.5}) · Plan 5 · Pack desde el mes 1 y $8.000 fi · caja mes 24: hoja/ref=142969.720403134 motor=142969.7204031336
+PASA  A (con {'envio': 5.5}) · Plan 5 · Pack desde el mes 1 y $8.000 fi · activos mes 24: hoja/ref=316.590044539467 motor=316.5900445394666
+PASA  A (con {'envio': 5.5}) · Plan 5 · Pack desde el mes 1 y $8.000 fi · máxima diferencia de caja en los 24 meses: hoja/ref=4.0745362639427185e-10 motor=0.0
+PASA  A (con {'envio': 5.5}) · mes 1 del plan 1 · nuevos (D6): hoja/ref=212 motor=212
+PASA  A (con {'envio': 5.5}) · mes 1 del plan 1 · baseDecae (E6): hoja/ref=9000 motor=9000
+PASA  A (con {'envio': 5.5}) · mes 1 del plan 1 · contribNuevos (F6): hoja/ref=3053.4254 motor=3053.425399999999
+PASA  A (con {'envio': 5.5}) · mes 1 del plan 1 · salidas (G6): hoja/ref=15500 motor=15500
+PASA  A (con {'envio': 5.5}) · mes 1 del plan 1 · caja (H6): hoja/ref=31553.4254 motor=31553.4254
+PASA  B (con {'churn': 0.08}) · Trials por anuncios · hoy: hoja/ref=500 motor=500
+PASA  B (con {'churn': 0.08}) · Trials por anuncios · valeria: hoja/ref=900 motor=900
+PASA  B (con {'churn': 0.08}) · Trials por anuncios · valeria_cte: hoja/ref=1500 motor=1500
+PASA  B (con {'churn': 0.08}) · Trials por anuncios · propuesta: hoja/ref=500 motor=500
+PASA  B (con {'churn': 0.08}) · Vendedoras necesarias · hoy: hoja/ref=1 motor=1
+PASA  B (con {'churn': 0.08}) · Vendedoras necesarias · valeria: hoja/ref=2 motor=2
+PASA  B (con {'churn': 0.08}) · Vendedoras necesarias · valeria_cte: hoja/ref=3 motor=3
+PASA  B (con {'churn': 0.08}) · Vendedoras necesarias · propuesta: hoja/ref=1 motor=1
+PASA  B (con {'churn': 0.08}) · Clientes nuevos de anuncios · hoy: hoja/ref=70 motor=70
+PASA  B (con {'churn': 0.08}) · Clientes nuevos de anuncios · valeria: hoja/ref=126 motor=126.00000000000001
+PASA  B (con {'churn': 0.08}) · Clientes nuevos de anuncios · valeria_cte: hoja/ref=210 motor=210.00000000000003
+PASA  B (con {'churn': 0.08}) · Clientes nuevos de anuncios · propuesta: hoja/ref=70 motor=70
+PASA  B (con {'churn': 0.08}) · Costo total de adquisición · hoy: hoja/ref=12600 motor=12600
+PASA  B (con {'churn': 0.08}) · Costo total de adquisición · valeria: hoja/ref=34920 motor=34920
+PASA  B (con {'churn': 0.08}) · Costo total de adquisición · valeria_cte: hoja/ref=37800 motor=37800
+PASA  B (con {'churn': 0.08}) · Costo total de adquisición · propuesta: hoja/ref=12600 motor=12600
+PASA  B (con {'churn': 0.08}) · CAC paid (solo clientes de anuncios) · hoy: hoja/ref=180 motor=180
+PASA  B (con {'churn': 0.08}) · CAC paid (solo clientes de anuncios) · valeria: hoja/ref=277.142857142857 motor=277.1428571428571
+PASA  B (con {'churn': 0.08}) · CAC paid (solo clientes de anuncios) · valeria_cte: hoja/ref=180 motor=179.99999999999997
+PASA  B (con {'churn': 0.08}) · CAC paid (solo clientes de anuncios) · propuesta: hoja/ref=180 motor=180
+PASA  B (con {'churn': 0.08}) · CAC blended (mezcla con orgánicos) · hoy: hoja/ref=105 motor=105
+PASA  B (con {'churn': 0.08}) · CAC blended (mezcla con orgánicos) · valeria: hoja/ref=198.409090909091 motor=198.4090909090909
+PASA  B (con {'churn': 0.08}) · CAC blended (mezcla con orgánicos) · valeria_cte: hoja/ref=145.384615384615 motor=145.3846153846154
+PASA  B (con {'churn': 0.08}) · CAC blended (mezcla con orgánicos) · propuesta: hoja/ref=105 motor=105
+PASA  B (con {'churn': 0.08}) · LTV a 24 meses del cliente mensual · hoy: hoja/ref=210.800222926022 motor=210.80022292602257
+PASA  B (con {'churn': 0.08}) · LTV a 24 meses del cliente mensual · valeria: hoja/ref=210.800222926022 motor=210.80022292602257
+PASA  B (con {'churn': 0.08}) · LTV a 24 meses del cliente mensual · valeria_cte: hoja/ref=210.800222926022 motor=210.80022292602257
+PASA  B (con {'churn': 0.08}) · LTV a 24 meses del cliente mensual · propuesta: hoja/ref=244.528258594186 motor=244.5282585941861
+PASA  B (con {'churn': 0.08}) · LTV sin tope de meses (solo para comparar) · hoy: hoja/ref=243.75 motor=243.75
+PASA  B (con {'churn': 0.08}) · LTV sin tope de meses (solo para comparar) · valeria: hoja/ref=243.75 motor=243.75
+PASA  B (con {'churn': 0.08}) · LTV sin tope de meses (solo para comparar) · valeria_cte: hoja/ref=243.75 motor=243.75
+PASA  B (con {'churn': 0.08}) · LTV sin tope de meses (solo para comparar) · propuesta: hoja/ref=282.75 motor=282.75
+PASA  B (con {'churn': 0.08}) · LTV a 24 meses del cliente anual · hoy: hoja/ref=318.24 motor=318.24
+PASA  B (con {'churn': 0.08}) · LTV a 24 meses del cliente anual · valeria: hoja/ref=318.24 motor=318.24
+PASA  B (con {'churn': 0.08}) · LTV a 24 meses del cliente anual · valeria_cte: hoja/ref=318.24 motor=318.24
+PASA  B (con {'churn': 0.08}) · LTV a 24 meses del cliente anual · propuesta: hoja/ref=318.24 motor=318.24
+PASA  B (con {'churn': 0.08}) · LTV promedio del escenario · hoy: hoja/ref=210.800222926022 motor=210.80022292602257
+PASA  B (con {'churn': 0.08}) · LTV promedio del escenario · valeria: hoja/ref=210.800222926022 motor=210.80022292602257
+PASA  B (con {'churn': 0.08}) · LTV promedio del escenario · valeria_cte: hoja/ref=210.800222926022 motor=210.80022292602257
+PASA  B (con {'churn': 0.08}) · LTV promedio del escenario · propuesta: hoja/ref=274.012955156512 motor=274.0129551565116
+PASA  B (con {'churn': 0.08}) · LTV:CAC blended · hoy: hoja/ref=2.00762117072402 motor=2.0076211707240246
+PASA  B (con {'churn': 0.08}) · LTV:CAC blended · valeria: hoja/ref=1.06245244086426 motor=1.0624524408642604
+PASA  B (con {'churn': 0.08}) · LTV:CAC blended · valeria_cte: hoja/ref=1.44994862330068 motor=1.4499486233006844
+PASA  B (con {'churn': 0.08}) · LTV:CAC blended · propuesta: hoja/ref=2.60964719196678 motor=2.6096471919667774
+PASA  B (con {'churn': 0.08}) · LTV:CAC paid (el que sirve para decidir sobre anuncios) · hoy: hoja/ref=1.17111234958901 motor=1.1711123495890143
+PASA  B (con {'churn': 0.08}) · LTV:CAC paid (el que sirve para decidir sobre anuncios) · valeria: hoja/ref=0.760619361073277 motor=0.7606193610732774
+PASA  B (con {'churn': 0.08}) · LTV:CAC paid (el que sirve para decidir sobre anuncios) · valeria_cte: hoja/ref=1.17111234958901 motor=1.1711123495890146
+PASA  B (con {'churn': 0.08}) · LTV:CAC paid (el que sirve para decidir sobre anuncios) · propuesta: hoja/ref=1.52229419531395 motor=1.5222941953139535
+PASA  B (con {'churn': 0.08}) · Payback del cliente del escenario (meses) · hoy: hoja/ref=17 motor=17
+PASA  B (con {'churn': 0.08}) · Payback del cliente del escenario (meses) · valeria: hoja/ref=None motor=None
+PASA  B (con {'churn': 0.08}) · Payback del cliente del escenario (meses) · valeria_cte: hoja/ref=17 motor=17
+PASA  B (con {'churn': 0.08}) · Payback del cliente del escenario (meses) · propuesta: hoja/ref=12 motor=12
+PASA  B (con {'churn': 0.08}) · CAC marginal frente a hoy · valeria: hoja/ref=398.571428571429 motor=398.5714285714285
+PASA  B (con {'churn': 0.08}) · CAC marginal frente a hoy · valeria_cte: hoja/ref=180 motor=179.99999999999997
+PASA  B (con {'churn': 0.08}) · CAC marginal frente a hoy · propuesta: hoja/ref=None motor=None
+PASA  B (con {'churn': 0.08}) · Caja que queda atrapada cada mes (sale y no vuelve ese mes) · hoy: hoja/ref=0 motor=0
+PASA  B (con {'churn': 0.08}) · Caja que queda atrapada cada mes (sale y no vuelve ese mes) · valeria: hoja/ref=21228 motor=21228
+PASA  B (con {'churn': 0.08}) · Caja que queda atrapada cada mes (sale y no vuelve ese mes) · valeria_cte: hoja/ref=22470 motor=22470
+PASA  B (con {'churn': 0.08}) · Caja que queda atrapada cada mes (sale y no vuelve ese mes) · propuesta: hoja/ref=0 motor=0
+PASA  B (con {'churn': 0.08}) · Plan 1 · $10.000 fijos (hoy) · caja mínima: hoja/ref=42029.0386968072 motor=42029.03869680719
+PASA  B (con {'churn': 0.08}) · Plan 1 · $10.000 fijos (hoy) · caja mes 24: hoja/ref=55722.328217821 motor=55722.32821782101
+PASA  B (con {'churn': 0.08}) · Plan 1 · $10.000 fijos (hoy) · activos mes 24: hoja/ref=1452.68749958608 motor=1452.687499586084
+PASA  B (con {'churn': 0.08}) · Plan 1 · $10.000 fijos (hoy) · máxima diferencia de caja en los 24 meses: hoja/ref=5.820766091346741e-11 motor=0.0
+PASA  B (con {'churn': 0.08}) · Plan 2 · Valeria: $30.000 fijos · caja mínima: hoja/ref=-288113.015346538 motor=-288113.01534653746
+PASA  B (con {'churn': 0.08}) · Plan 2 · Valeria: $30.000 fijos · caja mes 24: hoja/ref=-288113.015346538 motor=-288113.01534653746
+PASA  B (con {'churn': 0.08}) · Plan 2 · Valeria: $30.000 fijos · activos mes 24: hoja/ref=2058.06249875825 motor=2058.062498758251
+PASA  B (con {'churn': 0.08}) · Plan 2 · Valeria: $30.000 fijos · máxima diferencia de caja en los 24 meses: hoja/ref=5.238689482212067e-10 motor=0.0
+PASA  B (con {'churn': 0.08}) · Plan 3 · $15.000 meses 1-18 y $27.000 de · caja mínima: hoja/ref=-96254.3859241067 motor=-96254.38592410673
+PASA  B (con {'churn': 0.08}) · Plan 3 · $15.000 meses 1-18 y $27.000 de · caja mes 24: hoja/ref=-96254.3859241067 motor=-96254.38592410673
+PASA  B (con {'churn': 0.08}) · Plan 3 · $15.000 meses 1-18 y $27.000 de · activos mes 24: hoja/ref=1822.98990378643 motor=1822.9899037864307
+PASA  B (con {'churn': 0.08}) · Plan 3 · $15.000 meses 1-18 y $27.000 de · máxima diferencia de caja en los 24 meses: hoja/ref=5.093170329928398e-11 motor=0.0
+PASA  B (con {'churn': 0.08}) · Plan 4 · Plan anual 40 % desde el mes 1; · caja mínima: hoja/ref=-54672.5244149568 motor=-54672.524414956526
+PASA  B (con {'churn': 0.08}) · Plan 4 · Plan anual 40 % desde el mes 1; · caja mes 24: hoja/ref=-54672.5244149568 motor=-54672.524414956526
+PASA  B (con {'churn': 0.08}) · Plan 4 · Plan anual 40 % desde el mes 1; · activos mes 24: hoja/ref=2663.1574464881 motor=2663.157446488103
+PASA  B (con {'churn': 0.08}) · Plan 4 · Plan anual 40 % desde el mes 1; · máxima diferencia de caja en los 24 meses: hoja/ref=2.837623469531536e-10 motor=0.0
+PASA  B (con {'churn': 0.08}) · mes 1 del plan 1 · tope (C6): hoja/ref=500 motor=500
+PASA  B (con {'churn': 0.08}) · mes 1 del plan 1 · nuevos (F6): hoja/ref=120 motor=120
+PASA  B (con {'churn': 0.08}) · mes 1 del plan 1 · activos (K6): hoja/ref=1178 motor=1178
+PASA  B (con {'churn': 0.08}) · mes 1 del plan 1 · entradas (L6): hoja/ref=22971 motor=22971
+PASA  B (con {'churn': 0.08}) · mes 1 del plan 1 · salidas (M6): hoja/ref=26600 motor=26600
+PASA  B (con {'churn': 0.08}) · mes 1 del plan 1 · caja (N6): hoja/ref=56371 motor=56371
+PASA  C (con {'m_contacto': 0.65}) · Leads de Meta · hoy: hoja/ref=500 motor=500
+PASA  C (con {'m_contacto': 0.65}) · Leads de Meta · agencia: hoja/ref=840 motor=840
+PASA  C (con {'m_contacto': 0.65}) · Leads de Meta · agencia_cpl: hoja/ref=1000 motor=1000
+PASA  C (con {'m_contacto': 0.65}) · Leads de Meta · propuesta: hoja/ref=400 motor=400
+PASA  C (con {'m_contacto': 0.65}) · Visitas pedidas en total · hoy: hoja/ref=107.9875 motor=107.98750000000001
+PASA  C (con {'m_contacto': 0.65}) · Visitas pedidas en total · agencia: hoja/ref=114.66 motor=114.65999999999998
+PASA  C (con {'m_contacto': 0.65}) · Visitas pedidas en total · agencia_cpl: hoja/ref=136.5 motor=136.5
+PASA  C (con {'m_contacto': 0.65}) · Visitas pedidas en total · propuesta: hoja/ref=135.7375 motor=135.7375
+PASA  C (con {'m_contacto': 0.65}) · Visitas hechas de Google · hoy: hoja/ref=39.7375 motor=39.737500000000004
+PASA  C (con {'m_contacto': 0.65}) · Visitas hechas de Google · agencia: hoja/ref=0 motor=0
+PASA  C (con {'m_contacto': 0.65}) · Visitas hechas de Google · agencia_cpl: hoja/ref=0 motor=0
+PASA  C (con {'m_contacto': 0.65}) · Visitas hechas de Google · propuesta: hoja/ref=39.7375 motor=39.737500000000004
+PASA  C (con {'m_contacto': 0.65}) · Visitas hechas de Meta · hoy: hoja/ref=60.2625 motor=60.262499999999996
+PASA  C (con {'m_contacto': 0.65}) · Visitas hechas de Meta · agencia: hoja/ref=100 motor=100
+PASA  C (con {'m_contacto': 0.65}) · Visitas hechas de Meta · agencia_cpl: hoja/ref=100 motor=100
+PASA  C (con {'m_contacto': 0.65}) · Visitas hechas de Meta · propuesta: hoja/ref=96 motor=96
+PASA  C (con {'m_contacto': 0.65}) · Ventas de Meta · hoy: hoja/ref=10.84725 motor=10.847249999999999
+PASA  C (con {'m_contacto': 0.65}) · Ventas de Meta · agencia: hoja/ref=18 motor=18
+PASA  C (con {'m_contacto': 0.65}) · Ventas de Meta · agencia_cpl: hoja/ref=18 motor=18
+PASA  C (con {'m_contacto': 0.65}) · Ventas de Meta · propuesta: hoja/ref=21.12 motor=21.12
+PASA  C (con {'m_contacto': 0.65}) · Ventas de Google · hoy: hoja/ref=11.92125 motor=11.92125
+PASA  C (con {'m_contacto': 0.65}) · Ventas de Google · agencia: hoja/ref=0 motor=0
+PASA  C (con {'m_contacto': 0.65}) · Ventas de Google · agencia_cpl: hoja/ref=0 motor=0
+PASA  C (con {'m_contacto': 0.65}) · Ventas de Google · propuesta: hoja/ref=11.92125 motor=11.92125
+PASA  C (con {'m_contacto': 0.65}) · Ventas totales · hoy: hoja/ref=22.7685 motor=22.7685
+PASA  C (con {'m_contacto': 0.65}) · Ventas totales · agencia: hoja/ref=18 motor=18
+PASA  C (con {'m_contacto': 0.65}) · Ventas totales · agencia_cpl: hoja/ref=18 motor=18
+PASA  C (con {'m_contacto': 0.65}) · Ventas totales · propuesta: hoja/ref=33.04125 motor=33.041250000000005
+PASA  C (con {'m_contacto': 0.65}) · Meta · CPL · hoy: hoja/ref=8 motor=8
+PASA  C (con {'m_contacto': 0.65}) · Meta · CPL · agencia: hoja/ref=9.52380952380952 motor=9.523809523809524
+PASA  C (con {'m_contacto': 0.65}) · Meta · CPL · agencia_cpl: hoja/ref=8 motor=8
+PASA  C (con {'m_contacto': 0.65}) · Meta · CPL · propuesta: hoja/ref=10 motor=10
+PASA  C (con {'m_contacto': 0.65}) · Meta · CAC de anuncios · hoy: hoja/ref=368.757058240568 motor=368.7570582405679
+PASA  C (con {'m_contacto': 0.65}) · Meta · CAC de anuncios · agencia: hoja/ref=444.444444444444 motor=444.44444444444446
+PASA  C (con {'m_contacto': 0.65}) · Meta · CAC de anuncios · agencia_cpl: hoja/ref=444.444444444444 motor=444.44444444444446
+PASA  C (con {'m_contacto': 0.65}) · Meta · CAC de anuncios · propuesta: hoja/ref=189.393939393939 motor=189.39393939393938
+PASA  C (con {'m_contacto': 0.65}) · Meta · CAC real · hoy: hoja/ref=702.090391573901 motor=702.0903915739013
+PASA  C (con {'m_contacto': 0.65}) · Meta · CAC real · agencia: hoja/ref=777.777777777778 motor=777.7777777777778
+PASA  C (con {'m_contacto': 0.65}) · Meta · CAC real · agencia_cpl: hoja/ref=777.777777777778 motor=777.7777777777778
+PASA  C (con {'m_contacto': 0.65}) · Meta · CAC real · propuesta: hoja/ref=462.121212121212 motor=462.1212121212121
+PASA  C (con {'m_contacto': 0.65}) · Google · CAC real · hoy: hoja/ref=535.53528363217 motor=535.5352836321695
+PASA  C (con {'m_contacto': 0.65}) · Google · CAC real · agencia: hoja/ref=None motor=None
+PASA  C (con {'m_contacto': 0.65}) · Google · CAC real · agencia_cpl: hoja/ref=None motor=None
+PASA  C (con {'m_contacto': 0.65}) · Google · CAC real · propuesta: hoja/ref=535.53528363217 motor=535.5352836321695
+PASA  C (con {'m_contacto': 0.65}) · CAC real total · hoy: hoja/ref=614.884599336803 motor=614.884599336803
+PASA  C (con {'m_contacto': 0.65}) · CAC real total · agencia: hoja/ref=777.777777777778 motor=777.7777777777778
+PASA  C (con {'m_contacto': 0.65}) · CAC real total · agencia_cpl: hoja/ref=777.777777777778 motor=777.7777777777778
+PASA  C (con {'m_contacto': 0.65}) · CAC real total · propuesta: hoja/ref=488.608935799947 motor=488.60893579994695
+PASA  C (con {'m_contacto': 0.65}) · Meta · LTV:CAC · hoy: hoja/ref=2.31451679086104 motor=2.314516790861044
+PASA  C (con {'m_contacto': 0.65}) · Meta · LTV:CAC · agencia: hoja/ref=2.08928571428571 motor=2.089285714285714
+PASA  C (con {'m_contacto': 0.65}) · Meta · LTV:CAC · agencia_cpl: hoja/ref=2.08928571428571 motor=2.089285714285714
+PASA  C (con {'m_contacto': 0.65}) · Meta · LTV:CAC · propuesta: hoja/ref=3.51639344262295 motor=3.5163934426229506
+PASA  C (con {'m_contacto': 0.65}) · Google · LTV:CAC · hoy: hoja/ref=3.03434722167835 motor=3.034347221678349
+PASA  C (con {'m_contacto': 0.65}) · Google · LTV:CAC · agencia: hoja/ref=None motor=None
+PASA  C (con {'m_contacto': 0.65}) · Google · LTV:CAC · agencia_cpl: hoja/ref=None motor=None
+PASA  C (con {'m_contacto': 0.65}) · Google · LTV:CAC · propuesta: hoja/ref=3.03434722167835 motor=3.034347221678349
+PASA  C (con {'m_contacto': 0.65}) · Meta · valor de una visita · hoy: hoja/ref=232.5 motor=232.5
+PASA  C (con {'m_contacto': 0.65}) · Meta · valor de una visita · agencia: hoja/ref=232.5 motor=232.5
+PASA  C (con {'m_contacto': 0.65}) · Meta · valor de una visita · agencia_cpl: hoja/ref=232.5 motor=232.5
+PASA  C (con {'m_contacto': 0.65}) · Meta · valor de una visita · propuesta: hoja/ref=297.5 motor=297.5
+PASA  C (con {'m_contacto': 0.65}) · Google · valor de una visita · hoy: hoja/ref=427.5 motor=427.5
+PASA  C (con {'m_contacto': 0.65}) · Google · valor de una visita · agencia: hoja/ref=427.5 motor=427.5
+PASA  C (con {'m_contacto': 0.65}) · Google · valor de una visita · agencia_cpl: hoja/ref=427.5 motor=427.5
+PASA  C (con {'m_contacto': 0.65}) · Google · valor de una visita · propuesta: hoja/ref=427.5 motor=427.5
+PASA  C (con {'m_contacto': 0.65}) · …pero el cliente de Meta cuesta este % más · hoy: hoja/ref=0.311006787101127 motor=0.31100678710112706
+PASA  C (con {'m_contacto': 0.65}) · Contribución del mes después de marketing, visitas y técnicos · hoy: hoja/ref=22998.8125 motor=22998.8125
+PASA  C (con {'m_contacto': 0.65}) · Contribución del mes después de marketing, visitas y técnicos · agencia: hoja/ref=15250 motor=15250
+PASA  C (con {'m_contacto': 0.65}) · Contribución del mes después de marketing, visitas y técnicos · agencia_cpl: hoja/ref=15250 motor=15250
+PASA  C (con {'m_contacto': 0.65}) · Contribución del mes después de marketing, visitas y técnicos · propuesta: hoja/ref=35747.78125 motor=35747.78125000001
+PASA  C (con {'m_contacto': 0.65}) · Mes en que se recupera el cliente (payback en caja) · hoy: hoja/ref=2 motor=2
+PASA  C (con {'m_contacto': 0.65}) · Mes en que se recupera el cliente (payback en caja) · agencia: hoja/ref=2 motor=2
+PASA  C (con {'m_contacto': 0.65}) · Mes en que se recupera el cliente (payback en caja) · agencia_cpl: hoja/ref=2 motor=2
+PASA  C (con {'m_contacto': 0.65}) · Mes en que se recupera el cliente (payback en caja) · propuesta: hoja/ref=2 motor=2
+PASA  C (con {'m_contacto': 0.65}) · Plan 1 · Actual: $4.000 Meta + $4.000 Go · caja mínima: hoja/ref=15350.38 motor=15350.380000000005
+PASA  C (con {'m_contacto': 0.65}) · Plan 1 · Actual: $4.000 Meta + $4.000 Go · caja mes 24: hoja/ref=130323.0675 motor=130323.0675
+PASA  C (con {'m_contacto': 0.65}) · Plan 1 · Actual: $4.000 Meta + $4.000 Go · instalaciones: hoja/ref=546.444 motor=546.4440000000001
+PASA  C (con {'m_contacto': 0.65}) · Plan 1 · Actual: $4.000 Meta + $4.000 Go · máxima diferencia de caja en los 24 meses: hoja/ref=7.275957614183426e-12 motor=0.0
+PASA  C (con {'m_contacto': 0.65}) · Plan 2 · Agencia: $8.000 Meta + $0 Googl · caja mínima: hoja/ref=-45420.0000000003 motor=-45420
+PASA  C (con {'m_contacto': 0.65}) · Plan 2 · Agencia: $8.000 Meta + $0 Googl · caja mes 24: hoja/ref=-45420.0000000003 motor=-45420
+PASA  C (con {'m_contacto': 0.65}) · Plan 2 · Agencia: $8.000 Meta + $0 Googl · instalaciones: hoja/ref=432 motor=432
+PASA  C (con {'m_contacto': 0.65}) · Plan 2 · Agencia: $8.000 Meta + $0 Googl · máxima diferencia de caja en los 24 meses: hoja/ref=2.9831426218152046e-10 motor=0.0
+PASA  C (con {'m_contacto': 0.65}) · Plan 3 · $6.000 Meta + $8.000 Google, 1  · caja mínima: hoja/ref=3878.80799999999 motor=3878.80799999999
+PASA  C (con {'m_contacto': 0.65}) · Plan 3 · $6.000 Meta + $8.000 Google, 1  · caja mes 24: hoja/ref=286813.908 motor=286813.9079999995
+PASA  C (con {'m_contacto': 0.65}) · Plan 3 · $6.000 Meta + $8.000 Google, 1  · instalaciones: hoja/ref=813.1104 motor=813.1103999999997
+PASA  C (con {'m_contacto': 0.65}) · Plan 3 · $6.000 Meta + $8.000 Google, 1  · máxima diferencia de caja en los 24 meses: hoja/ref=5.238689482212067e-10 motor=0.0
+PASA  C (con {'m_contacto': 0.65}) · Plan 4 · Respuesta y filtro desde el mes · caja mínima: hoja/ref=5846.20449999996 motor=5846.204499999993
+PASA  C (con {'m_contacto': 0.65}) · Plan 4 · Respuesta y filtro desde el mes · caja mes 24: hoja/ref=649094.984499999 motor=649094.9845000004
+PASA  C (con {'m_contacto': 0.65}) · Plan 4 · Respuesta y filtro desde el mes · instalaciones: hoja/ref=1101.9927875 motor=1101.9927874999996
+PASA  C (con {'m_contacto': 0.65}) · Plan 4 · Respuesta y filtro desde el mes · máxima diferencia de caja en los 24 meses: hoja/ref=1.3969838619232178e-09 motor=0.0
+PASA  C (con {'m_contacto': 0.65}) · Plan 5 · Mejor encontrado: respuesta y f · caja mínima: hoja/ref=6184.07624999996 motor=6184.076249999984
+PASA  C (con {'m_contacto': 0.65}) · Plan 5 · Mejor encontrado: respuesta y f · caja mes 24: hoja/ref=681010.331374999 motor=681010.3313750005
+PASA  C (con {'m_contacto': 0.65}) · Plan 5 · Mejor encontrado: respuesta y f · instalaciones: hoja/ref=1123.8192625 motor=1123.8192624999997
+PASA  C (con {'m_contacto': 0.65}) · Plan 5 · Mejor encontrado: respuesta y f · máxima diferencia de caja en los 24 meses: hoja/ref=1.5133991837501526e-09 motor=0.0
+PASA  C (con {'m_contacto': 0.65}) · mes 1 del plan 1 · pedidas (J6): hoja/ref=107.9875 motor=107.98750000000001
+PASA  C (con {'m_contacto': 0.65}) · mes 1 del plan 1 · clientesPagados (N6): hoja/ref=22.7685 motor=22.7685
+PASA  C (con {'m_contacto': 0.65}) · mes 1 del plan 1 · entradas (O6): hoja/ref=145497.625 motor=145497.625
+PASA  C (con {'m_contacto': 0.65}) · mes 1 del plan 1 · salidas (P6): hoja/ref=142147.245 motor=142147.245
+PASA  C (con {'m_contacto': 0.65}) · mes 1 del plan 1 · caja (Q6): hoja/ref=15350.38 motor=15350.380000000005
+
+## 3. Motor frente al modelo de referencia independiente en Python
+PASA  A · ref Python · hoy · cac_real: hoja/ref=54.54545454545455 motor=54.54545454545455
+PASA  A · ref Python · hoy · ltv: hoja/ref=54.79607068771631 motor=54.79607068771633
+PASA  A · ref Python · hoy · ltv_cac: hoja/ref=1.004594629274799 motor=1.0045946292747994
+PASA  A · ref Python · hoy · payback: hoja/ref=12 motor=12
+PASA  A · ref Python · hoy · roas_real: hoja/ref=0.70125 motor=0.70125
+PASA  A · ref Python · agencia · cac_real: hoja/ref=72.34042553191489 motor=72.34042553191489
+PASA  A · ref Python · agencia · ltv: hoja/ref=46.51622068771631 motor=46.51622068771632
+PASA  A · ref Python · agencia · ltv_cac: hoja/ref=0.6430183448007843 motor=0.6430183448007845
+PASA  A · ref Python · agencia · payback: hoja/ref=None motor=None
+PASA  A · ref Python · agencia · roas_real: hoja/ref=0.37203437500000003 motor=0.372034375
+PASA  A · ref Python · propuesta · cac_real: hoja/ref=50.0 motor=50
+PASA  A · ref Python · propuesta · ltv: hoja/ref=70.38932068771632 motor=70.38932068771634
+PASA  A · ref Python · propuesta · ltv_cac: hoja/ref=1.4077864137543263 motor=1.4077864137543268
+PASA  A · ref Python · propuesta · payback: hoja/ref=7 motor=7
+PASA  A · ref Python · propuesta · roas_real: hoja/ref=0.85 motor=0.85
+PASA  B · ref Python · hoy · cac_paid: hoja/ref=180.0 motor=180
+PASA  B · ref Python · hoy · cac_bl: hoja/ref=105.0 motor=105
+PASA  B · ref Python · hoy · ltv24: hoja/ref=251.38745253280803 motor=251.38745253280797
+PASA  B · ref Python · hoy · payback: hoja/ref=14 motor=14
+PASA  B · ref Python · hoy · vend: hoja/ref=1 motor=1
+PASA  B · ref Python · valeria · cac_paid: hoja/ref=277.1428571428571 motor=277.1428571428571
+PASA  B · ref Python · valeria · cac_bl: hoja/ref=198.4090909090909 motor=198.4090909090909
+PASA  B · ref Python · valeria · ltv24: hoja/ref=251.38745253280803 motor=251.38745253280797
+PASA  B · ref Python · valeria · payback: hoja/ref=None motor=None
+PASA  B · ref Python · valeria · vend: hoja/ref=2 motor=2
+PASA  B · ref Python · valeria_cte · cac_paid: hoja/ref=179.99999999999997 motor=179.99999999999997
+PASA  B · ref Python · valeria_cte · cac_bl: hoja/ref=145.3846153846154 motor=145.3846153846154
+PASA  B · ref Python · valeria_cte · ltv24: hoja/ref=251.38745253280803 motor=251.38745253280797
+PASA  B · ref Python · valeria_cte · payback: hoja/ref=14 motor=14
+PASA  B · ref Python · valeria_cte · vend: hoja/ref=3 motor=3
+PASA  C · ref Python · hoy · ventas: hoja/ref=22.316249999999997 motor=22.316249999999997
+PASA  C · ref Python · hoy · CAC real total: hoja/ref=620.5903769674566 motor=620.5903769674566
+PASA  C · ref Python · agencia · ventas: hoja/ref=17.4636 motor=17.4636
+PASA  C · ref Python · agencia · CAC real total: hoja/ref=791.4290295242677 motor=791.4290295242677
+PASA  C · ref Python · agencia_cpl · ventas: hoja/ref=18.0 motor=18
+PASA  C · ref Python · agencia_cpl · CAC real total: hoja/ref=777.7777777777778 motor=777.7777777777778
+PASA  C · ref Python · propuesta · ventas: hoja/ref=33.041250000000005 motor=33.041250000000005
+PASA  C · ref Python · propuesta · CAC real total: hoja/ref=488.60893579994695 motor=488.60893579994695
+PASA  A · ref Python · Plan 1 · $8.000 fijos (hoy) · caja mes 24: hoja/ref=79596.45273612329 motor=79596.45273612338
+PASA  A · ref Python · Plan 2 · Agencia: $16.000 fijos · caja mes 24: hoja/ref=-26217.163529561414 motor=-26217.163529561385
+PASA  A · ref Python · Plan 3 · $4.000 fijos, sin otros cambios · caja mes 24: hoja/ref=95566.23926854489 motor=95566.23926854489
+PASA  A · ref Python · Plan 4 · Pack desde el mes 1; $4.000 meses 1- · caja mes 24: hoja/ref=147769.8525692144 motor=147769.85256921436
+PASA  A · ref Python · Plan 5 · Pack desde el mes 1 y $8.000 fijos · caja mes 24: hoja/ref=154361.92828612332 motor=154361.92828612344
+PASA  B · ref Python · Plan 1 · $10.000 fijos (hoy) · caja mes 24: hoja/ref=156741.42542628606 motor=156741.425426286
+PASA  B · ref Python · Plan 2 · Valeria: $30.000 fijos · caja mes 24: hoja/ref=-162689.1662624977 motor=-162689.1662624976
+PASA  B · ref Python · Plan 3 · $15.000 meses 1-18 y $27.000 después · caja mes 24: hoja/ref=14261.752733644542 motor=14261.75273364444
+PASA  B · ref Python · Plan 4 · Plan anual 40 % desde el mes 1; $23. · caja mes 24: hoja/ref=37134.47988325206 motor=37134.47988325238
+PASA  C · ref Python · Plan 1 · Actual: $4.000 Meta + $4.000 Google · caja mes 24: hoja/ref=117273.39374999932 motor=117273.39374999935
+PASA  C · ref Python · Plan 2 · Agencia: $8.000 Meta + $0 Google · caja mes 24: hoja/ref=-60897.82200000048 motor=-60897.82200000013
+PASA  C · ref Python · Plan 3 · $6.000 Meta + $8.000 Google, 1 técni · caja mes 24: hoja/ref=249550.17599999995 motor=249550.176
+PASA  C · ref Python · Plan 4 · Respuesta y filtro desde el mes 1, $ · caja mes 24: hoja/ref=649094.9844999991 motor=649094.9845000004
+PASA  C · ref Python · Plan 5 · Mejor encontrado: respuesta y filtro · caja mes 24: hoja/ref=681010.3313749991 motor=681010.3313750005
+
+RESULTADO: 556 pasan, 0 fallan.
